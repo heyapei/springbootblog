@@ -4,12 +4,6 @@
     <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="修改基础接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -232,7 +226,7 @@
       <workItem from="1558962521626" duration="3562000" />
       <workItem from="1559042416601" duration="10513000" />
       <workItem from="1563603033919" duration="887000" />
-      <workItem from="1563603988763" duration="7833000" />
+      <workItem from="1563603988763" duration="7926000" />
     </task>
     <task id="LOCAL-00001" summary="本地电脑适应化">
       <created>1563603630953</created>
@@ -255,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563614158209</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="文件换行采用LF格式">
+      <created>1563615607057</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1563615607057</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +280,8 @@
     <MESSAGE value="本地电脑适应化" />
     <MESSAGE value="完成基础配置以及springboot和thymeleaf的集成" />
     <MESSAGE value="修改基础接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改基础接口" />
+    <MESSAGE value="文件换行采用LF格式" />
+    <option name="LAST_COMMIT_MESSAGE" value="文件换行采用LF格式" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/springstart$HypTest.ic" NAME="HypTest Coverage Results" MODIFIED="1559046376797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
