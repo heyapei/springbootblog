@@ -1,68 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="本地电脑适应化">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/magnific-popup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/about-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/about-image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/about-image1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/about-image2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/about-image3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/author-image1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/author-image2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/blog-image1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/blog-image2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/blog-image3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/blog-image4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/comment-image1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/comment-image2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/contact-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-image1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-image2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-image3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-image4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-image5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/gallery-image6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/home-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/single-post-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/custom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.magnific-popup.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.parallax.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/magnific-popup-options.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/particles.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/smoothscroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" afterDir="false" />
+    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/SpringstartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/SpringstartApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/ErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/ErrorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/FreemarkerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/FreemarkerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/HelloContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/HelloContoller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/MyBatisCRUDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/MyBatisCRUDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/ThymeleafController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/ThymeleafController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/UserController1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/UserController1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hyp/SpringstartApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hyp/SpringstartApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/ErrorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/FreemarkerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/HelloContoller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/MyBatisCRUDController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/ThymeleafController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/UserController1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/freemarker/center/center.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/freemarker/index.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/ajaxerror.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/center/center.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/test.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +28,20 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
@@ -105,6 +75,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -227,12 +198,21 @@
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
-        <option name="contentProportion" value="0.070307165" />
+        <option name="contentProportion" value="0.12764505" />
         <treeState>
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@44614e50" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@5a5aeee2" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@5a5aeee2" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@14b8aa10" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -254,7 +234,7 @@
       <workItem from="1558962521626" duration="3562000" />
       <workItem from="1559042416601" duration="10513000" />
       <workItem from="1563603033919" duration="887000" />
-      <workItem from="1563603988763" duration="3744000" />
+      <workItem from="1563603988763" duration="6345000" />
     </task>
     <task id="LOCAL-00001" summary="本地电脑适应化">
       <created>1563603630953</created>
@@ -263,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563603630953</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成基础配置以及springboot和thymeleaf的集成">
+      <created>1563607794577</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1563607794577</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +272,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="本地电脑适应化" />
-    <option name="LAST_COMMIT_MESSAGE" value="本地电脑适应化" />
+    <MESSAGE value="完成基础配置以及springboot和thymeleaf的集成" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成基础配置以及springboot和thymeleaf的集成" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/springstart$HypTest.ic" NAME="HypTest Coverage Results" MODIFIED="1559046376797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
