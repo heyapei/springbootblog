@@ -1,3 +1,4 @@
+/*
 package com.hyp.controller;
 
 import com.hyp.pojo.IMoocJSONResult;
@@ -5,23 +6,24 @@ import com.hyp.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
+*/
 /**
  * @author 何亚培
  * @version V1.0
- * @Date 20/27 19:32
- * @Description: TODO 使用RestController
- * @RestController = @Controller +  @ResponseBody
- *  @ResponseBody 作用是直接返回字符串 不指向视图
- */
+ * @Date 2019/5/27 19:32
+ * @Description: TODO 使用原生的Controller，这个简单一点 只不过是有点麻烦了
+ * 下面学习的是RestController 这个就是Controller和ResponseBody作用的综合
+ *//*
 
-@RestController
-public class UserController1 {
 
-    @RequestMapping("/1")
+@Controller
+public class UserController {
+
+    @RequestMapping("/")
+    @ResponseBody
     public User getUser(){
         User u = new User();
         u.setName("heyapei");
@@ -33,14 +35,16 @@ public class UserController1 {
     }
 
 
-    @RequestMapping("/userJson1")
+    @RequestMapping("/userJson")
+    @ResponseBody
     public IMoocJSONResult getUserJson(){
         User u = new User();
         u.setName("heyapei");
-        u.setAge(39);
+        u.setAge(19);
         u.setBirthday(new Date());
         u.setPassword("12321");
-        u.setDesc("发送方发送的123");
+        u.setDesc("fist");
         return IMoocJSONResult.ok(u);
     }
 }
+*/

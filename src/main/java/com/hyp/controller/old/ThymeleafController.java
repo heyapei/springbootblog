@@ -1,4 +1,4 @@
-package com.hyp.controller;
+package com.hyp.controller.old;
 
 import com.hyp.pojo.User;
 import org.springframework.stereotype.Controller;
