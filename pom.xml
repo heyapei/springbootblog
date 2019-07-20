@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hyp</groupId>
-    <artifactId>springstart</artifactId>
+    <artifactId>springBootBlog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springstart</name>
+    <name>springBootBlog</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
