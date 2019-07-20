@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="修改基础接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/ErrorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/FreemarkerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/HelloContoller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/MyBatisCRUDController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/ThymeleafController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/old/UserController1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/freemarker/center/center.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/freemarker/index.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/ajaxerror.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/center/center.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thymeleaf/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +46,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\lifeWork\ideaWorkSpace\springbootblog\.idea" />
+      </set>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -234,7 +232,7 @@
       <workItem from="1558962521626" duration="3562000" />
       <workItem from="1559042416601" duration="10513000" />
       <workItem from="1563603033919" duration="887000" />
-      <workItem from="1563603988763" duration="6345000" />
+      <workItem from="1563603988763" duration="7833000" />
     </task>
     <task id="LOCAL-00001" summary="本地电脑适应化">
       <created>1563603630953</created>
@@ -250,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563607794577</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修改基础接口">
+      <created>1563614158209</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1563614158209</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +278,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="本地电脑适应化" />
     <MESSAGE value="完成基础配置以及springboot和thymeleaf的集成" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成基础配置以及springboot和thymeleaf的集成" />
+    <MESSAGE value="修改基础接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改基础接口" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/springstart$HypTest.ic" NAME="HypTest Coverage Results" MODIFIED="1559046376797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
