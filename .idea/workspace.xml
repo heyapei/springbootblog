@@ -2,81 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/springbootblog.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/ServletInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/config/MyURLPatternConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/article/ArticleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/article/ImageUploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/mapper/ArticleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/mapper/ImageUploadMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/pojo/Article.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/pojo/ImageUpload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/ArticleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/IImgUploadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/impl/ArticleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/impl/ImgUploadServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/utils/FileNameUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/utils/FileUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/utils/UUIDUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ImageUploadMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.flat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.flat.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/wangEditor-fullscreen-plugin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/app-icon72x72@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-chrome.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-firefox.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-ie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-opera.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-safari.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/adminPage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/blogPage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/landing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/landingPage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/loginPage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/sidebarPage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/startup-640x1096.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/amazeui.ie8polyfill.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/amazeui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/codemirror.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/debugger.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/handlebars.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/modernizr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/popper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/wangEditor-fullscreen-plugin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/wangEditor.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/zepto.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/communal/footPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/wangEditor/wangEditor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/wangEditor/wangEditor1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadImg/test.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/springbootblog.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/heyapei.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/heyapei.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/springbootblog.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springbootblog.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -326,7 +252,7 @@
       <workItem from="1563695859929" duration="627000" />
       <workItem from="1563696512940" duration="5128000" />
       <workItem from="1563703799788" duration="286000" />
-      <workItem from="1563704106624" duration="7235000" />
+      <workItem from="1563704106624" duration="7441000" />
     </task>
     <task id="LOCAL-00001" summary="本地电脑适应化">
       <created>1563603630953</created>
@@ -377,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563633405707</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="增加了文章上传功能&#10;增加了多个js、css等文件主要是wangEditor编辑器--&gt;但是这个过程中也添加了一些AmazeUI的东西（该文件是我从前用到的东西）">
+      <created>1563716746442</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563716746442</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +364,8 @@
     <MESSAGE value="项目配置" />
     <MESSAGE value="数据库建表" />
     <MESSAGE value="上传idea生成文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="上传idea生成文件" />
+    <MESSAGE value="增加了文章上传功能&#10;增加了多个js、css等文件主要是wangEditor编辑器--&gt;但是这个过程中也添加了一些AmazeUI的东西（该文件是我从前用到的东西）" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了文章上传功能&#10;增加了多个js、css等文件主要是wangEditor编辑器--&gt;但是这个过程中也添加了一些AmazeUI的东西（该文件是我从前用到的东西）" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/springstart$HypTest.ic" NAME="HypTest Coverage Results" MODIFIED="1559046376797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

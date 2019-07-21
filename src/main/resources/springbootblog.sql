@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50713
  Source Host           : localhost:3306
- Source Schema     数据库名称    : springbootblog  
+ Source Schema         : springbootblog
 
  Target Server Type    : MySQL
  Target Server Version : 50713
  File Encoding         : 65001
 
- Date: 20/07/2019 22:25:48
+ Date: 21/07/2019 21:45:58
 */
 
 SET NAMES utf8mb4;
@@ -40,14 +40,16 @@ CREATE TABLE `article`  (
   `articleContent` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '文章内容',
   `sort` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类',
   `title` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标题',
-  `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `state` int(11) NULL DEFAULT 0 COMMENT '状态 0 全公开 1 只允许查看不允许评论 2 丢入垃圾箱 ',
   `range` int(11) NULL DEFAULT 0 COMMENT '展示范围（0 所有人 1 仅注册用户 2 仅选中用户 3 仅个人查看）',
+  `showOrder` int(11) NULL DEFAULT 0 COMMENT '展示规则（0 正常显示按照时间排序 1 置顶）',
   `userId` int(11) NOT NULL COMMENT '用户id',
+  `userName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户姓名',
   `createTime` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `modifyTime` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for clicknum
@@ -105,7 +107,7 @@ CREATE TABLE `permission`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `photo`;
 CREATE TABLE `photo`  (
-  `id` int(11) NOT NULL DEFAULT 0 AUTO_INCREMENT COMMENT '主键（照片墙，显示用户照片墙内容）',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键（照片墙，显示用户照片墙内容）',
   `imgSrc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '照片地址',
   `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标题',
