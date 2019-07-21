@@ -1,7 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="" />
+    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/springbootblog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/ServletInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/config/MyURLPatternConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/article/ArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/article/ImageUploadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/mapper/ArticleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/mapper/ImageUploadMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/pojo/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/pojo/ImageUpload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/ArticleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/IImgUploadService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/service/impl/ImgUploadServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/utils/FileNameUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/utils/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyp/utils/UUIDUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ImageUploadMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.flat.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/amazeui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/wangEditor-fullscreen-plugin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/app-icon72x72@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-chrome.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-firefox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-ie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-opera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/admin-safari.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/adminPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/blogPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/landing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/landingPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/loginPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/examples/sidebarPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/i/startup-640x1096.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/amazeui.ie8polyfill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/amazeui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/codemirror.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/debugger.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/handlebars.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.slim.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/modernizr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/wangEditor-fullscreen-plugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/wangEditor.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/zepto.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/communal/footPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/wangEditor/wangEditor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/wangEditor/wangEditor1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uploadImg/test.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/springbootblog.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/heyapei.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/heyapei.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/jquery.min.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +108,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -60,11 +137,13 @@
     </option>
   </component>
   <component name="ProjectId" id="1OGTeK4TD6CZE8l5RRL6s4iWtvp" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -74,7 +153,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -83,21 +162,31 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.24827586" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hyp" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\static\js" />
       <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources" />
-      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\templates\user" />
-      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\static" />
-      <recent name="D:\IdeaWorkSpace\springstart\src\main\java\com\hyp\utils" />
-      <recent name="D:\IdeaWorkSpace\springstart\src\main\java\com\hyp\controller" />
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\mapper" />
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\pojo" />
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hyp" />
+      <recent name="com.hyp.config" />
       <recent name="com.hyp.controller.user" />
       <recent name="com.hyp.controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\templates\communal" />
       <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\controller\old" />
       <recent name="D:\IdeaWorkSpace\springstart\src\main\resources\static\js" />
     </key>
@@ -120,48 +209,62 @@
     </option>
     <option name="contentProportion" value="0.1352459" />
   </component>
-  <component name="RunManager" selected="Spring Boot.SpringstartApplication ">
-    <configuration name="GeneratorDisplay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hyp.utils.GeneratorDisplay" />
-      <module name="springBootBlog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hyp.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="springbootblog" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HypTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.n3r.idworker.HypTest" />
-      <module name="springstart" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.n3r.idworker.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="springbootblog" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.n3r.idworker.Test" />
+    <configuration name="SpringstartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
       <module name="springstart" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.n3r.idworker.*" />
+          <option name="PATTERN" value="com.hyp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpringstartApplication " type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="springstart" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hyp.SpringstartApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -170,17 +273,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.GeneratorDisplay" />
-      <item itemvalue="Application.HypTest" />
-      <item itemvalue="Application.Test" />
-      <item itemvalue="Spring Boot.SpringstartApplication " />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HypTest" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.GeneratorDisplay" />
+        <item itemvalue="Spring Boot.SpringstartApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -192,16 +287,16 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@44614e50" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@cfd32a4" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@5a5aeee2" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@35c971d8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@5a5aeee2" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@14b8aa10" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@35c971d8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5caefdf1" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -224,7 +319,14 @@
       <workItem from="1559042416601" duration="10513000" />
       <workItem from="1563603033919" duration="887000" />
       <workItem from="1563603988763" duration="10020000" />
-      <workItem from="1563626044043" duration="1517000" />
+      <workItem from="1563626044043" duration="2296000" />
+      <workItem from="1563673900724" duration="3388000" />
+      <workItem from="1563689810894" duration="3860000" />
+      <workItem from="1563695598479" duration="214000" />
+      <workItem from="1563695859929" duration="627000" />
+      <workItem from="1563696512940" duration="5128000" />
+      <workItem from="1563703799788" duration="286000" />
+      <workItem from="1563704106624" duration="7235000" />
     </task>
     <task id="LOCAL-00001" summary="本地电脑适应化">
       <created>1563603630953</created>
@@ -268,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563633292456</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="上传idea生成文件">
+      <created>1563633405707</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1563633405707</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,33 +423,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="本地电脑适应化" />
     <MESSAGE value="完成基础配置以及springboot和thymeleaf的集成" />
     <MESSAGE value="修改基础接口" />
     <MESSAGE value="文件换行采用LF格式" />
     <MESSAGE value="项目配置" />
     <MESSAGE value="数据库建表" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据库建表" />
+    <MESSAGE value="上传idea生成文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="上传idea生成文件" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/springstart$HypTest.ic" NAME="HypTest Coverage Results" MODIFIED="1559046376797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.n3r.idworker.*</FILTER>
     </SUITE>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
