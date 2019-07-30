@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/springbootblog.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springbootblog.sql" afterDir="false" />
+    <list default="true" id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="更新数据库文件">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyp/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery.parallax.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.parallax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/magnific-popup-options.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/magnific-popup-options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/particles.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/particles.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/smoothscroll.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/smoothscroll.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/single-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/wangEditor/wangEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/wangEditor/wangEditor.html" afterDir="false" />
+    </list>
+    <list id="6ffd91a9-aa26-42e4-8747-013ea9202f95" name="提交过滤" comment="提交过滤">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hyp/controller/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hyp/controller/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/jquery.parallax.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/jquery.parallax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/magnific-popup-options.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/magnific-popup-options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/particles.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/particles.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/smoothscroll.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/smoothscroll.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/single-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/single-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/wangEditor/wangEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/wangEditor/wangEditor.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +76,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -47,6 +84,27 @@
         <option value="D:\lifeWork\ideaWorkSpace\springbootblog\.idea" />
       </set>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="3" end1="5" start2="3" end2="41" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="42" end1="42" start2="78" end2="79" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="49" end1="49" start2="86" end2="106" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="81" end1="82" start2="138" end2="139" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="97" end1="99" start2="154" end2="158" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="101" end1="101" start2="160" end2="161" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="105" end1="106" start2="165" end2="165" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="113" end1="117" start2="172" end2="174" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="215" end1="216" start2="272" end2="273" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="219" end1="220" start2="276" end2="277" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="223" end1="225" start2="280" end2="282" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="238" end1="238" start2="295" end2="296" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="254" end1="255" start2="312" end2="315" changelist="76f5d7b0-f508-409d-b5d8-81b5a8505d72" />
+        <range start1="312" end1="313" start2="372" end2="380" changelist="6ffd91a9-aa26-42e4-8747-013ea9202f95" />
+        <range start1="367" end1="368" start2="434" end2="436" changelist="6ffd91a9-aa26-42e4-8747-013ea9202f95" />
+      </ranges>
+    </file>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -79,7 +137,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/user" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -95,15 +153,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.hyp" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\templates\communal" />
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\controller\old" />
+      <recent name="D:\IdeaWorkSpace\springstart\src\main\resources\static\js" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\templates\user" />
       <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\static\js" />
       <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources" />
       <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\mapper" />
       <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\pojo" />
-      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hyp" />
@@ -111,10 +171,8 @@
       <recent name="com.hyp.controller.user" />
       <recent name="com.hyp.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\resources\templates\communal" />
-      <recent name="D:\lifeWork\ideaWorkSpace\springbootblog\src\main\java\com\hyp\controller\old" />
-      <recent name="D:\IdeaWorkSpace\springstart\src\main\resources\static\js" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hyp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -213,16 +271,16 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@cfd32a4" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3756308b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@35c971d8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@f834858" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@35c971d8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5caefdf1" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@f834858" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@459a01d6" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -236,6 +294,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="76f5d7b0-f508-409d-b5d8-81b5a8505d72" name="Default Changelist" comment="" />
+      <changelist id="6ffd91a9-aa26-42e4-8747-013ea9202f95" name="提交过滤" comment="" />
       <created>1558956403070</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -252,7 +311,9 @@
       <workItem from="1563695859929" duration="627000" />
       <workItem from="1563696512940" duration="5128000" />
       <workItem from="1563703799788" duration="286000" />
-      <workItem from="1563704106624" duration="7441000" />
+      <workItem from="1563704106624" duration="7806000" />
+      <workItem from="1564190766052" duration="624000" />
+      <workItem from="1564483095729" duration="4373000" />
     </task>
     <task id="LOCAL-00001" summary="本地电脑适应化">
       <created>1563603630953</created>

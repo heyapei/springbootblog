@@ -21,7 +21,7 @@ public class UserController {
      */
     @RequestMapping("/index")
     public String index() {
-        return "user/index";
+        return "user/gallery";
     }
 
 
