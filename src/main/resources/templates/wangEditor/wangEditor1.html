@@ -46,7 +46,7 @@
 
         <!-- 编辑器编辑，提交时执行js，获得编辑器的内容，赋值给textarea，用于向后台提交存入数据库 -->
         <!--<textarea rows="5" cols="35" name="article"  id="article"></textarea>-->
-        <input name="article"  id="article" th:value="${article.article}"/>
+        <input name="article"  id="article" th:value="#{article.articleContent}"/>
         <!--<input name="article"  id="article"  th:value="${article.article}">-->
         <script type="text/javascript">
             var E = window.wangEditor;

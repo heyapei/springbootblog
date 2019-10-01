@@ -36,7 +36,7 @@
         )
     </insert>
     <select id="getArticleById" resultType="com.hyp.pojo.Article" parameterType="int">
-        select * from article where id = #{showOrder,jdbcType=INTEGER}
+        select * from article where id = #{id,jdbcType=INTEGER}
     </select>
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
 <meta charset="UTF-8">
@@ -45,9 +45,9 @@
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a th:href="@{/static/page/about}">About</a></li>
+                    <li><a th:href="@{/static/page/gallery}">Gallery</a></li>
+                    <li><a href="/static/page/contact">Contact</a></li>
                </ul>
           </div>
 

@@ -2,6 +2,7 @@ package com.hyp.controller.article;
 
 import com.hyp.pojo.Article;
 import com.hyp.service.ArticleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,18 +21,19 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/admin")
+@Slf4j
 public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
 
+    @RequestMapping(value = "/showAdd")
+    public String showAdd() {
+        return "wangEditor/wangEditor";
+    }
 
     @RequestMapping(value = "/addArticle", method = RequestMethod.POST)
     public String addArticle(@RequestParam Map<String, Object> params) {
-
-        for (String s : params.keySet()) {
-            System.out.println("key : " + s + " value : " + params.get(s));
-        }
         System.out.println(params.get("article").toString());
         Article article = new Article();
         article.setArticleContent(params.get("article").toString());
@@ -44,10 +46,8 @@ public class ArticleController {
         article.setShowOrder(1);
         article.setUserId(1);
         article.setUserName("何亚培");
-        System.out.println(article.toString());
-        int i = articleService.insertArticle(article);
-        // 如此便获取到了主键
-        System.out.println(article.getId()+"主键ID");
+        log.info("添加article：" + article.toString());
+        articleService.insertArticle(article);
         return "wangEditor/wangEditor";
     }
 
@@ -60,12 +60,10 @@ public class ArticleController {
      */
     @RequestMapping(value = "/articleDetail/{id}", method = RequestMethod.GET)
     public String articleDetail(@PathVariable int id, ModelMap map) {
-        System.out.println(id + "参数");
         Article article = articleService.getArticleById(id);
-        System.out.println(article.toString());
-
         map.addAttribute("article", article);
-        return "wangEditor/wangEditor1";
+        log.info("传入回显的数据：" + article.toString());
+        return "wangEditor/wangEditor";
     }
 }
 

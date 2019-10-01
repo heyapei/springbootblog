@@ -1,3 +1,4 @@
+/*
 package com.hyp.exception;
 
 import com.hyp.pojo.IMoocJSONResult;
@@ -8,7 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@ControllerAdvice
+*/
+/*@ControllerAdvice*//*
+
 public class IMoocExceptionHandler {
 
 	public static final String IMOOC_ERROR_VIEW = "error";
@@ -26,7 +29,8 @@ public class IMoocExceptionHandler {
 //        return mav;
 //    }
 
-	/**
+	*/
+/**
 	 * 这个方法是综合了ajax和普通web请求的处理 只要发生错误就会进来只不过会自己判断是不是ajax请求，然后做相对应的响应
 	 * 上面的errorHandler就是普通请求 和 另一个类IMoocAjaxExceptionHandler 是Ajax异常的处理
 	 * @param reqest
@@ -34,7 +38,8 @@ public class IMoocExceptionHandler {
 	 * @param e
 	 * @return
 	 * @throws Exception
-	 */
+	 *//*
+
 	@ExceptionHandler(value = Exception.class)
     public Object errorHandler(HttpServletRequest reqest, 
     		HttpServletResponse response, Exception e) throws Exception {
@@ -52,7 +57,8 @@ public class IMoocExceptionHandler {
     	}
     }
 	
-	/**
+	*/
+/**
 	 * 
 	 * @Title: IMoocExceptionHandler.java
 	 * @Package com.imooc.exception
@@ -63,10 +69,12 @@ public class IMoocExceptionHandler {
 	 * @author leechenxiang
 	 * @date 2017年12月3日 下午1:40:39
 	 * @version V1.0
-	 */
+	 *//*
+
 	public static boolean isAjax(HttpServletRequest httpRequest){
 		return  (httpRequest.getHeader("X-Requested-With") != null  
 					&& "XMLHttpRequest"
 						.equals( httpRequest.getHeader("X-Requested-With").toString()) );
 	}
 }
+*/

@@ -25,7 +25,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article getArticleById(int id) {
-        Article article = articleMapper.selectByPrimaryKey(id);
+        Article article = articleMapper.getArticleById(id);
         return article;
     }
 }
