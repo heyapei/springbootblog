@@ -5,3 +5,5 @@ target/
 
 *.iml
 .idea/
+/error.2019-10-01.log
+/info.2019-10-01.log
