@@ -37,18 +37,17 @@ public class ArticleController {
         System.out.println(params.get("article").toString());
         Article article = new Article();
         article.setArticleContent(params.get("article").toString());
-        article.setDescription("description");
-        article.setSort("sort");
-        article.setTitle("title");
-        article.setState(10);
-        article.setRange(11);
-        article.setTitle("title");
-        article.setShowOrder(1);
+        article.setDescription(params.get("description").toString());
+        article.setSort(params.get("sort").toString());
+        article.setTitle(params.get("title").toString());
+        article.setState(0);
+        article.setRange(0);
+        article.setShowOrder(Integer.parseInt(params.get("showOrder").toString()));
         article.setUserId(1);
         article.setUserName("何亚培");
         log.info("添加article：" + article.toString());
         articleService.insertArticle(article);
-        return "wangEditor/wangEditor";
+        return "redirect:/admin/index/1";
     }
 
 

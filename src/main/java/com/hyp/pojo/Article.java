@@ -1,6 +1,7 @@
 package com.hyp.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.apache.ibatis.annotations.Mapper;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import java.util.Date;
  * @Description: TODO 文章表
  */
 @Table(name = "article")
+@Mapper
 public class Article {
     @Id
     private int id;

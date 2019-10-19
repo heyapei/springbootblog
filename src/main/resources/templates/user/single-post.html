@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <meta charset="UTF-8">
@@ -79,7 +79,7 @@
 
 
                     <div class="blog-post-title">
-                        <h2>We Help You Create Perfect Modern Design</a></h2>
+                        <h2 th:if="${article?.getTitle()}">We Help You Create Perfect Modern Design</a></h2>
                     </div>
 
                     <div class="blog-post-format">
