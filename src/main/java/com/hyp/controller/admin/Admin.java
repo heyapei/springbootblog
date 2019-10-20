@@ -21,7 +21,7 @@ import java.util.List;
  * @Date 2019/10/1 17:16
  * @Description: TODO
  */
-@RestController
+@Controller
 @RequestMapping("/admin")
 @Slf4j
 public class Admin {
@@ -39,12 +39,23 @@ public class Admin {
         return ResultGenerator.genSuccessResult(pageInfo);
     }
 
+    /**
+     * 该方法将分页信息再进行封装为json数据
+     * @param userId 用户ID
+     * @param page 页码
+     * @param size 每页显示条数
+     * @param map 返回值
+     * @return
+     */
     @RequestMapping(value = "/index/{userId}/{page}/{size}", method = RequestMethod.GET)
-    public Result articleDetailByUserIdAndPage(@PathVariable int userId,
+    public String articleDetailByUserIdAndPage(@PathVariable int userId,
                                                @PathVariable("page") Integer page,
-                                               @PathVariable("size") Integer size) {
+                                               @PathVariable("size") Integer size,
+                                               ModelMap map) {
         PageInfo articleByUserIdAndPage = adminService.getArticleByUserIdAndPage(userId, page, size);
-        return ResultGenerator.genSuccessResult(articleByUserIdAndPage);
+        map.put("articles", ResultGenerator.genSuccessResult(articleByUserIdAndPage));
+        map.put("userId", userId);
+        return "admin/index";
     }
 
     @RequestMapping(value = "/index/{userId}", method = RequestMethod.GET)

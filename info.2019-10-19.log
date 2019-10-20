@@ -1294,3 +1294,28 @@ Error starting ApplicationContext. To display the auto-configuration report re-r
 2019-10-19 11:39:40 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
 2019-10-19 11:39:40 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 16(Integer), 1(Integer)
 2019-10-19 11:39:40 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 1
+2019-10-19 11:42:02 com.hyp.controller.Index -转发到首页
+2019-10-19 11:42:58 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-19 11:42:58 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-19 11:42:58 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-19 11:42:58 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-19 11:43:14 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-19 11:43:14 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 11(Integer)
+2019-10-19 11:43:14 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-19 11:43:14 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=11, articleContent='<p>写下自己的青春</p><p><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 13:21:42 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-19 11:43:17 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-19 11:43:17 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 12(Integer)
+2019-10-19 11:43:17 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-19 11:43:17 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=12, articleContent='你好<img src="//localhost:8089/uploadImg/45036e1359154f40ba48aa8d63f80eb4_屏幕截图(1).png" style="max-width:30%;"><p><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 15:13:06 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-19 11:43:44 com.hyp.controller.article.ArticleController -添加article：Article{id=0, articleContent='你好<p>在静安了</p>', sort='0', title='title', description='description', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=null, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-19 11:43:44 com.hyp.mapper.ArticleMapper.addArticle -==>  Preparing: insert into Article (articleContent,userId,userName,sort,title,description,state,`range`,showOrder) values ( ? ,? ,? ,? ,? ,? ,? ,? ,? ) 
+2019-10-19 11:43:44 com.hyp.mapper.ArticleMapper.addArticle -==> Parameters: 你好<p>在静安了</p>(String), 1(Integer), 何亚培(String), 0(String), title(String), description(String), 0(Integer), 0(Integer), 1(Integer)
+2019-10-19 11:43:44 com.hyp.mapper.ArticleMapper.addArticle -<==    Updates: 1
+2019-10-19 11:44:38 com.hyp.controller.article.ArticleController -添加article：Article{id=0, articleContent='<p><br></p>', sort='0', title='', description='', state=0, range=0, userId=1, userName='何亚培', showOrder=0, createTime=null, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-19 11:44:38 com.hyp.mapper.ArticleMapper.addArticle -==>  Preparing: insert into Article (articleContent,userId,userName,sort,title,description,state,`range`,showOrder) values ( ? ,? ,? ,? ,? ,? ,? ,? ,? ) 
+2019-10-19 11:44:38 com.hyp.mapper.ArticleMapper.addArticle -==> Parameters: <p><br></p>(String), 1(Integer), 何亚培(String), 0(String), (String), (String), 0(Integer), 0(Integer), 0(Integer)
+2019-10-19 11:44:38 com.hyp.mapper.ArticleMapper.addArticle -<==    Updates: 1
+2019-10-19 11:44:51 com.hyp.controller.article.ArticleController -添加article：Article{id=0, articleContent='<p>1212312</p>', sort='1', title='13', description='121', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=null, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-19 11:44:51 com.hyp.mapper.ArticleMapper.addArticle -==>  Preparing: insert into Article (articleContent,userId,userName,sort,title,description,state,`range`,showOrder) values ( ? ,? ,? ,? ,? ,? ,? ,? ,? ) 
+2019-10-19 11:44:51 com.hyp.mapper.ArticleMapper.addArticle -==> Parameters: <p>1212312</p>(String), 1(Integer), 何亚培(String), 1(String), 13(String), 121(String), 0(Integer), 0(Integer), 1(Integer)
+2019-10-19 11:44:51 com.hyp.mapper.ArticleMapper.addArticle -<==    Updates: 1

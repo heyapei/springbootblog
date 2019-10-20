@@ -47,7 +47,7 @@ public class ArticleController {
         article.setUserName("何亚培");
         log.info("添加article：" + article.toString());
         articleService.insertArticle(article);
-        return "redirect:/admin/index/1";
+        return "redirect:/admin/index/10";
     }
 
 

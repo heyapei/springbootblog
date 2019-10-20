@@ -1,6 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Title</title>
     <div th:include="communal/admin/header :: header"></div>
 </head>
 <body>
@@ -37,8 +36,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="article,userStat: ${articles}">
+                        <tr th:each="article,userStat: ${articles.data.list}">
+                            <!--每次翻页都会刷新当前页的序号-->
                             <td th:text="${userStat.index}"></td>
+                            <!--如果是对象的话 会自动识别的-->
                             <td th:text="${article.getSort()}">
                             </td>
                             <td th:text="${article.getDescription()}">
@@ -46,17 +47,45 @@
                             <td th:text="${#dates.format(article.getCreateTime(), 'yyyy-MM-dd HH:mm:SS')}">
                             </td>
                             <td>
-                                <a type="button" class="btn btn-default" href="">
+                                <a type="button" class="btn btn-default" target="_blank" th:href="@{'/admin/articleDetail/'+${article.getId()}}">
                                     <span class="glyphicon glyphicon-list-alt"></span> 展示
+                                </a>
+                                <a type="button" class="btn btn-default" target="_blank" th:href="@{'/admin/articleDetail/'+${article.getId()}}">
+                                    <span class="glyphicon glyphicon-pencil"></span> 编辑
                                 </a>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div class="clearfix">
+                        <ul class="pagination m-b-5">
+                            <li th:if="${articles.data.hasPreviousPage}"><a
+                                    th:href="@{'/admin/index/'+${userId}+'/'+${articles.data.prePage}+'/10'}"
+                                    aria-label="Previous"> <i class="fa fa-angle-left"></i>&nbsp;上一页
+                            </a></li>
+
+                            <th:block th:each="nav : ${articles.data.navigatepageNums}">
+                                <li th:class="${nav==articles.data.pageNum}?'active':''"><a
+                                        th:href="@{'/admin/index/'+${userId}+'/'+${nav}+'/10'}"
+                                        th:text="${nav}"></a></li>
+                            </th:block>
+
+                            <th:block th:if="${articles.data.hasNextPage}">
+                                <li><a
+                                        th:href="@{'/admin/index/'+${userId}+'/'+${articles.data.nextPage}+'/10'}"
+                                        aria-label="Next"> 下一页&nbsp;<i class="fa fa-angle-right"></i>
+                                </a></li>
+                            </th:block>
+
+                            <li><span th:text="'共'+${articles.data.pages}+'页/每页'+${articles.data.pageSize}+'条'"></span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 
