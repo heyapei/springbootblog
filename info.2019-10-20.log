@@ -3686,3 +3686,40 @@ Error starting ApplicationContext. To display the auto-configuration report re-r
 2019-10-20 22:26:47 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 32(Integer)
 2019-10-20 22:26:47 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
 2019-10-20 22:26:47 com.hyp.controller.admin.Admin -数据如下Article{id=32, articleContent='<p>13123123123<img src="//localhost:8089/uploadImg/ea2e975d862043969ce496d1ca393164_gratisography-monkey-bench-girl-900x600.jpg" style="max-width: 100%;"></p>', sort='0', title='', description='121', state=0, range=0, userId=1, userName='何亚培', showOrder=0, createTime=Sun Oct 20 22:26:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 22:28:44 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 22:28:44 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 22:28:44 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 22:28:44 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 22:28:44 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 22:28:44 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 22:28:47 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 22:28:47 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 22:28:47 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 22:28:47 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ? 
+2019-10-20 22:28:47 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer)
+2019-10-20 22:28:47 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 22:28:56 com.hyp.controller.admin.Admin -进入日志31
+2019-10-20 22:28:56 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 22:28:56 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 31(Integer)
+2019-10-20 22:28:56 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 22:28:56 com.hyp.controller.admin.Admin -数据如下Article{id=31, articleContent='<p>231232</p>', sort='0', title='', description='121', state=0, range=0, userId=1, userName='何亚培', showOrder=0, createTime=Sun Oct 20 22:23:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 22:29:00 com.hyp.controller.admin.Admin -进入日志30
+2019-10-20 22:29:00 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 22:29:00 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 30(Integer)
+2019-10-20 22:29:00 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 22:29:00 com.hyp.controller.admin.Admin -数据如下Article{id=30, articleContent='<p>31231312<img src="//localhost:8089/uploadImg/2c10ac4e9680459cad5838f8bc89ac29_gratisography-monkey-bench-girl-900x600.jpg" style="max-width: 100%;"></p>', sort='0', title='1', description='正常描述', state=0, range=0, userId=1, userName='何亚培', showOrder=0, createTime=Sun Oct 20 22:20:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 22:29:02 com.hyp.controller.admin.Admin -进入日志29
+2019-10-20 22:29:02 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 22:29:02 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 29(Integer)
+2019-10-20 22:29:02 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 22:29:02 com.hyp.controller.admin.Admin -数据如下Article{id=29, articleContent='<p>1231231231</p><p><span style="color: rgb(238, 236, 224);">12312321</span></p><p><span style="color: rgb(238, 236, 224);">分31234 4&nbsp;</span><img src="//localhost:8089/uploadImg/89b67a7d1b93498d9fb2c2fd2d6f4464_gratisography-monkey-bench-girl-900x600.jpg" style="max-width: 100%;"></p>', sort='1', title='13131', description='123132', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=Sun Oct 20 22:17:56 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 22:29:06 com.hyp.controller.admin.Admin -进入日志28
+2019-10-20 22:29:06 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 22:29:06 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 28(Integer)
+2019-10-20 22:29:06 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 22:29:06 com.hyp.controller.admin.Admin -数据如下Article{id=28, articleContent='<p>13132<img src="//localhost:8089/uploadImg/95d65fa8de8d4b98ad5fed756a78c7fd_gratisography-donkey-thumbnail-small.png" style="max-width: 100%;"><br></p>', sort='0', title='title', description='description', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=Sun Oct 20 22:11:11 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 22:29:09 com.hyp.controller.admin.Admin -进入日志27
+2019-10-20 22:29:09 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 22:29:09 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 27(Integer)
+2019-10-20 22:29:09 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 22:29:09 com.hyp.controller.admin.Admin -数据如下Article{id=27, articleContent='<p>手动阀手动阀</p><p><img src="//localhost:8089/uploadImg/ee5529ab15bd4f5f8db22e08f3849827_gratisography-monkey-bench-girl-900x600.jpg" style="max-width:50%;"><br></p><table border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr><tr><td>&nbsp;1312</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;131</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p>2312312</p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='0', title='title', description='description', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=Sun Oct 20 21:49:06 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}

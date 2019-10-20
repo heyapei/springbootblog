@@ -48,7 +48,7 @@ public class ArticleController {
         log.info("添加article：" + article.toString());
         articleService.insertArticle(article);
         log.info("插入的主键:{}", article.getId());
-        return "redirect:/admin/index/article/"+article.getId();
+        return "redirect:/admin/index/article/" + article.getId();
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -66,7 +66,7 @@ public class ArticleController {
         article.setUserName("何亚培");
         log.info("添加article：" + article.toString());
         articleService.updateArticle(article);
-        return "redirect:/admin/index/article/"+params.get("id").toString();
+        return "redirect:/admin/index/article/" + params.get("id").toString();
     }
 
 
