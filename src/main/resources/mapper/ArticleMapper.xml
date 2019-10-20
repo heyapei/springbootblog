@@ -19,7 +19,7 @@
         <result column="modifyTime" property="modifyTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <insert id="addArticle" parameterType="com.hyp.pojo.Article" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addArticle" parameterType="com.hyp.pojo.Article" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into
         Article (articleContent,userId,userName,sort,title,description,state,`range`,showOrder)
         values
@@ -35,6 +35,13 @@
         ,#{showOrder,jdbcType=INTEGER}
         )
     </insert>
+    <update id="updateArticle" parameterType="com.hyp.pojo.Article" useGeneratedKeys="true" keyProperty="id">
+         update
+        Article set articleContent = #{articleContent,jdbcType=VARCHAR},sort = #{sort,jdbcType=VARCHAR},
+        title =#{title,jdbcType=VARCHAR},description =  #{description,jdbcType=VARCHAR},
+        state = #{state,jdbcType=INTEGER},`range` = #{range,jdbcType=INTEGER},showOrder = #{showOrder,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <select id="getArticleById" resultType="com.hyp.pojo.Article" parameterType="int">
         select * from article where id = #{id,jdbcType=INTEGER}
     </select>

@@ -47,7 +47,26 @@ public class ArticleController {
         article.setUserName("何亚培");
         log.info("添加article：" + article.toString());
         articleService.insertArticle(article);
-        return "redirect:/admin/index/10";
+        log.info("插入的主键:{}", article.getId());
+        return "redirect:/admin/index/article/"+article.getId();
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateArticle(@RequestParam Map<String, Object> params) {
+        Article article = new Article();
+        article.setId(Integer.parseInt(params.get("id").toString()));
+        article.setArticleContent(params.get("article").toString());
+        article.setDescription(params.get("description").toString());
+        article.setSort(params.get("sort").toString());
+        article.setTitle(params.get("title").toString());
+        article.setState(0);
+        article.setRange(0);
+        article.setShowOrder(Integer.parseInt(params.get("showOrder").toString()));
+        article.setUserId(1);
+        article.setUserName("何亚培");
+        log.info("添加article：" + article.toString());
+        articleService.updateArticle(article);
+        return "redirect:/admin/index/article/"+params.get("id").toString();
     }
 
 
@@ -62,7 +81,7 @@ public class ArticleController {
         Article article = articleService.getArticleById(id);
         map.addAttribute("article", article);
         log.info("传入回显的数据：" + article.toString());
-        return "wangEditor/wangEditor";
+        return "wangEditor/wangEditor1";
     }
 }
 

@@ -1,53 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>ueditor-demo</title>
+    <title>文章编辑</title>
     <!-- 设置全屏功能的css文件 -->
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/wangEditor-fullscreen-plugin.css}"></link>
-    <script th:src="@{/static/js/jquery.min.js}"></script>
+    <script th:src="@{/static/js/jquery.js}"></script>
     <!--<script th:src="@{${#httpServletRequest.getContextPath()}+'/js/wangEditor.min.js'}"></script>-->
     <script th:src="@{/static/js/wangEditor.min.js}"></script>
     <!-- 设置全屏功能的js文件 -->
     <script th:src="@{/static/js/wangEditor-fullscreen-plugin.js}"></script>
-
-    <!--引入AmazeUI-->
-    <link rel="stylesheet" th:href="@{/static/css/amazeui.min.css}"></link>
-    <link rel="stylesheet" th:href="@{/static/css/app.css}"></link>
-    <!--[if (gte IE 9)|!(IE)]><!-->
-    <script th:src="@{/static/js/jquery.min.js}"></script>
-    <!--<![endif]-->
-    <!--[if lte IE 8 ]>
-    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-    <script th:src="@{/static/js/amazeui.ie8polyfill.min.js}"></script>
-    <![endif]-->
-    <script th:src="@{/static/js/amazeui.min.js}"></script>
-
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}">
+    <script src="/static/js/jquery.slim.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
     <script>
         /*编辑器编辑后，提交时执行js，获得编辑器的内容，赋值给textarea，用于向后台提交存入数据库*/
         function modifyContent() {
             var introduce = document.getElementById("article");
             introduce.value = editor.txt.html();
         }
-
     </script>
 </head>
 <body>
-<div class="am-container">
-    <h2>wangEditor11</h2>
-    <form action="/admin/addArticle" method="post" onsubmit="modifyContent()">
-        <div id="info1" class="text" > <!--可使用 min-height 实现编辑区域自动增加高度-->
-            <div id="editor">
-                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
-            </div>
+<div class="container">
+    <h2>您已经进入文章编辑界面1</h2>
+    <input type="text" th:value="${article?.getSort()}">
+    <input type="text" th:value="${article?.getArticleContent()}">
+    <!--<span th:text="${article}">US</span>-->
+    <form action="/admin/update" method="post" onsubmit="modifyContent()">
+        <input type="text" th:value="${article?.getId()}" name="id">
+        <div class="form-group">
+            <label for="title">文章标题</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="文章标题"
+                   th:value="${article?.getTitle()}">
+        </div>
+        <div class="form-group">
+            <label for="sort">栏目</label>
+            <select class="form-control" id="sort" name="sort">
+                <option value="0">学习</option>
+                <option value="1">生活</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="showOrder">显示规则</label>
+            <select class="form-control" id="showOrder" name="showOrder">
+                <option value="0" th:selected="${article?.getShowOrder() eq 0}">正常显示</option>
+                <option value="1" th:selected="${article?.getShowOrder() eq 1}">置顶显示</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="desci">简介</label>
+            <textarea class="form-control" id="desci" rows="3" name="description" placeholder="简介"
+                      th:text="${article?.getDescription()}"></textarea>
         </div>
 
 
+        <div id="editor">
+            <p>记录点什么吧。</p>
+        </div>
+
         <!-- 编辑器编辑，提交时执行js，获得编辑器的内容，赋值给textarea，用于向后台提交存入数据库 -->
-        <!--<textarea rows="5" cols="35" name="article"  id="article"></textarea>-->
-        <input name="article"  id="article" th:value="#{article.articleContent}"/>
-        <!--<input name="article"  id="article"  th:value="${article.article}">-->
+        <textarea rows="5" cols="35" name="article" style="display:none;" id="article"></textarea>
+        <input id="submitArticleContent" th:value="${article?.getArticleContent()}" type="hidden">
         <script type="text/javascript">
             var E = window.wangEditor;
             var editor = new E('#editor');
@@ -62,7 +77,6 @@
             editor.customConfig.uploadFileName = "file";
             editor.customConfig.uploadImgServer = '/fileUpload';
             editor.customConfig.debug = true;
-
             //自定义上传图片事件
             editor.customConfig.uploadImgHooks = {
                 before: function (xhr, editor, files) {
@@ -83,28 +97,27 @@
                 customInsert: function (insertImg, result, editor) {
                     // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
                     // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
-
                     // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
                     var url = result.url;
                     insertImg(url)
                     // result 必须是一个 JSON 格式字符串！！！否则报错
                 }
-
             };
             // 或者 var editor = new E( document.getElementById('editor') )
             editor.create()
             E.fullscreen.init('#editor');
-            //第一步是先获取服务器传过来的图文信息值
-            var article = document.getElementById("article").value;
-            console.log(article);
-            // 第二步写入编辑器中
-            editor.txt.html(article);
+            /*回显*/
+            var introduce = $(" #submitArticleContent ").val();
+            if (introduce != null) {
+                editor.txt.html(introduce);
+            }
         </script>
-        <br />
-        <input type="submit" class="am-btn am-btn-primary"></input>
+        <br/>
+        <input type="submit" class="am-btn am-btn-primary">
     </form>
 </div>
-
+<!--加载页脚-->
+<div th:include="communal/footPage :: footer"></div>
 </body>
 
 </html>

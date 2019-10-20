@@ -17,6 +17,13 @@ public interface ArticleService {
     int insertArticle(Article article);
 
     /**
+     * 更新文章内容
+     * @param article 文章内容
+     * @return 主键ID
+     */
+    int updateArticle(Article article);
+
+    /**
      * 通过id查找文章内容
      * @param id 文档id
      * @return 文章详情

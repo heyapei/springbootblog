@@ -19,5 +19,12 @@ public interface ArticleMapper extends MyMapper<Article> {
      */
     int addArticle(Article article);
 
+    /**
+     * 更新文章
+     * @param article 文章内容
+     * @return 主键ID
+     */
+    int updateArticle(Article article);
+
     Article getArticleById(int id);
 }
