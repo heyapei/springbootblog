@@ -2008,3 +2008,1078 @@
 2019-10-20 20:59:59 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
 2019-10-20 20:59:59 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
 2019-10-20 20:59:59 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.138 seconds (JVM running for 4.065)
+2019-10-20 21:15:10 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:15:10 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:15:10 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2019-10-20 21:16:13 com.hyp.mapper.AdminMapperTest -Starting AdminMapperTest on DESKTOP-OLBL83E with PID 21684 (started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:16:13 com.hyp.mapper.AdminMapperTest -Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2019-10-20 21:16:13 com.hyp.mapper.AdminMapperTest -No active profile set, falling back to default profiles: default
+2019-10-20 21:16:13 org.springframework.web.context.support.GenericWebApplicationContext -Refreshing org.springframework.web.context.support.GenericWebApplicationContext@5824a83d: startup date [Sun Oct 20 21:16:13 CST 2019]; root of context hierarchy
+2019-10-20 21:16:13 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:16:13 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:16:14 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:16:14 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/index]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/test]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/center]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.center()
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.postform(com.hyp.pojo.User)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/index]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/test]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/center]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.center()
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.postform(com.hyp.pojo.User)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:16:15 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:16:15 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:16:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@5824a83d: startup date [Sun Oct 20 21:16:13 CST 2019]; root of context hierarchy
+2019-10-20 21:16:15 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:16:16 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:16:16 com.hyp.mapper.AdminMapperTest -Started AdminMapperTest in 3.615 seconds (JVM running for 4.427)
+2019-10-20 21:16:16 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:16:16 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 1(Integer)
+2019-10-20 21:16:16 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:16:16 org.springframework.web.context.support.GenericWebApplicationContext -Closing org.springframework.web.context.support.GenericWebApplicationContext@5824a83d: startup date [Sun Oct 20 21:16:13 CST 2019]; root of context hierarchy
+2019-10-20 21:16:16 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:20:55 com.hyp.mapper.AdminMapperTest -Starting AdminMapperTest on DESKTOP-OLBL83E with PID 23932 (started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:20:55 com.hyp.mapper.AdminMapperTest -Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2019-10-20 21:20:55 com.hyp.mapper.AdminMapperTest -No active profile set, falling back to default profiles: default
+2019-10-20 21:20:55 org.springframework.web.context.support.GenericWebApplicationContext -Refreshing org.springframework.web.context.support.GenericWebApplicationContext@5824a83d: startup date [Sun Oct 20 21:20:55 CST 2019]; root of context hierarchy
+2019-10-20 21:20:56 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:20:56 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:20:57 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:20:57 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/index]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/test]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/center]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.center()
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.postform(com.hyp.pojo.User)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/index]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/test]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/center]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.center()
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.postform(com.hyp.pojo.User)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:20:58 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:20:58 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:20:58 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@5824a83d: startup date [Sun Oct 20 21:20:55 CST 2019]; root of context hierarchy
+2019-10-20 21:20:58 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:20:58 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:20:59 com.hyp.mapper.AdminMapperTest -Started AdminMapperTest in 3.938 seconds (JVM running for 4.83)
+2019-10-20 21:20:59 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:20:59 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 1(Integer)
+2019-10-20 21:20:59 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:20:59 org.springframework.web.context.support.GenericWebApplicationContext -Closing org.springframework.web.context.support.GenericWebApplicationContext@5824a83d: startup date [Sun Oct 20 21:20:55 CST 2019]; root of context hierarchy
+2019-10-20 21:20:59 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:21:12 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 2072 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:21:12 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:21:12 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1fa05033: startup date [Sun Oct 20 21:21:12 CST 2019]; root of context hierarchy
+2019-10-20 21:21:12 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:21:13 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:21:13 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:21:13 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:21:13 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:21:14 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:21:14 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1076 ms
+2019-10-20 21:21:14 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:21:14 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:21:14 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:21:14 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:21:14 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:21:14 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/index]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/test]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/center]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.center()
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.postform(com.hyp.pojo.User)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/index]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/test]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/center]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.center()
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.postform(com.hyp.pojo.User)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:21:14 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:21:15 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:21:15 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:21:15 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1fa05033: startup date [Sun Oct 20 21:21:12 CST 2019]; root of context hierarchy
+2019-10-20 21:21:15 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:21:15 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:21:15 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:21:15 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:21:15 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:21:15 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:21:15 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:21:15 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:21:15 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:21:15 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:21:15 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:21:15 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:21:15 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.082 seconds (JVM running for 4.088)
+2019-10-20 21:21:21 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:21:21 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:21:21 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2019-10-20 21:21:21 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:21:21 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:21:21 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:21:21 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:21:21 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 21:21:21 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:22:11 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:22:11 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:22:11 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:22:11 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:22:11 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 21:22:11 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:24:21 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 14872 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:24:21 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:24:21 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:24:21 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2096a735: startup date [Sun Oct 20 21:24:21 CST 2019]; root of context hierarchy
+2019-10-20 21:24:22 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:24:22 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:24:22 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:24:22 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:24:23 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:24:23 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1139 ms
+2019-10-20 21:24:23 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:24:23 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:24:23 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:24:23 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:24:23 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:24:23 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/index]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/test]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/center]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.center()
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.postform(com.hyp.pojo.User)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/index]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/test]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/center]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.center()
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.postform(com.hyp.pojo.User)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:24:24 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:24:24 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:24:24 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2096a735: startup date [Sun Oct 20 21:24:21 CST 2019]; root of context hierarchy
+2019-10-20 21:24:24 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:24:24 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:24:24 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:24:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:24:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:24:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:24:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:24:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:24:24 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:24:24 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:24:24 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:24:24 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:24:24 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.216 seconds (JVM running for 4.79)
+2019-10-20 21:24:27 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:24:27 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:24:27 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 14 ms
+2019-10-20 21:26:08 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 20740 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:26:08 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:26:08 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:26:08 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@33f78612: startup date [Sun Oct 20 21:26:08 CST 2019]; root of context hierarchy
+2019-10-20 21:26:09 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:26:09 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:26:09 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:26:09 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:26:09 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:26:09 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1300 ms
+2019-10-20 21:26:10 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:26:10 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:26:10 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:26:10 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:26:10 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:26:10 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/index]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/test]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/center]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.center()
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.postform(com.hyp.pojo.User)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/index]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/test]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/center]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.center()
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.postform(com.hyp.pojo.User)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:26:11 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:26:11 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:26:11 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@33f78612: startup date [Sun Oct 20 21:26:08 CST 2019]; root of context hierarchy
+2019-10-20 21:26:11 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:26:11 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:26:11 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:26:11 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:26:11 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:26:11 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:26:11 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:26:11 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:26:11 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:26:11 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:26:11 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:26:11 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:26:11 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.76 seconds (JVM running for 4.894)
+2019-10-20 21:26:13 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:26:13 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:26:13 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+2019-10-20 21:27:36 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 15804 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:27:36 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:27:36 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45d3b907: startup date [Sun Oct 20 21:27:36 CST 2019]; root of context hierarchy
+2019-10-20 21:27:36 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:27:36 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:27:37 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:27:37 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:27:37 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:27:37 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:27:37 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1087 ms
+2019-10-20 21:27:37 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:27:37 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:27:37 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:27:37 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:27:37 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:27:38 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/index]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/test]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/center]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.center()
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/one/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.OneController.postform(com.hyp.pojo.User)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/index]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.index(org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/test]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.test(org.springframework.ui.ModelMap)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/center]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.center()
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/two/postform],methods=[POST]}" onto public java.lang.String com.hyp.controller.interceptor.TwoController.postform(com.hyp.pojo.User)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:27:38 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:27:38 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:27:38 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45d3b907: startup date [Sun Oct 20 21:27:36 CST 2019]; root of context hierarchy
+2019-10-20 21:27:38 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:27:39 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:27:39 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:27:39 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:27:39 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:27:39 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:27:39 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:27:39 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:27:39 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:27:39 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:27:39 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:27:39 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:27:39 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.204 seconds (JVM running for 4.222)
+2019-10-20 21:28:05 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 5772 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:28:05 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:28:05 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:28:05 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45d3b907: startup date [Sun Oct 20 21:28:05 CST 2019]; root of context hierarchy
+2019-10-20 21:28:06 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:28:06 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:28:06 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:28:06 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:28:07 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:28:07 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1098 ms
+2019-10-20 21:28:07 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:28:07 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:28:07 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:28:07 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:28:07 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:28:07 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:28:08 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:28:08 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:28:08 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45d3b907: startup date [Sun Oct 20 21:28:05 CST 2019]; root of context hierarchy
+2019-10-20 21:28:08 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:28:08 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:28:08 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:28:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:28:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:28:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:28:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:28:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:28:08 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:28:08 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:28:08 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:28:08 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:28:08 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.26 seconds (JVM running for 4.225)
+2019-10-20 21:28:26 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:28:26 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:28:26 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 14 ms
+2019-10-20 21:28:26 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:28:26 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:28:26 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:28:26 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:28:26 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 21:28:26 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:29:39 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 7760 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:29:39 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:29:39 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:29:39 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@644c0f52: startup date [Sun Oct 20 21:29:39 CST 2019]; root of context hierarchy
+2019-10-20 21:29:40 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:29:40 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:29:40 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:29:40 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:29:40 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:29:40 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1375 ms
+2019-10-20 21:29:41 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:29:41 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:29:41 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:29:41 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:29:41 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:29:41 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:29:42 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:29:42 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:29:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@644c0f52: startup date [Sun Oct 20 21:29:39 CST 2019]; root of context hierarchy
+2019-10-20 21:29:42 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:29:42 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:29:42 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:29:43 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:29:43 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:29:43 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:29:43 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:29:43 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:29:43 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:29:43 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:29:43 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:29:43 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:29:43 com.hyp.SpringstartApplication -Started SpringstartApplication in 4.057 seconds (JVM running for 5.306)
+2019-10-20 21:29:46 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:29:46 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:29:46 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2019-10-20 21:30:10 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@644c0f52: startup date [Sun Oct 20 21:29:39 CST 2019]; root of context hierarchy
+2019-10-20 21:30:10 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2019-10-20 21:30:10 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans
+2019-10-20 21:30:10 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:30:13 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 8940 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:30:13 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:30:13 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@579df66d: startup date [Sun Oct 20 21:30:13 CST 2019]; root of context hierarchy
+2019-10-20 21:30:13 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:30:14 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:30:14 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:30:14 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:30:14 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:30:14 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:30:14 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1412 ms
+2019-10-20 21:30:15 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:30:15 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:30:15 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:30:15 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:30:15 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:30:15 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:30:16 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:30:16 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:30:16 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@579df66d: startup date [Sun Oct 20 21:30:13 CST 2019]; root of context hierarchy
+2019-10-20 21:30:16 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:30:16 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:30:17 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:30:17 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:30:17 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:30:17 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:30:17 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:30:17 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:30:17 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:30:17 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:30:17 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:30:17 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:30:17 com.hyp.SpringstartApplication -Started SpringstartApplication in 4.195 seconds (JVM running for 5.684)
+2019-10-20 21:30:21 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:30:21 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:30:21 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+2019-10-20 21:30:21 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:30:21 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:30:21 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:30:21 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:30:21 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 21:30:21 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:31:20 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@579df66d: startup date [Sun Oct 20 21:30:13 CST 2019]; root of context hierarchy
+2019-10-20 21:31:20 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2019-10-20 21:31:20 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans
+2019-10-20 21:31:20 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:31:25 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 22364 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:31:25 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:31:25 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:31:25 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@63f8bc8b: startup date [Sun Oct 20 21:31:25 CST 2019]; root of context hierarchy
+2019-10-20 21:31:25 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:31:26 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:31:26 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:31:26 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:31:26 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:31:26 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1376 ms
+2019-10-20 21:31:26 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:31:26 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:31:26 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:31:26 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:31:27 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:31:27 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{articleId}],methods=[GET]}" onto public void com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:31:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:31:27 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:31:27 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:31:28 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@63f8bc8b: startup date [Sun Oct 20 21:31:25 CST 2019]; root of context hierarchy
+2019-10-20 21:31:28 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:31:28 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:31:28 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:31:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:31:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:31:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:31:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:31:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:31:28 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:31:28 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:31:28 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:31:28 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:31:28 com.hyp.SpringstartApplication -Started SpringstartApplication in 4.029 seconds (JVM running for 5.262)
+2019-10-20 21:31:30 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:31:30 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:31:30 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2019-10-20 21:33:16 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@63f8bc8b: startup date [Sun Oct 20 21:31:25 CST 2019]; root of context hierarchy
+2019-10-20 21:33:16 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2019-10-20 21:33:16 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans
+2019-10-20 21:33:16 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:33:20 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 14640 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:33:20 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:33:20 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@478ac97d: startup date [Sun Oct 20 21:33:20 CST 2019]; root of context hierarchy
+2019-10-20 21:33:20 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:33:21 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:33:22 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:33:22 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:33:22 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:33:22 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:33:22 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1479 ms
+2019-10-20 21:33:22 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:33:22 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:33:22 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:33:22 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:33:22 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:33:22 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 23964 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:33:22 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:33:22 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:33:22 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@25dde120: startup date [Sun Oct 20 21:33:22 CST 2019]; root of context hierarchy
+2019-10-20 21:33:23 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:33:23 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public void com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:33:23 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:33:23 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:33:23 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@478ac97d: startup date [Sun Oct 20 21:33:20 CST 2019]; root of context hierarchy
+2019-10-20 21:33:23 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:33:24 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:33:24 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:33:24 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:33:24 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:33:24 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:33:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:33:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:33:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:33:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:33:24 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:33:24 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:24 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:24 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:33:24 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:33:24 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.902 seconds (JVM running for 4.907)
+2019-10-20 21:33:24 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:33:24 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1483 ms
+2019-10-20 21:33:24 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:33:24 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:33:24 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:33:24 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:33:24 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:33:25 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public void com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:33:25 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:33:25 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:33:25 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@25dde120: startup date [Sun Oct 20 21:33:22 CST 2019]; root of context hierarchy
+2019-10-20 21:33:26 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:33:26 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:33:26 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -Unable to start LiveReload server
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:33:26 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:26 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:26 org.apache.coyote.http11.Http11NioProtocol -Pausing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:26 org.apache.catalina.core.StandardService -Stopping service Tomcat
+2019-10-20 21:33:26 org.apache.catalina.util.LifecycleBase -The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2019-10-20 21:33:26 org.apache.coyote.http11.Http11NioProtocol -Stopping ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:26 org.apache.coyote.http11.Http11NioProtocol -Destroying ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:26 org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer -
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2019-10-20 21:33:26 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@25dde120: startup date [Sun Oct 20 21:33:22 CST 2019]; root of context hierarchy
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2019-10-20 21:33:26 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans
+2019-10-20 21:33:26 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:33:36 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 23564 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:33:36 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:33:36 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:33:36 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@acbfc23: startup date [Sun Oct 20 21:33:36 CST 2019]; root of context hierarchy
+2019-10-20 21:33:37 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:33:38 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:33:38 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:33:38 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:33:38 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:33:38 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1313 ms
+2019-10-20 21:33:38 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:33:38 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:33:38 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:33:38 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:33:38 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:33:38 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public void com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:33:39 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:33:39 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:33:39 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@acbfc23: startup date [Sun Oct 20 21:33:36 CST 2019]; root of context hierarchy
+2019-10-20 21:33:39 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:33:40 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:33:40 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:33:40 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:33:40 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:33:40 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:33:40 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:33:40 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:33:40 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:40 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:33:40 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:33:40 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:33:40 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.931 seconds (JVM running for 5.119)
+2019-10-20 21:33:43 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:33:43 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:33:43 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2019-10-20 21:33:43 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc 
+2019-10-20 21:33:43 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 10(Integer)
+2019-10-20 21:33:43 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 0
+2019-10-20 21:34:03 com.hyp.controller.admin.Admin -进入日志10
+2019-10-20 21:34:03 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:34:03 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:34:03 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:34:08 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@acbfc23: startup date [Sun Oct 20 21:33:36 CST 2019]; root of context hierarchy
+2019-10-20 21:34:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2019-10-20 21:34:08 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans
+2019-10-20 21:34:08 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:34:24 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 22736 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:34:24 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:34:24 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:34:24 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@64f72646: startup date [Sun Oct 20 21:34:24 CST 2019]; root of context hierarchy
+2019-10-20 21:34:25 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:34:26 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:34:26 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:34:26 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:34:26 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:34:26 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1802 ms
+2019-10-20 21:34:26 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:34:26 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:34:26 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:34:26 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:34:26 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:34:27 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:34:27 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:34:27 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:34:27 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@64f72646: startup date [Sun Oct 20 21:34:24 CST 2019]; root of context hierarchy
+2019-10-20 21:34:28 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:34:28 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:34:28 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:34:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:34:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:34:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:34:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:34:28 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:34:28 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:34:28 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:34:28 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:34:28 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:34:28 com.hyp.SpringstartApplication -Started SpringstartApplication in 4.656 seconds (JVM running for 5.76)
+2019-10-20 21:34:28 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:34:28 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:34:28 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+2019-10-20 21:34:28 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:34:28 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:34:28 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-20 21:34:28 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=25, articleContent='<p>1212312</p>', sort='1', title='13', description='121', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=Sat Oct 19 11:44:51 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:34:31 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:34:31 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:34:31 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-20 21:34:31 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=25, articleContent='<p>1212312</p>', sort='1', title='13', description='121', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=Sat Oct 19 11:44:51 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:34:34 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:34:34 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:34:34 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:34:34 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ? 
+2019-10-20 21:34:34 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer)
+2019-10-20 21:34:34 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:35:04 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:35:04 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:35:04 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:35:04 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:35:33 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:35:33 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:35:33 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:35:33 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:35:42 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@64f72646: startup date [Sun Oct 20 21:34:24 CST 2019]; root of context hierarchy
+2019-10-20 21:35:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2019-10-20 21:35:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Unregistering JMX-exposed beans
+2019-10-20 21:35:42 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} closed
+2019-10-20 21:35:45 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 12176 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:35:45 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:35:45 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@780432e0: startup date [Sun Oct 20 21:35:45 CST 2019]; root of context hierarchy
+2019-10-20 21:35:45 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:35:45 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:35:46 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:35:46 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:35:46 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:35:46 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:35:46 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1064 ms
+2019-10-20 21:35:46 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:35:46 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:35:46 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:35:46 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:35:46 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:35:47 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:35:47 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:35:47 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:35:47 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@780432e0: startup date [Sun Oct 20 21:35:45 CST 2019]; root of context hierarchy
+2019-10-20 21:35:47 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:35:48 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:35:48 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:35:48 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:35:48 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:35:48 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:35:48 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:35:48 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:35:48 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:35:48 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:35:48 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:35:48 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:35:48 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.067 seconds (JVM running for 4.217)
+2019-10-20 21:35:53 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:35:53 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:35:53 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+2019-10-20 21:35:53 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:35:53 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:35:53 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:35:53 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:40:40 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 22704 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:40:40 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:40:40 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@54b94fe7: startup date [Sun Oct 20 21:40:40 CST 2019]; root of context hierarchy
+2019-10-20 21:40:40 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:40:40 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:40:41 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:40:41 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:40:41 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:40:41 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:40:41 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1067 ms
+2019-10-20 21:40:41 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:40:41 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:40:41 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:40:41 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:40:41 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:40:41 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:40:42 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:40:42 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:40:42 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@54b94fe7: startup date [Sun Oct 20 21:40:40 CST 2019]; root of context hierarchy
+2019-10-20 21:40:42 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:40:42 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:40:42 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:40:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:40:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:40:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:40:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:40:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:40:42 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:40:42 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:40:42 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:40:42 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:40:42 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.071 seconds (JVM running for 4.055)
+2019-10-20 21:40:54 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:40:54 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:40:54 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2019-10-20 21:40:55 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:40:55 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:40:55 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:40:55 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ? 
+2019-10-20 21:40:55 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer)
+2019-10-20 21:40:55 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:41:12 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:41:12 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:41:12 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:41:12 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:42:37 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:42:37 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:42:37 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:42:37 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:43:33 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:43:33 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:43:33 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:43:33 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:43:48 com.hyp.controller.admin.Admin -进入日志25
+2019-10-20 21:43:48 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:43:48 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 25(Integer)
+2019-10-20 21:43:48 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:44:39 com.hyp.SpringstartApplication -Starting SpringstartApplication on DESKTOP-OLBL83E with PID 21852 (D:\lifeWork\ideaWorkSpace\springbootblog\target\classes started by heyapei in D:\lifeWork\ideaWorkSpace\springbootblog)
+2019-10-20 21:44:39 com.hyp.SpringstartApplication -No active profile set, falling back to default profiles: default
+2019-10-20 21:44:39 org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@57233d75: startup date [Sun Oct 20 21:44:39 CST 2019]; root of context hierarchy
+2019-10-20 21:44:39 org.hibernate.validator.internal.util.Version -HV000001: Hibernate Validator 5.3.5.Final
+2019-10-20 21:44:39 org.mybatis.spring.mapper.ClassPathMapperScanner -No MyBatis mapper was found in '[com.autumn.mapper]' package. Please check your configuration.
+2019-10-20 21:44:40 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8089 (http)
+2019-10-20 21:44:40 org.apache.catalina.core.StandardService -Starting service Tomcat
+2019-10-20 21:44:40 org.apache.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.14
+2019-10-20 21:44:40 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2019-10-20 21:44:40 org.springframework.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 1087 ms
+2019-10-20 21:44:40 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2019-10-20 21:44:40 org.springframework.boot.web.servlet.ServletRegistrationBean -Mapping servlet: 'statViewServlet' to [/druid/*]
+2019-10-20 21:44:40 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-10-20 21:44:40 org.springframework.boot.web.servlet.FilterRegistrationBean -Mapping filter: 'webStatFilter' to urls: [/*]
+2019-10-20 21:44:40 com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure -Init DruidDataSource
+2019-10-20 21:44:41 com.alibaba.druid.pool.DruidDataSource -{dataSource-1} inited
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/list],methods=[POST]}" onto public com.hyp.utils.returncore.Result com.hyp.controller.admin.Admin.list(java.lang.Integer,java.lang.Integer)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/article/{articleId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.showOneArticle(int,org.springframework.ui.ModelMap)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}/{page}/{size}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserIdAndPage(int,java.lang.Integer,java.lang.Integer,org.springframework.ui.ModelMap)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/index/{userId}],methods=[GET]}" onto public java.lang.String com.hyp.controller.admin.Admin.articleDetailByUserId(int,org.springframework.ui.ModelMap)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/addArticle],methods=[POST]}" onto public java.lang.String com.hyp.controller.article.ArticleController.addArticle(java.util.Map<java.lang.String, java.lang.Object>)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/articleDetail/{id}],methods=[GET]}" onto public java.lang.String com.hyp.controller.article.ArticleController.articleDetail(int,org.springframework.ui.ModelMap)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/admin/showAdd]}" onto public java.lang.String com.hyp.controller.article.ArticleController.showAdd()
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/fileUpload],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.String> com.hyp.controller.article.ImageUploadController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/test]}" onto public java.lang.String com.hyp.controller.article.ImageUploadController.toUpload()
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/]}" onto public java.lang.String com.hyp.controller.Index.index()
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/static/page/{html}],methods=[GET]}" onto public java.lang.String com.hyp.controller.staticrequest.StaticRequest.page(java.lang.String)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/user/index]}" onto public java.lang.String com.hyp.controller.user.UserController.index()
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/tasks/test1]}" onto public java.lang.String com.hyp.tasks.DoTask.test1() throws java.lang.Exception
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-20 21:44:41 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/uploadImg/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:44:41 org.springframework.web.servlet.handler.SimpleUrlHandlerMapping -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-20 21:44:41 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@57233d75: startup date [Sun Oct 20 21:44:39 CST 2019]; root of context hierarchy
+2019-10-20 21:44:41 org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-20 21:44:42 org.thymeleaf.templatemode.TemplateMode -[THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-10-20 21:44:42 org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+2019-10-20 21:44:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2019-10-20 21:44:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'statFilter' has been autodetected for JMX exposure
+2019-10-20 21:44:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-10-20 21:44:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2019-10-20 21:44:42 org.springframework.jmx.export.annotation.AnnotationMBeanExporter -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2019-10-20 21:44:42 org.apache.coyote.http11.Http11NioProtocol -Initializing ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:44:42 org.apache.coyote.http11.Http11NioProtocol -Starting ProtocolHandler ["http-nio-8089"]
+2019-10-20 21:44:42 org.apache.tomcat.util.net.NioSelectorPool -Using a shared selector for servlet write/read
+2019-10-20 21:44:42 org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8089 (http)
+2019-10-20 21:44:42 com.hyp.SpringstartApplication -Started SpringstartApplication in 3.166 seconds (JVM running for 4.097)
+2019-10-20 21:45:48 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-10-20 21:45:48 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization started
+2019-10-20 21:45:48 org.springframework.web.servlet.DispatcherServlet -FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2019-10-20 21:45:48 com.hyp.controller.admin.Admin -进入日志10
+2019-10-20 21:45:48 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:45:48 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:45:48 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:45:48 com.hyp.controller.admin.Admin -数据如下Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:46:56 com.hyp.controller.admin.Admin -进入日志10
+2019-10-20 21:46:56 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:46:56 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:46:56 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:46:56 com.hyp.controller.admin.Admin -数据如下Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:47:44 com.hyp.controller.admin.Admin -进入日志10
+2019-10-20 21:47:44 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:47:44 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:47:44 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:47:44 com.hyp.controller.admin.Admin -数据如下Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:48:09 com.hyp.controller.admin.Admin -进入日志10
+2019-10-20 21:48:09 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:48:09 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:48:09 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:48:09 com.hyp.controller.admin.Admin -数据如下Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:48:28 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:48:28 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:48:28 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:48:28 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:48:28 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 20(Integer), 10(Integer)
+2019-10-20 21:48:28 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 6
+2019-10-20 21:48:30 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:48:30 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:48:30 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:48:30 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ? 
+2019-10-20 21:48:30 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer)
+2019-10-20 21:48:30 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:48:31 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:48:31 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:48:31 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:48:31 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:48:31 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 20(Integer), 10(Integer)
+2019-10-20 21:48:31 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 6
+2019-10-20 21:48:32 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:48:32 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:48:32 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:48:32 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:48:32 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 21:48:32 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:48:35 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:48:35 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:48:35 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-20 21:48:35 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:49:06 com.hyp.controller.article.ArticleController -添加article：Article{id=0, articleContent='<p>手动阀手动阀</p><p><img src="//localhost:8089/uploadImg/ee5529ab15bd4f5f8db22e08f3849827_gratisography-monkey-bench-girl-900x600.jpg" style="max-width:50%;"><br></p><table border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr><tr><td>&nbsp;1312</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;131</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p>2312312</p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='0', title='title', description='description', state=0, range=0, userId=1, userName='何亚培', showOrder=1, createTime=null, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:49:06 com.hyp.mapper.ArticleMapper.addArticle -==>  Preparing: insert into Article (articleContent,userId,userName,sort,title,description,state,`range`,showOrder) values ( ? ,? ,? ,? ,? ,? ,? ,? ,? ) 
+2019-10-20 21:49:06 com.hyp.mapper.ArticleMapper.addArticle -==> Parameters: <p>手动阀手动阀</p><p><img src="//localhost:8089/uploadImg/ee5529ab15bd4f5f8db22e08f3849827_gratisography-monkey-bench-girl-900x600.jpg" style="max-width:50%;"><br></p><table border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr><tr><td>&nbsp;1312</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;131</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p>2312312</p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>(String), 1(Integer), 何亚培(String), 0(String), title(String), description(String), 0(Integer), 0(Integer), 1(Integer)
+2019-10-20 21:49:06 com.hyp.mapper.ArticleMapper.addArticle -<==    Updates: 1
+2019-10-20 21:49:06 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc 
+2019-10-20 21:49:06 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 10(Integer)
+2019-10-20 21:49:06 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 0
+2019-10-20 21:49:25 com.hyp.controller.admin.Admin -进入日志10
+2019-10-20 21:49:25 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:49:25 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 10(Integer)
+2019-10-20 21:49:25 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:49:25 com.hyp.controller.admin.Admin -数据如下Article{id=10, articleContent='<p>手动阀手动阀<img style="max-width:30%;" src="http://localhost:8089/uploadImg/e1aa6f66f3b14812a910cc826b0c36fb_屏幕截图(1).png"></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Jul 30 20:48:47 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:49:34 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:49:34 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:49:34 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-20 21:49:34 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:49:40 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc 
+2019-10-20 21:49:40 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 16(Integer)
+2019-10-20 21:49:40 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 0
+2019-10-20 21:49:44 com.hyp.controller.admin.Admin -进入日志16
+2019-10-20 21:49:44 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:49:44 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:49:44 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:49:44 com.hyp.controller.admin.Admin -数据如下Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:51:00 com.hyp.controller.admin.Admin -进入日志16
+2019-10-20 21:51:00 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:51:00 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:51:00 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:51:00 com.hyp.controller.admin.Admin -数据如下Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:51:23 com.hyp.controller.admin.Admin -进入日志16
+2019-10-20 21:51:23 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:51:23 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:51:23 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:51:23 com.hyp.controller.admin.Admin -数据如下Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:51:42 com.hyp.controller.admin.Admin -进入日志16
+2019-10-20 21:51:42 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:51:42 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:51:42 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:51:42 com.hyp.controller.admin.Admin -数据如下Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:53:33 com.hyp.controller.admin.Admin -进入日志16
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:53:33 com.hyp.controller.admin.Admin -数据如下Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==>  Preparing: SELECT count(0) FROM article WHERE userId = ? 
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -==> Parameters: 1(Integer)
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleByUserId_COUNT -<==      Total: 1
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleByUserId -==>  Preparing: select * from article where userId = ? order by createTime desc LIMIT ?, ? 
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleByUserId -==> Parameters: 1(Integer), 10(Integer), 10(Integer)
+2019-10-20 21:53:33 com.hyp.mapper.AdminMapper.getArticleByUserId -<==      Total: 10
+2019-10-20 21:53:40 com.hyp.mapper.ArticleMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:53:40 com.hyp.mapper.ArticleMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:53:40 com.hyp.mapper.ArticleMapper.getArticleById -<==      Total: 1
+2019-10-20 21:53:40 com.hyp.controller.article.ArticleController -传入回显的数据：Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}
+2019-10-20 21:53:43 com.hyp.controller.admin.Admin -进入日志16
+2019-10-20 21:53:43 com.hyp.mapper.AdminMapper.getArticleById -==>  Preparing: select * from article where id = ? 
+2019-10-20 21:53:43 com.hyp.mapper.AdminMapper.getArticleById -==> Parameters: 16(Integer)
+2019-10-20 21:53:43 com.hyp.mapper.AdminMapper.getArticleById -<==      Total: 1
+2019-10-20 21:53:43 com.hyp.controller.admin.Admin -数据如下Article{id=16, articleContent='<p>123123123123<img src="//localhost:8089/uploadImg/1a4565d70e4f49729ba178365ac43f91_屏幕截图(1).png" style="max-width:100%;"><img src="//localhost:8089/uploadImg/db8c6ebb35214ebeafdc2a71403b406c_屏幕截图(1).png" style="max-width:30%;"></p><p>23113123<br></p>', sort='sort', title='title', description='description', state=10, range=11, userId=1, userName='何亚培', showOrder=1, createTime=Tue Oct 01 17:08:43 CST 2019, modifyTime=null, ext1='null', ext2='null', ext3='null', ext4='null', ext5='null'}

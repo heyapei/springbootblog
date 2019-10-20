@@ -47,7 +47,7 @@
                             <td th:text="${#dates.format(article.getCreateTime(), 'yyyy-MM-dd HH:mm:SS')}">
                             </td>
                             <td>
-                                <a type="button" class="btn btn-default" target="_blank" th:href="@{'/admin/articleDetail/'+${article.getId()}}">
+                                <a type="button" class="btn btn-default" target="_blank" th:href="@{'/admin/index/article/'+${article.getId()}}">
                                     <span class="glyphicon glyphicon-list-alt"></span> 展示
                                 </a>
                                 <a type="button" class="btn btn-default" target="_blank" th:href="@{'/admin/articleDetail/'+${article.getId()}}">

@@ -67,10 +67,12 @@ public class Admin {
     }
 
 
-    @RequestMapping(value = "/index/{articleId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/index/article/{articleId}", method = RequestMethod.GET)
     public String showOneArticle(@PathVariable int articleId,
                                  ModelMap map) {
+        log.info("进入日志{}",articleId);
         Article articleByUserId = adminService.getArticleById(articleId);
+        log.info("数据如下{}",articleByUserId);
         map.put("article", articleByUserId);
         return "user/single-post";
     }
