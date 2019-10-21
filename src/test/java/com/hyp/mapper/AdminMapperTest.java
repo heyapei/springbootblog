@@ -1,6 +1,7 @@
 package com.hyp.mapper;
 
 import com.hyp.pojo.Article;
+import com.hyp.pojo.Comment;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +27,12 @@ public class AdminMapperTest {
     @Autowired
     private AdminMapper adminMapper;
 
+
+
+    @Test
+    public void testPojo() {
+
+    }
 
     @Test
     public void getAllArticle() {

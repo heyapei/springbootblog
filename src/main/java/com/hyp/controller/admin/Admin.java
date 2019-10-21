@@ -41,10 +41,11 @@ public class Admin {
 
     /**
      * 该方法将分页信息再进行封装为json数据
+     *
      * @param userId 用户ID
-     * @param page 页码
-     * @param size 每页显示条数
-     * @param map 返回值
+     * @param page   页码
+     * @param size   每页显示条数
+     * @param map    返回值
      * @return
      */
     @RequestMapping(value = "/index/{userId}/{page}/{size}", method = RequestMethod.GET)
@@ -70,11 +71,10 @@ public class Admin {
     @RequestMapping(value = "/index/article/{articleId}", method = RequestMethod.GET)
     public String showOneArticle(@PathVariable int articleId,
                                  ModelMap map) {
-        log.info("进入日志{}",articleId);
+        log.info("进入日志{}", articleId);
         Article articleByUserId = adminService.getArticleById(articleId);
-        log.info("数据如下{}",articleByUserId);
+        log.info("数据如下{}", articleByUserId);
         map.put("article", articleByUserId);
-        // 查询所有的评论
         return "user/single-post";
     }
 
