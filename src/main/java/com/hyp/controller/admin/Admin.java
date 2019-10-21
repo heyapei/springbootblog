@@ -74,6 +74,7 @@ public class Admin {
         Article articleByUserId = adminService.getArticleById(articleId);
         log.info("数据如下{}",articleByUserId);
         map.put("article", articleByUserId);
+        // 查询所有的评论
         return "user/single-post";
     }
 

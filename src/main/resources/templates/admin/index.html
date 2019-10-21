@@ -38,7 +38,7 @@
                         <tbody>
                         <tr th:each="article,userStat: ${articles.data.list}">
                             <!--每次翻页都会刷新当前页的序号-->
-                            <td th:text="${userStat.index}"></td>
+                            <td th:text="${article.getId()}"></td>
                             <!--如果是对象的话 会自动识别的-->
                             <td th:text="${article.getSort()}">
                             </td>

@@ -12,8 +12,9 @@
             <property name="mappers" value="com.hyp.utils.MyMapper"/>
         </plugin>
 
+        <!--数据库配置-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/test"
+                        connectionURL="jdbc:mysql://localhost:3306/springbootblog"
                         userId="root"
                         password="123456">
         </jdbcConnection>
@@ -29,7 +30,8 @@
                              type="XMLMAPPER"/>
 
 
-		<table tableName="sys_user"></table>
+        <!--表格信息 可以一次性多个-->
+		<table tableName="comment"></table>
 		<table tableName="user1"></table>
 
     </context>
