@@ -68,6 +68,9 @@ public class Shoes {
         PageInfo pageInfo = new PageInfo(userInfoByPage);
         Result<Object> objectResult = ResultGenerator.genSuccessResult(pageInfo);
         map.addAttribute("pageResult", objectResult);
+        /*分页*/
+        map.addAttribute("indexPage", pageInfo.getPageNum());
+        map.addAttribute("totalPage", pageInfo.getPages());
         return "shoes/userInfo";
     }
 

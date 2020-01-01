@@ -128,7 +128,7 @@
             <div class="col-md-8 column">
                 <div class="page-header">
                     <h3 class="text-center">
-                        三年内课程统计页面
+                        用户信息查询
                     </h3>
                 </div>
             </div>
@@ -227,34 +227,55 @@
             </div>
 
             <nav>
+                <!-- <ul class="pagination">
+
+                     <li>
+                         <a th:href="|javascript:cp(1)|">首页</a>
+                     </li>
+
+
+                     <li class="prev" th:if="${pageResult.data.hasPreviousPage}">
+                         <a th:href="|javascript:cp(${pageResult.data.prePage})|">
+                             <i class="ace-icon fa fa-angle-double-left"></i>
+                         </a>
+                     </li>
+                     &lt;!&ndash;遍历条数&ndash;&gt;
+                     <li th:each="nav:${pageResult.data.navigatepageNums}">
+                         <a th:href="|javascript:cp(${nav})|" th:text="${nav}"
+                            th:if="${nav != pageResult.data.pageNum}"></a>
+                         <span style="font-weight: bold;background: #6faed9;" th:if="${nav == pageResult.data.pageNum}"
+                               th:text="${nav}"></span>
+                     </li>
+
+                     <li class="next" th:if="${pageResult.data.hasNextPage}">
+                         <a th:href="|javascript:cp(${pageResult.data.nextPage})|">
+                             <i class="ace-icon fa fa-angle-double-right"></i>
+                         </a>
+                     </li>
+
+                     <li>
+                         <a th:href="|javascript:cp(${pageResult.data.pages})|">尾页</a>
+                     </li>
+                 </ul>-->
+
                 <ul class="pagination">
-
-                    <li>
-                        <a th:href="|javascript:cp(1)|">首页</a>
+                    <li th:class="${indexPage==1}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage-1})|">上一页</a>
                     </li>
+                    <li th:if="${indexPage-3 >=1}"><a th:href="|javascript:cp(${indexPage-3})|"
+                                                      th:text="${indexPage -3}">1</a></li>
+                    <li th:if="${indexPage-2 >=1}"><a th:href="|javascript:cp(${indexPage-2})|"
+                                                      th:text="${indexPage -2}">1</a></li>
+                    <li th:if="${indexPage-1 >=1}"><a th:href="|javascript:cp(${indexPage-1})|"
+                                                      th:text="${indexPage -1}">1</a></li>
+                    <li class="active"><a href="#" th:text="${indexPage}">1</a></li>
+                    <li th:if="${indexPage+1 <=totalPage}"><a th:href="|javascript:cp(${indexPage+1})|"
+                                                              th:text="${indexPage +1}">1</a></li>
+                    <li th:if="${indexPage+2 <=totalPage}"><a th:href="|javascript:cp(${indexPage+2})|"
+                                                              th:text="${indexPage +2}">1</a></li>
+                    <li th:if="${indexPage+3 <=totalPage}"><a th:href="|javascript:cp(${indexPage+3})|"
+                                                              th:text="${indexPage +3}">1</a></li>
 
-
-                    <li class="prev" th:if="${pageResult.data.hasPreviousPage}">
-                        <a th:href="|javascript:cp(${pageResult.data.prePage})|">
-                            <i class="ace-icon fa fa-angle-double-left"></i>
-                        </a>
-                    </li>
-                    <!--遍历条数-->
-                    <li th:each="nav:${pageResult.data.navigatepageNums}">
-                        <a th:href="|javascript:cp(${nav})|" th:text="${nav}"
-                           th:if="${nav != pageResult.data.pageNum}"></a>
-                        <span style="font-weight: bold;background: #6faed9;" th:if="${nav == pageResult.data.pageNum}"
-                              th:text="${nav}"></span>
-                    </li>
-
-                    <li class="next" th:if="${pageResult.data.hasNextPage}">
-                        <a th:href="|javascript:cp(${pageResult.data.nextPage})|">
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a th:href="|javascript:cp(${pageResult.data.pages})|">尾页</a>
+                    <li th:class="${indexPage==totalPage}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage+1})|">下一页</a>
                     </li>
                 </ul>
 
