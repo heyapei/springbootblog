@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>我❤亚培</title>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/echarts/echarts.min.js"></script>
+    <script src="/static/js/myoperation/index.js"></script>
+
+    <style>
+        .bg {
+            height: 600px;
+            text-align: center;
+            line-height: 600px;
+        }
+
+        .bg-blur {
+            float: left;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+
+        .content-front {
+            position: absolute;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div class="container-fluid">
+    <div class="row clearfix">
+
+        <!--头部信息-->
+        <div class="col-md-12 column">
+
+            <div class="col-md-2 column">
+                <div id="xiaocong_weatherforecast">
+
+                </div>
+            </div>
+
+
+            <div class="col-md-8 column">
+                <div class="page-header">
+                    <h3 class="text-center" id="dailyWord">
+
+                    </h3>
+                </div>
+            </div>
+
+            <div class="col-md-2 column">
+
+            </div>
+
+        </div>
+
+        <!--中间内容-->
+        <div class="col-md-12 column">
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#panel-812303" data-toggle="tab">天气预报</a>
+                    </li>
+                    <li>
+                        <a href="#panel-812304" data-toggle="tab">最新新闻</a>
+                    </li>
+                    <li>
+                        <a href="#panel-812305" data-toggle="tab">无情机器</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="panel-812303">
+                        <!--提示内容-->
+                        <div>
+                            <p id="weatherTip" class="text-center">
+                                数据丢失，联系我吧！(●'◡'●)
+                            </p>
+                        </div>
+
+                        <!--图表内容-->
+                        <div id="main" style="width: 100%;height: 400px">
+
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="panel-812304">
+                        <ul class="list-group" id="news">
+                            数据丢失，联系我吧！(●'◡'●)
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="panel-812305">
+                        <p title="个人机器人还未审批">这是别人的机器人莫怪。。</p>
+
+                        <div role="form" class="form-inline">
+                            <div class="form-group">
+                                <label for="talkText">聊天内容</label>
+                                <input type="text" class="form-control" id="talkText" required
+                                       onkeydown="javascript:if(event.keyCode ==13){talkWord();}"/>
+                            </div>
+
+                            <a class="btn btn-default" onclick="talkWord()">聊一下</a>
+                        </div>
+
+                        <br><br>
+
+
+                        <div style="width: 100%;height:500px;font-size: 20px"
+                             class="center-block">
+                            <div class="bg bg-blur" id="talkContent-img"></div>
+                            <div class="content content-front" id="talkContent"
+                                 style="width: 100%;height:550px;overflow:hidden">
+                                <p style='margin-left: 20px;color: red'>..╥﹏╥自己和自己聊天一点都不好玩╥﹏╥...</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--反正是隐藏内容-->
+<div id="bdtts_div_id">
+    <audio id="tts_autio_id" autoplay="autoplay">
+        <source id="tts_source_id" type="audio/mpeg">
+        <embed id="tts_embed_id" height="0" width="0" src="">
+    </audio>
+</div>
+
+</body>
+</html>

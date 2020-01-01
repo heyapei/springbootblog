@@ -11,7 +11,7 @@
     <groupId>com.hyp</groupId>
     <artifactId>springbootblog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springbootblog</name>
+    <name>springbootshoes</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -87,7 +87,7 @@
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>1.2.4</version>
+            <version>2.0.2</version>
         </dependency>
 
 
@@ -136,7 +136,6 @@
         </dependency>
 
 
-
         <!-- 分页插件 -->
         <dependency>
             <groupId>tk.mybatis</groupId>
@@ -162,6 +161,13 @@
             <version>1.2.47</version>
         </dependency>
 
+
+        <!--httpClient请求-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
 
 
     </dependencies>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyp.mapper.ShoesOrderMapper">
+    <resultMap id="BaseResultMap" type="com.hyp.pojo.shoes.dataobject.ShoesOrder">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="system_id" property="systemId" jdbcType="INTEGER"/>
+        <result column="money" property="money" jdbcType="DECIMAL"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="end_date" property="endDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="addShoesOrder" parameterType="com.hyp.pojo.shoes.dataobject.ShoesOrder" useGeneratedKeys="true"
+            keyProperty="id" keyColumn="id">
+        insert into shoes_order (user_id,system_id,money,state) VALUES (
+        #{userId,jdbcType=INTEGER},
+        #{systemId,jdbcType=INTEGER},
+        #{money,jdbcType=DECIMAL},
+        #{state,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateShoesOrder" parameterType="com.hyp.pojo.shoes.dataobject.ShoesOrder" useGeneratedKeys="true"
+            keyProperty="id">
+         update
+        shoes_order set user_id =  #{userId,jdbcType=INTEGER},system_id = #{systemId,jdbcType=INTEGER},
+        money =#{money,jdbcType=DECIMAL},state =  #{state,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getShoesOrderByOrderId" resultMap="BaseResultMap" parameterType="int">
+        select * from shoes_order where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="getShoesOrderByUserId" resultMap="BaseResultMap" parameterType="int">
+		select * from shoes_order where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+
+    <select id="getShoesOrderByDateRange" resultMap="BaseResultMap">
+        select * from shoes_order where
+        <if test="startDate != null and startDate !=''">
+            end_date &gt;= #{startDate}
+        </if>
+        <if test="endDate != null and endDate !=''">
+           and end_date &lt;= #{endDate}
+        </if>
+    </select>
+
+
+</mapper>

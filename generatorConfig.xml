@@ -20,7 +20,7 @@
         </jdbcConnection>
 
         <!-- 对于生成的pojo所在包 -->
-        <javaModelGenerator targetPackage="com.hyp.pojo" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.hyp.pojo.shoes.dataobject" targetProject="src/main/java"/>
 
 		<!-- 对于生成的mapper所在目录 -->
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
@@ -31,8 +31,8 @@
 
 
         <!--表格信息 可以一次性多个-->
-		<table tableName="comment"></table>
-		<table tableName="user1"></table>
+
+		<table tableName="test"></table>
 
     </context>
 </generatorConfiguration>

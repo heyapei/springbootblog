@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyp.mapper.ShoesUserMapper">
+    <resultMap id="BaseResultMap" type="com.hyp.pojo.shoes.dataobject.ShoesUser">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="pass_word" property="passWord" jdbcType="VARCHAR"/>
+        <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <!--一种动态的insert语句-->
+    <sql id="shoesUserColumns">
+        <trim suffixOverrides=",">
+            <if test="realName != null">real_name,</if>
+            <if test="passWord != null">pass_word,</if>
+        </trim>
+    </sql>
+
+    <sql id="shoesUserValues">
+        <trim suffixOverrides=",">
+            <if test="realName != null">#{realName},</if>
+            <if test="passWord != null">#{passWord},</if>
+        </trim>
+    </sql>
+
+    <!--<insert id="addShoesUser" parameterType="com.hyp.pojo.shoes.dataobject.ShoesUser" useGeneratedKeys="true"
+            keyProperty="id" keyColumn="id">
+        insert into shoes_user (<include refid="shoesUserColumns"/> phone_num, birthday) VALUES (
+        <include refid="shoesUserColumns"/>
+        #{phoneNum,jdbcType=VARCHAR},
+        #{birthday,jdbcType=TIMESTAMP})
+    </insert>-->
+
+    <!--<update id="updateShoesUser" parameterType="com.hyp.pojo.shoes.dataobject.ShoesOrder" useGeneratedKeys="true"
+            keyProperty="id">
+         update
+        shoes_order set user_id =  #{userId,jdbcType=INTEGER},system_id = #{systemId,jdbcType=INTEGER},
+        money =#{money,jdbcType=DECIMAL},state =  #{state,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getShoesOrderByOrderId" resultMap="BaseResultMap" parameterType="int">
+        select * from shoes_order where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="getShoesOrderByUserId" resultMap="BaseResultMap" parameterType="int">
+		select * from shoes_order where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+
+    <select id="getShoesOrderByDateRange" resultMap="BaseResultMap">
+        select * from shoes_order where
+        <if test="startDate != null and startDate !=''">
+            end_date &gt;= #{startDate}
+        </if>
+        <if test="endDate != null and endDate !=''">
+            and end_date &lt;= #{endDate}
+        </if>
+    </select>-->
+
+</mapper>

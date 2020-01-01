@@ -1,0 +1,70 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>票据管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="票据管理系统"/>
+    <meta name="keywords" content=""/>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/echarts/echarts.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="/static/shoes/css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="/static/shoes/css/lines.css" rel='stylesheet' type='text/css'/>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="/static/shoes/css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/static/shoes/js/metisMenu.min.js"></script>
+    <script src="/static/shoes/js/custom.js"></script>
+    <!-- Graph JavaScript -->
+    <script src="/static/shoes/js/d3.v3.js"></script>
+    <script src="/static/shoes/js/rickshaw.js"></script>
+
+</head>
+<body id="login">
+<div class="login-logo">
+    <img src="/static/shoes/images/logo.png" alt=""/>
+</div>
+<h2 class="form-heading">系统登录</h2>
+<div class="app-cam">
+    <form action="/home/sysLogin" method="post">
+        <input type="text" required class="text" name="realName">
+        <input type="password" required name="passWord">
+        <div class="submit"><input type="submit" value="登录"></div>
+        <!--<ul class="new">
+            <li class="new_left"><p><a href="#">Forgot Password ?</a></p></li>
+            <li class="new_right"><p class="sign">New here ?<a href="register.html"> Sign Up</a></p></li>
+            <div class="clearfix"></div>
+        </ul>-->
+    </form>
+</div>
+<div class="copy_layout login">
+    <p>Copyright © 2020. All Rights Reserved | Design by hyp</p>
+</div>
+</body>
+
+</html>

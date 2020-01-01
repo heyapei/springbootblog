@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>遇到错误了</title>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css"
+          href="/static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="/static/bootstrap/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/bootstrap/js/jQuery.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix" style="margin-top:1%">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-8 column">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3 class="text-center" th:text="${errorCode}">
+                    </h3>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <p class="text-center" th:text="${errorDesc}">
+                    </p>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <img alt="130x130" src="/static/images/error/no.png" class="img-rounded"
+                         style="width: 100%; height: auto;max-width: 100%; display: block; "/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 column">
+        </div>
+    </div>
+
+    <div class="row clearfix" style="margin-top:20px">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-8 column">
+            <p class="text-center">
+                Copyright © 2020. All Rights Reserved | Design by hyp
+            </p>
+        </div>
+        <div class="col-md-2 column">
+        </div>
+    </div>
+</div>
+</body>
+</html>

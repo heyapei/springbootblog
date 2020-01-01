@@ -18,6 +18,4 @@ public class Index {
         log.info("转发到首页");
         return "forward:/user/index";
     }
-
-
 }

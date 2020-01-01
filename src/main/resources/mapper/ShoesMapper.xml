@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyp.mapper.ShoesMapper">
+    <resultMap id="shoesSystemBaseMapper" type="com.hyp.pojo.shoes.dataobject.ShoesSystem">
+        <id column="id" property="userId" jdbcType="INTEGER"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="pass_word" property="passWord" jdbcType="VARCHAR"/>
+        <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="shoesUserBaseMapper" type="com.hyp.pojo.shoes.dataobject.ShoesUser">
+        <id column="id" property="userId" jdbcType="INTEGER"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="pass_word" property="passWord" jdbcType="VARCHAR"/>
+        <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="shoesSystemUserLogin" resultMap="shoesSystemBaseMapper">
+        select * from shoes_system where real_name =  #{realName} and pass_word = #{passWord}
+    </select>
+
+
+</mapper>

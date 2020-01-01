@@ -1,0 +1,312 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2019/11/14 16:23 
+-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户信息查询页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="票据管理系统"/>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/jQuery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!--加载弹出框插件-->
+
+    <link rel="stylesheet" type="text/css" href="/static/toastr/toastr.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/toastr/toastr.min.js"></script>
+    <!--日期选择插件-->
+    <link rel="stylesheet" type="text/css" href="/static/datetimepicker/bootstrap-datetimepicker.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/datetimepicker/moment-with-locales.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--数据图形化插件-->
+    <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
+    <!--table插件-->
+    <link rel="stylesheet" type="text/css" href="/static/table/bootstrap-table.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/tableExport.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/jquery.base64.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table-export.js"></script>
+    <!--js文件-->
+    <script type="text/javascript" charset="utf-8" src="/static/shoes/js/userInfo.js"></script>
+
+    <script>
+        /*弹出框插件*/
+        toastr.options = {
+            closeButton: true,  //是否显示关闭按钮（提示框右上角关闭按钮）
+            debug: false,  //是否为调试；
+            progressBar: true,  //是否显示进度条（设置关闭的超时时间进度条）
+            positionClass: "toast-top-center",  //消息框在页面显示的位置
+            onclick: null,  //点击消息框自定义事件
+            showDuration: "300",  //显示动作时间
+            hideDuration: "1000",  //隐藏动作时间
+            timeOut: "2000",  //自动关闭超时时间
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",  //显示的方式
+            hideMethod: "fadeOut"  //隐藏的方式
+        };
+    </script>
+
+    <style>
+        .table tbody tr td {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        .table th {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+
+        /*翻页*/
+        .jump {
+            margin: 0px 0;
+            float: right;
+        }
+
+        .jump_text {
+            float: right;
+            margin: 0 0 0 5px;
+            line-height: 33px;
+        }
+
+        .jump_text input {
+            width: 40px;
+            border: rgba(212, 212, 212, 1.00) 1px solid;
+            height: 30px;
+            line-height: 33px;
+            background: #fff;
+        }
+
+        /*取消number的样式*/
+        /* google、safari */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        /* 火狐 */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+
+        <!--头部信息-->
+        <div class="col-md-12 column">
+
+            <div class="col-md-2 column">
+                <div id="xiaocong_weatherforecast">
+
+                </div>
+            </div>
+
+
+            <div class="col-md-8 column">
+                <div class="page-header">
+                    <h3 class="text-center">
+                        三年内课程统计页面
+                    </h3>
+                </div>
+            </div>
+
+            <div class="col-md-2 column">
+
+            </div>
+
+        </div>
+
+        <!--中间信息-->
+        <div class="col-md-12 column">
+
+
+            <form role="form" class="form-inline" action="/home/userInfoByPage"
+                  method="post" id="courseStatisticsForm">
+                <div class="form-group">
+                    <label for="single-courseCode" title="输入手机号进行查询">用户手机号</label>
+                    <input class="form-control" id="single-courseCode" placeholder="请输入用户手机号" style="height: 30px;"
+                           name="phoneNum" th:value="${phoneNum}">
+                </div>
+
+                <div class="form-group">
+                    <label for="single-pageSize" title="每页所展示的条目数">每页条数</label>
+                    <input class="form-control" id="single-pageSize" placeholder="条数" type="number"
+                           style="height: 30px;"
+                           name="pageSize" th:value="${pageResult.getData().getPageSize()}">
+                </div>
+
+                <button type="submit" class="btn">查询</button>
+
+            </form>
+
+            <br><br><br>
+
+
+        </div>
+
+
+        <!--显示信息-->
+
+
+        <div class="col-md-12 column">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-toggle="table" data-show-columns="true"
+                       data-search="true" data-show-refresh="true" data-show-toggle="true"
+                       data-export-types="['excel']" id="courseStatisticsTable">
+                    <thead>
+                    <tr style="white-space: nowrap;">
+                        <th>
+                            手机号
+                        </th>
+                        <th>
+                            姓名
+                        </th>
+                        <th>
+                            生日
+                        </th>
+                        <th data-sortable="true">
+                            创建时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="user,userStat : ${pageResult.data.list}">
+
+                        <td th:text="${user.realName}">
+                        </td>
+
+                        <td th:text="${user.phoneNum}">
+                        </td>
+                        <td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd hh:mm:ss')}">
+                        </td>
+
+                        <td th:text="${#dates.format(user.createTime, 'yyyy/MM/dd hh:mm:ss')}">
+
+                        </td>
+
+                        <td>
+                            <a href="javascript:" class='btn btn-xs green' title='查看趋势图'
+                               onclick="showTrendMap('$CourseStatisticsVO.getCourseCode()')"><span
+                                    class='glyphicon glyphicon-search'></span></a>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <nav>
+                <ul class="pagination">
+
+                    <li>
+                        <a th:href="|javascript:cp(1)|">首页</a>
+                    </li>
+
+
+                    <li class="prev" th:if="${pageResult.data.hasPreviousPage}">
+                        <a th:href="|javascript:cp(${pageResult.data.prePage})|">
+                            <i class="ace-icon fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <!--遍历条数-->
+                    <li th:each="nav:${pageResult.data.navigatepageNums}">
+                        <a th:href="|javascript:cp(${nav})|" th:text="${nav}"
+                           th:if="${nav != pageResult.data.pageNum}"></a>
+                        <span style="font-weight: bold;background: #6faed9;" th:if="${nav == pageResult.data.pageNum}"
+                              th:text="${nav}"></span>
+                    </li>
+
+                    <li class="next" th:if="${pageResult.data.hasNextPage}">
+                        <a th:href="|javascript:cp(${pageResult.data.nextPage})|">
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="|javascript:cp(${pageResult.data.pages})|">尾页</a>
+                    </li>
+                </ul>
+
+
+                <div class="jump">
+                            <span class="jump_text">
+                                当前<label th:title="'当前共有'+${pageResult.getData().getSize()}+'条目录'"
+                                         th:text="${pageResult.getData().getSize()}"></label>/<label
+                                    th:title="'每页显示'+${pageResult.getData().getPageSize()}+'条目录'"
+                                    th:text="${pageResult.getData().getPageSize()}"></label>条 | <label
+                                    th:title="'当前在第'+${pageResult.getData().getPageNum()}+'页'"
+                                    th:text="${pageResult.getData().getPageNum()}"></label>/<label
+                                    th:title="'总共'+${pageResult.getData().getPages()}+'页'"
+                                    th:text="${pageResult.getData().getPages()}"></label>页,跳到
+                                <input type="number" name="jumpPage"
+                                       id="jumpPage" th:value="${pageResult.getData().getPageNum()}"
+                                       οnkeyup="this.value=this.value.replace(/[^0-9-]+/,'');">页
+                                <button type="button" class="btn btn-primary btn-sm"
+                                        th:onclick="|javascript:goPage(${pageResult.getData().getPageNum()})|">跳转</button>
+                            </span>
+                </div>
+
+
+            </nav>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!--模态框 展示趋势图-->
+
+<!--<div id="myModal" class="modal fade bs-example-modal-lg">
+    <div class="modal-dialog modal-lg" style="height: 50%;width: 100%">
+        <div class="modal-content" style="height: 100%;width: 100%">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalTitle">Welcome Back!</h4>
+            </div>
+            <div class="modal-body" style="height: 90%;">
+                <div id="echartsContainer" style="height: 100%;">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>-->
+
+
+</body>
+</html>
