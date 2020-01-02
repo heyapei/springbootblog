@@ -1,19 +1,20 @@
-function showTrendMap(courseCode) {
-    toastr.success("正在打开课程" + courseCode + "的趋势图");
+function showTrendMap(userId) {
+    toastr.success("正在打开用户" + userId + "的购买热度图");
     $('#myModal').modal("show");
-    $('#myModalTitle').html(courseCode + "趋势图");
+    $('#myModalTitle').html("用户ID为" + userId + "的趋势图--");
     $('#myModal').on('shown.bs.modal', centerModals);
-
     $.ajax({
-        url: "/c/myoperation/courseStatistics/getCourseTrendMap.jsp",
+        url: "/home/showBuyTrendByUserId",
         type: "POST",
         data: {
-            courseCode: courseCode,
+            userId: userId,
         },
         dataType: "json",
         //async : true,// 必须为true
         cache: false,
         success: function (data) {
+            $('#myModalTitle').append("近四年内,总订单数:" + data.orderNum + "；总购买金额:" + data.countMoney);
+            console.log(data);
             var myChart = echarts.init(document.getElementById('echartsContainer'));
             myChart.showLoading();
             var option = {
@@ -33,7 +34,7 @@ function showTrendMap(courseCode) {
                     }*/
                 },
                 legend: {
-                    data: ['选课总数', '评论总数']
+                    data: ['购买数量']
                 },
                 toolbox: {
                     show: true,
@@ -81,12 +82,12 @@ function showTrendMap(courseCode) {
                 }],
                 series: [
                     {
-                        name: '选课总数',
+                        name: '购买数量',
                         type: 'bar',
                         stack: '总量',
                         barMaxWidth: 30,
                         //itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data: data.selectCount,
+                        data: data.buyCount,
                         smooth: true,
                         label: {
                             normal: {
@@ -97,14 +98,6 @@ function showTrendMap(courseCode) {
                                 }
                             }
                         }
-                    },
-                    {
-                        name: '评论总数',
-                        type: 'bar',
-                        stack: '总量',
-                        smooth: true,
-                        //itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data: data.evaluate
                     }
                 ]
             };

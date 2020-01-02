@@ -1,0 +1,142 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2020/1/2 10:12 
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <link href="/static/bootstrapvalidator/css/bootstrapValidator.css" rel='stylesheet' type='text/css'/>
+    <script src="/static/bootstrapvalidator/js/bootstrapValidator.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+            <div th:if="${addUserInfo}">
+                <h1 th:text="${addUserInfo}" align="center"></h1>
+            </div>
+
+            <div style="margin: 0px 12px 0px 12px;">
+                <form id="defaultForm" method="post" class="form-horizontal" action="/home/addUserInfo">
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">手机号</label>
+                        <div class="col-lg-5">
+                            <input type="tel" class="form-control" name="phoneNum" placeholder="PHONE NUMBER"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">姓名</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="realName" placeholder="REAL NAME"/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Birthday</label>
+                        <div class="col-lg-5">
+                            <input type="date" class="form-control" name="birthday"/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <button type="submit" class="btn btn-primary">添加用户</button>
+                            <button type="button" class="btn btn-info" id="resetBtn">重置表单</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+
+        $('#defaultForm').bootstrapValidator({
+            live: 'disabled',
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                phoneNum: {
+                    validators: {
+                        notEmpty: {
+                            message: '不可为空，必填字段'
+                        },
+                        stringLength: {
+                            min: 11,
+                            max: 11,
+                            message: '必须为正确的11位手机号'
+                        }, digits: {
+                            message: '请注意手机号正确性'
+                        },
+                        remote: {
+                            /*type: 'POST',
+                            url: '/home/validatePhoneNum',
+                            message: '该手机号已经存在，无需重新注册'*/
+                            //ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}
+                            url: '/home/validatePhoneNum',//验证地址
+                            message: '该手机号已经存在，无需重新添加',//提示消息
+                            delay: 1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置1秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                            type: 'POST'//请求方式
+                        }
+                    }
+                },
+                birthday: {
+                    validators: {
+                        notEmpty: {
+                            message: '不可为空，必填字段'
+                        }
+                    }
+                },
+                realName: {
+                    message: '真实姓名',
+                    validators: {
+                        notEmpty: {
+                            message: '不可为空，必填字段'
+                        },
+                        stringLength: {
+                            min: 2,
+                            max: 20,
+                            message: '名称成都应该大于2小于20'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Validate the form manually
+        $('#validateBtn').click(function () {
+            $('#defaultForm').bootstrapValidator('validate');
+        });
+
+        $('#resetBtn').click(function () {
+            $('#defaultForm').data('bootstrapValidator').resetForm(true);
+        });
+    });
+</script>
+</body>
+</html>

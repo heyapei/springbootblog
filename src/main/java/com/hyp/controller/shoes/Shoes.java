@@ -1,6 +1,9 @@
 package com.hyp.controller.shoes;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hyp.mapper.ShoesUserMapper;
@@ -8,20 +11,26 @@ import com.hyp.pojo.shoes.dataobject.ShoesSystem;
 import com.hyp.pojo.shoes.dataobject.ShoesUser;
 import com.hyp.pojo.shoes.dto.ShoesCookieDTO;
 import com.hyp.service.shoes.ShoesOrderService;
+import com.hyp.service.shoes.ShoesUserService;
 import com.hyp.utils.returncore.Result;
 import com.hyp.utils.returncore.ResultGenerator;
 import com.hyp.utils.shoes.ShoesCookie;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.entity.Example.Criteria;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +51,173 @@ public class Shoes {
     private ShoesOrderService shoesOrderService;
     @Autowired
     private ShoesUserMapper shoesUserMapper;
+    @Autowired
+    private ShoesUserService shoesUserService;
+
+
+    private static final String dateFormat = "yyyy-MM-dd HH:mm:ss";
+    private static final String shortDateFormat = "yyyy-MM-dd";
+
+
+    /**
+     * 展示订单信息
+     *
+     * @return
+     */
+    @RequestMapping("/showBuyTrendByUserId")
+    @ResponseBody
+    public String showBuyTrendByUserId(@RequestParam int userId) {
+        JSONObject jsonObject = shoesUserService.showBuyTrendByUserId(userId);
+        return jsonObject.toJSONString();
+    }
+
+    /**
+     * 删除用户信息
+     *
+     * @return
+     */
+    @RequestMapping("/deleteUser")
+    @ResponseBody
+    public Result<ShoesUser> deleteUser(@RequestParam int userId) {
+        int i = shoesUserMapper.deleteByPrimaryKey(userId);
+        Result<ShoesUser> shoesUserResult;
+        if (i <= 0) {
+            shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+        } else {
+            shoesUserResult = ResultGenerator.genSuccessResult();
+        }
+        return shoesUserResult;
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @return
+     */
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public Result<ShoesUser> updateUserInfo(@RequestParam int userId,
+                                            @RequestParam(required = false) String phoneNum,
+                                            @RequestParam(required = false) String realName,
+                                            @RequestParam(required = false) String birthday) {
+        Result<ShoesUser> shoesUserResult;
+
+        if (userId == 0) {
+            shoesUserResult = ResultGenerator.genFailResult("userId必要");
+        } else {
+            ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
+            if (shoesUser == null) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+            } else {
+
+                SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);
+                if (StringUtils.isNotBlank(phoneNum)) {
+                    shoesUser.setPhoneNum(phoneNum);
+                }
+                if (StringUtils.isNotBlank(realName)) {
+                    shoesUser.setRealName(realName);
+                }
+
+                if (StringUtils.isNotBlank(birthday)) {
+                    try {
+                        shoesUser.setBirthday(formatter.parse(birthday));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                int i = shoesUserMapper.updateByPrimaryKey(shoesUser);
+                if (i > 0) {
+                    shoesUserResult = ResultGenerator.genSuccessResult(shoesUser);
+                } else {
+                    shoesUserResult = ResultGenerator.genFailResult("更新失败");
+                }
+            }
+        }
+        return shoesUserResult;
+    }
+
+    /**
+     * 通过userId获取用户信息
+     *
+     * @return
+     */
+    @RequestMapping("/getUserInfoByUserId")
+    @ResponseBody
+    public Result<ShoesUser> getUserInfoByUserId(@RequestParam int userId) {
+        Result<ShoesUser> shoesUserResult;
+        ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
+        if (shoesUser == null) {
+            shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+        } else {
+            shoesUserResult = ResultGenerator.genSuccessResult(shoesUser);
+        }
+        return shoesUserResult;
+
+    }
+
+
+    /**
+     * 添加用户信息
+     *
+     * @return
+     */
+    @RequestMapping("/addUserInfo")
+    public String addUserInfo(@RequestParam(required = false) String phoneNum,
+                              @RequestParam(required = false) String realName,
+                              @RequestParam(required = false) String birthday, ModelMap map) {
+
+        if (StringUtils.isBlank(phoneNum) || StringUtils.isBlank(realName) || StringUtils.isBlank(birthday)) {
+            return "shoes/addUserInfo";
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);
+        ShoesUser shoesUser = new ShoesUser();
+        try {
+            shoesUser.setBirthday(formatter.parse(birthday));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        shoesUser.setPhoneNum(phoneNum);
+        shoesUser.setRealName(realName);
+        int i = shoesUserMapper.insertSelective(shoesUser);
+        if (i > 0) {
+            map.addAttribute("addUserInfo", "添加用户成功");
+        } else {
+            map.addAttribute("addUserInfo", "添加用户失败！请联系技术");
+        }
+
+        return "shoes/addUserInfo";
+    }
+
+
+    /**
+     * 查询用户手机号是否存在
+     *
+     * @return
+     */
+    @RequestMapping("/validatePhoneNum")
+    @ResponseBody
+    public String addUserInfo(@RequestParam String phoneNum) {
+        Example example = new Example(ShoesUser.class);
+        Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("phoneNum", phoneNum);
+        List<ShoesUser> shoesUsers = shoesUserMapper.selectByExample(example);
+        boolean isValidate = false;
+        if (shoesUsers == null || shoesUsers.size() <= 0) {
+            isValidate = true;
+        }
+        Map<String, Boolean> map = new HashMap<>(1);
+        map.put("valid", isValidate);
+        ObjectMapper mapper = new ObjectMapper();
+        String resultString = "";
+        try {
+            resultString = mapper.writeValueAsString(map);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return resultString;
+    }
 
 
     /**
@@ -51,7 +227,7 @@ public class Shoes {
      */
     @RequestMapping("/userInfoByPage")
     public String userInfoByPage(@RequestParam(required = false) String phoneNum,
-                                 @RequestParam(value = "currentPage",required = false, defaultValue = "1") Integer page,
+                                 @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
                                  @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
         PageHelper.startPage(page, size);
         List<ShoesUser> userInfoByPage;
@@ -93,12 +269,20 @@ public class Shoes {
                 return "communal/error/error";
             }
             map.addAttribute("shoesSystem", shoesSystem);
-            Map<String, String> todayShoesOrder = shoesOrderService.getTodayShoesOrder("2019-12-31 0:0:0", "2019-12-31 23:51:53");
-            map.addAttribute("todayData", todayShoesOrder);
             return "shoes/index";
         } else {
             return "forward:/home/loginPage";
         }
+    }
+
+    @RequestMapping("/indexCount")
+    public String indexCount(HttpServletRequest httpServletRequest, ModelMap map) {
+        int userId = ShoesCookie.getUserId(httpServletRequest);
+        ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+        map.addAttribute("shoesSystem", shoesSystem);
+        Map<String, String> todayShoesOrder = shoesOrderService.getTodayShoesOrder("2019-12-31 0:0:0", "2019-12-31 23:51:53");
+        map.addAttribute("todayData", todayShoesOrder);
+        return "shoes/indexCount";
     }
 
     /**

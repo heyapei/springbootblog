@@ -31,6 +31,11 @@ public class ShoesOrderItem {
      */
     @Column(name = "product_id")
     private Integer productId;
+    /**
+     * 订单ID
+     */
+    @Column(name = "order_id")
+    private Integer orderId;
 
     /**
      * 商品单价

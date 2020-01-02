@@ -12,7 +12,6 @@ p {margin: 0;}
 html, body{
   	font-family: 'Roboto', sans-serif;
     font-size: 100%;
-  	background:#000;
   	overflow-x: hidden;
 }
 body a{

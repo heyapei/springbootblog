@@ -207,7 +207,7 @@
 
                         <td th:text="${user.phoneNum}">
                         </td>
-                        <td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd hh:mm:ss')}">
+                        <td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}">
                         </td>
 
                         <td th:text="${#dates.format(user.createTime, 'yyyy/MM/dd hh:mm:ss')}">
@@ -216,8 +216,15 @@
 
                         <td>
                             <a href="javascript:" class='btn btn-xs green' title='查看趋势图'
-                               onclick="showTrendMap('$CourseStatisticsVO.getCourseCode()')"><span
+                               th:onclick="|showTrendMap(${user.id})|"
+                            ><span
                                     class='glyphicon glyphicon-search'></span></a>
+
+                            <a href="javascript:" class='btn btn-xs green' title='修改用户信息'
+                               th:onclick="|getUserInfoByUserId(${user.id})|"
+                            ><span
+                                    class='glyphicon glyphicon-pencil'></span></a>
+
                         </td>
 
                     </tr>
@@ -309,7 +316,7 @@
 
 <!--模态框 展示趋势图-->
 
-<!--<div id="myModal" class="modal fade bs-example-modal-lg">
+<div id="myModal" class="modal fade bs-example-modal-lg">
     <div class="modal-dialog modal-lg" style="height: 50%;width: 100%">
         <div class="modal-content" style="height: 100%;width: 100%">
 
@@ -326,8 +333,183 @@
 
         </div>
     </div>
-</div>-->
+</div>
+
+<form class="form-horizontal" role="form">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <!--  定义模态框，过渡效果为淡入，id为myModal,tabindex=-1可以禁用使用tab切换，aria-labelledby用于引用模态框的标题，aria-hidden=true保持模态框在触发前窗口不可见  -->
+        <div class="modal-dialog">
+            <!--  显示模态框对话框模型（若不写下一个div则没有颜色）  -->
+            <div class="modal-content">
+                <!--  显示模态框白色背景，所有内容都写在这个div里面  -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>修改用户信息</h4>
+                </div>
+
+                <div class="modal-body">
+                    <!--  模态框内容，我在此处添加一个表单 -->
+                    <input type="hidden" id="userId" name="userId">
+                    <div class="form-group">
+                        <label for="phoneNum" class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-9">
+                            <input type="tel" id="phoneNum" name="phoneNum" class="form-control well"
+                                   placeholder="请输入手机号" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="realName" class="col-sm-2 control-label">用户姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="realName" name="realName" class="form-control well"
+                                   placeholder="请输入用户名" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday" class="col-sm-2 control-label">出生日期</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="birthday" name="birthday" class="form-control well"
+                                   placeholder="请输入出生日期" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info" onclick="updateUserInfo()">确认更新</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">取消更新</button>
+                    <button type="button" class="btn btn-danger" onclick="confirm()">删除用户</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
 
 
+<script>
+
+
+    function updateUserInfo() {
+        var userId = $("#userId").val();
+        var phoneNum = $("#phoneNum").val();
+        var realName = $("#realName").val();
+        var birthday = $("#birthday").val();
+        $.ajax({
+            url: "/home/updateUser",
+            data: {userId: userId, phoneNum: phoneNum, realName: realName, birthday: birthday},
+            type: "POST",
+            timeout: 5000,
+            dataType: "json",
+            cache: false,
+            success: function (d) {
+                if (d.code == 200) {
+                    /*$('#updateModal').modal('hide');
+                    toastr.success("更新成功");*/
+                    window.location.reload();
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+    }
+
+
+    function getUserInfoByUserId(userId) {
+        $.ajax({
+            url: "/home/getUserInfoByUserId",
+            data: {userId: userId},
+            type: "POST",
+            timeout: 5000,
+            dataType: "json",
+            cache: false,
+            success: function (d) {
+                if (d.code == 200) {
+                    $('#updateModal').modal("show");
+                    $("#userId").val(d.data.id);
+                    $("#phoneNum").val(d.data.phoneNum);
+                    $("#realName").val(d.data.realName);
+
+                    var date = new Date();
+                    date.setTime(d.data.birthday);
+                    var mon = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var myDate = date.getFullYear() + "-" + (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day);
+                    document.getElementById("birthday").value = myDate;
+
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+    }
+
+
+    function deleteUser() {
+        var userId = $("#userId").val();
+        $.ajax({
+            url: "/home/deleteUser",
+            data: {userId: userId},
+            type: "POST",
+            timeout: 5000,
+            dataType: "json",
+            cache: false,
+            success: function (d) {
+                if (d.code == 200) {
+                    toastr.success("删除成功");
+                    window.location.reload();
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+
+
+    }
+
+    /**
+     * 重写确认框 fun:函数对象 params:参数列表， 可以是数组
+     */
+    function confirm() {
+        if ($("#myConfirm").length > 0) {
+            $("#myConfirm").remove();
+        }
+        var html = "<div class='modal fade' id='myConfirm' >"
+            + "<div class='modal-backdrop in' style='opacity:0; '></div>"
+            + "<div class='modal-dialog' style='z-index:2901; margin-top:60px; width:400px; '>"
+            + "<div class='modal-content'>"
+            + "<div class='modal-header'  style='font-size:16px; '>"
+            + "<span class='glyphicon glyphicon-envelope'>&nbsp;</span>信息！<button type='button' class='close' data-dismiss='modal'>"
+            + "<span style='font-size:20px;  ' class='glyphicon glyphicon-remove'></span><tton></div>"
+            + "<div class='modal-body text-center' id='myConfirmContent' style='font-size:18px; '>"
+            + "是否确定要删除该用户？该操作无法还原，请谨慎操作"
+            + "</div>"
+            + "<div class='modal-footer ' style=''>"
+            + "<button class='btn btn-danger ' id='confirmOk' >确定<tton>"
+            + "<button class='btn btn-info ' data-dismiss='modal'>取消<tton>"
+            + "</div>" + "</div></div></div>";
+        $("body").append(html);
+
+        $("#myConfirm").modal("show");
+
+        $("#confirmOk").on("click", function () {
+            $("#myConfirm").modal("hide");
+            $('#updateModal').modal('hide');
+            deleteUser(); // 执行函数
+        });
+    }
+</script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2020/1/2 9:35 
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="/static/js/jquery.js"></script>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="/static/shoes/css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/static/shoes/js/metisMenu.min.js"></script>
+    <script src="/static/shoes/js/custom.js"></script>
+    <!-- Graph JavaScript -->
+    <script src="/static/shoes/js/d3.v3.js"></script>
+    <script src="/static/shoes/js/rickshaw.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- Custom CSS -->
+    <link href="/static/shoes/css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="/static/shoes/css/lines.css" rel='stylesheet' type='text/css'/>
+
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="graphs">
+                <div class="col_3">
+                    <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-thumbs-up icon-rounded"></i>
+                            <div class="stats">
+                                <h5><strong th:text="${todayData['todayOrderCount']}">0</strong></h5>
+                                <span>今日订单</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-dollar dollar1 icon-rounded"></i>
+                            <div class="stats">
+                                <h5><strong th:text="'￥'+${todayData['todayMoney']}">￥0</strong></h5>
+                                <span>交易金额</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="content_bottom">
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

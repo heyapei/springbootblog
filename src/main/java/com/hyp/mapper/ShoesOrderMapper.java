@@ -1,10 +1,10 @@
 package com.hyp.mapper;
 
 import com.hyp.pojo.shoes.dataobject.ShoesOrder;
+import com.hyp.utils.MyMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
  * @Description: TODO
  */
 @Repository
-public interface ShoesOrderMapper {
+public interface ShoesOrderMapper extends MyMapper<ShoesOrder> {
     /**
      * 创建shoesOrder
      *
@@ -51,11 +51,11 @@ public interface ShoesOrderMapper {
     /**
      * 查询时间范围内的订单
      *
-     * @param startDate  格式yyyy-MM-dd HH:mm:SS
-     * @param endDate 格式yyyy-MM-dd HH:mm:SS
+     * @param startDate 格式yyyy-MM-dd HH:mm:SS
+     * @param endDate   格式yyyy-MM-dd HH:mm:SS
      * @return
      */
-    List<ShoesOrder> getShoesOrderByDateRange(@Param("startDate")String  startDate,@Param("endDate") String endDate);
+    List<ShoesOrder> getShoesOrderByDateRange(@Param("startDate") String startDate, @Param("endDate") String endDate);
 
 
 }
