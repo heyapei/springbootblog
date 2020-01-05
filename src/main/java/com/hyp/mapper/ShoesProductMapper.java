@@ -1,5 +1,7 @@
 package com.hyp.mapper;
 
+import com.hyp.pojo.shoes.dataobject.ShoesProduct;
+import com.hyp.utils.MyMapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Description: TODO
  */
 @Repository
-public interface ShoesProductMapper {
+public interface ShoesProductMapper extends MyMapper<ShoesProduct> {
 }

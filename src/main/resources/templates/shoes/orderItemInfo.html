@@ -9,7 +9,7 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>用户信息查询页面</title>
+    <title>订单信息查询页面</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="票据管理系统"/>
@@ -143,12 +143,20 @@
         <div class="col-md-12 column">
 
 
-            <form role="form" class="form-inline" action="/home/userInfoByPage"
+            <form role="form" class="form-inline" action="/home/orderInfoByPage"
                   method="post" id="courseStatisticsForm">
                 <div class="form-group">
-                    <label for="single-courseCode" title="输入手机号进行查询">用户手机号</label>
-                    <input class="form-control" id="single-courseCode" placeholder="请输入用户手机号" style="height: 30px;"
-                           name="phoneNum" th:value="${phoneNum}">
+                    <label for="orderInfo-phoneNum" title="输入手机号进行查询">用户手机号</label>
+                    <input class="form-control" id="orderInfo-phoneNum" placeholder="请输入用户手机号" style="height: 30px;"
+                           name="orderInfo-phoneNum" th:value="${phoneNum}">
+                </div>
+
+                <div class="form-group">
+                    <label for="orderInfo-startDate" title="输入开始时间">时间搜索</label>
+                    <input class="form-control" id="orderInfo-startDate" placeholder="开始时间" type="date"
+                           name="orderInfo-startDate" th:value="${shoesOrder.createDate}">
+                    <input class="form-control" id="orderInfo-endDate" placeholder="结束时间" type="date"
+                           name="orderInfo-endDate" th:value="${shoesOrder.endDate}">
                 </div>
 
                 <div class="form-group">
@@ -180,19 +188,13 @@
                     <thead>
                     <tr style="white-space: nowrap;">
                         <th>
-                            手机号
+                            用户ID
                         </th>
                         <th>
-                            姓名
+                            订单号
                         </th>
                         <th>
-                            积分
-                        </th>
-                        <th>
-                            生日
-                        </th>
-                        <th data-sortable="true">
-                            创建时间
+                            款项
                         </th>
                         <th>
                             操作
@@ -209,8 +211,6 @@
                         </td>
 
                         <td th:text="${user.phoneNum}">
-                        </td>
-                        <td th:text="${user.empirical}">
                         </td>
                         <td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}">
                         </td>

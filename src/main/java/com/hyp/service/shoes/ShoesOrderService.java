@@ -40,6 +40,22 @@ public interface ShoesOrderService {
     ShoesOrder getShoesOrderByOrderId(int orderId);
 
     /**
+     * 通过shoesOrder获取订单信息
+     *
+     * @param shoesOrder
+     * @return
+     */
+    ShoesOrder getShoesOrderByShoesOrder(ShoesOrder shoesOrder);
+
+    /**
+     * 通过shoesOrder获取订单信息
+     *
+     * @param shoesOrder
+     * @return
+     */
+    List<ShoesOrder> getShoesOrderByPhoneAndTime(ShoesOrder shoesOrder);
+
+    /**
      * 通过userID获取用户的订单信息
      *
      * @param userId

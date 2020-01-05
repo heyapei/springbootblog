@@ -1,0 +1,110 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2020/1/2 10:12 
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <!-- jQuery -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <link href="/static/bootstrapvalidator/css/bootstrapValidator.css" rel='stylesheet' type='text/css'/>
+    <script src="/static/bootstrapvalidator/js/bootstrapValidator.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+            <div th:if="${addProduct}">
+                <h1 th:text="${addProduct}" align="center"></h1>
+            </div>
+
+            <div style="margin: 0px 12px 0px 12px;">
+                <form id="defaultForm" method="post" class="form-horizontal" action="/home/addProductInfo">
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">鞋名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="name" name="name" class="form-control well"
+                                   placeholder="请输入鞋名称" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="code" class="col-sm-2 control-label">商品码</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="code" name="code" class="form-control well"
+                                   placeholder="请输入鞋商品码" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">价格</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="price" name="price" class="form-control well"
+                                   placeholder="请输入鞋价格" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="color" class="col-sm-2 control-label">颜色</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="color" name="color" class="form-control well"
+                                   placeholder="请输入鞋颜色" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="size" class="col-sm-2 control-label">鞋码</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="size" name="size" class="form-control well"
+                                   placeholder="请输入鞋码" required/>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="number" class="col-sm-2 control-label">存货量</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="number" name="number" class="form-control well"
+                                   placeholder="请输入鞋存货量" required/>
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="attribute" class="col-sm-2 control-label">属性</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="attribute" name="attribute" class="form-control well"
+                                   placeholder="请输入鞋属性" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-sm-2 control-label">描述</label>
+                        <div class="col-sm-9">
+                            <textarea rows="3" cols="20" id="description" name="description" class="form-control well"
+                                      required>
+                                输入鞋子的描述信息
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <button type="submit" class="btn btn-primary">添加新商品</button>
+                            <button type="button" class="btn btn-info" id="resetBtn">重置表单</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

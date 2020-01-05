@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.apache.ibatis.annotations.Mapper;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
+
 /**
  * @author 何亚培
  * @version V1.0
@@ -36,6 +39,11 @@ public class ShoesOrder {
     private Integer systemId;
 
     /**
+     * 积分值
+     */
+    private Integer empirical;
+
+    /**
      * 订单总金额
      */
     private BigDecimal money;
@@ -44,6 +52,11 @@ public class ShoesOrder {
      * 状态 默认为0（创建中）
      */
     private Integer state;
+
+    /**
+     * 减免
+     */
+    private Integer reduction;
 
     /**
      * 创建时间

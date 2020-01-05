@@ -76,5 +76,9 @@ public class ShoesProduct {
      * 描述
      */
     private String description;
+    /**
+     * 数量
+     */
+    private Integer number;
 
 }

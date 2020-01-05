@@ -82,7 +82,7 @@ public class ShoesUserMapperTest {
 
     @Test
     public void testUserInfo() {
-        String phoneNum = "15518901416";
+        String phoneNum = "";
         PageHelper.startPage(1, 1);
         List<ShoesUser> userInfoByPage;
         Example example = new Example(ShoesUser.class);

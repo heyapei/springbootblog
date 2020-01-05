@@ -128,7 +128,7 @@
             <div class="col-md-8 column">
                 <div class="page-header">
                     <h3 class="text-center">
-                        用户信息查询
+                        店内商品查询
                     </h3>
                 </div>
             </div>
@@ -142,14 +142,44 @@
         <!--中间信息-->
         <div class="col-md-12 column">
 
-
-            <form role="form" class="form-inline" action="/home/userInfoByPage"
+            <form role="form" class="form-inline" action="/home/productInfoByPage"
                   method="post" id="courseStatisticsForm">
+
                 <div class="form-group">
-                    <label for="single-courseCode" title="输入手机号进行查询">用户手机号</label>
-                    <input class="form-control" id="single-courseCode" placeholder="请输入用户手机号" style="height: 30px;"
-                           name="phoneNum" th:value="${phoneNum}">
+                    <label for="productInfo-code" title="鞋子商品码">商品码</label>
+                    <input type="text" class="form-control" id="productInfo-code" placeholder="请输鞋子商品码"
+                           style="height: 30px;"
+                           name="productInfo-code" th:value="${shoesProduct?.code}">
                 </div>
+
+                <div class="form-group">
+                    <label for="productInfo-name" title="鞋子名称">名称</label>
+                    <input type="text" class="form-control" id="productInfo-name" placeholder="请输鞋子名称"
+                           style="height: 30px;"
+                           name="productInfo-name" th:value="${shoesProduct?.name}">
+                </div>
+
+                <div class="form-group">
+                    <label for="productInfo-color" title="鞋子颜色">颜色</label>
+                    <input type="text" class="form-control" id="productInfo-color" placeholder="请输鞋子颜色"
+                           style="height: 30px;"
+                           name="productInfo-color" th:value="${shoesProduct?.color}">
+                </div>
+
+                <div class="form-group">
+                    <label for="productInfo-size" title="鞋子的大小">鞋码</label>
+                    <input class="form-control" id="productInfo-size" placeholder="请输入鞋码" type="number"
+                           style="height: 30px;"
+                           name="productInfo-size" th:value="${shoesProduct?.size}">
+                </div>
+
+                <div class="form-group">
+                    <label for="productInfo-attribute" title="鞋子属性">属性</label>
+                    <input type="text" class="form-control" id="productInfo-attribute" placeholder="请输鞋子属性"
+                           style="height: 30px;"
+                           name="productInfo-attribute" th:value="${shoesProduct?.attribute}">
+                </div>
+
 
                 <div class="form-group">
                     <label for="single-pageSize" title="每页所展示的条目数">每页条数</label>
@@ -180,16 +210,28 @@
                     <thead>
                     <tr style="white-space: nowrap;">
                         <th>
-                            手机号
+                            名称
                         </th>
                         <th>
-                            姓名
+                            商品码
+                        </th>
+                        <th data-sortable="true">
+                            价格
                         </th>
                         <th>
-                            积分
+                            颜色
                         </th>
                         <th>
-                            生日
+                            鞋码
+                        </th>
+                        <!--<th>
+                            数量
+                        </th>-->
+                        <th>
+                            属性
+                        </th>
+                        <th>
+                            描述
                         </th>
                         <th data-sortable="true">
                             创建时间
@@ -203,33 +245,31 @@
                     </thead>
                     <tbody>
 
-                    <tr th:each="user,userStat : ${pageResult.data.list}">
+                    <tr th:each="product,userStat : ${pageResult.data.list}">
 
-                        <td th:text="${user.realName}">
+                        <td th:text="${product.name}">
                         </td>
-
-                        <td th:text="${user.phoneNum}">
+                        <td th:text="${product.code}">
                         </td>
-                        <td th:text="${user.empirical}">
+                        <td th:text="${product.price}">
                         </td>
-                        <td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}">
+                        <td th:text="${product.color}">
                         </td>
-
-                        <td th:text="${#dates.format(user.createTime, 'yyyy/MM/dd hh:mm:ss')}">
-
+                        <td th:text="${product.size}">
+                        </td>
+                        <!--<td th:text="${product.number}">
+                        </td>-->
+                        <td th:text="${product.attribute}">
+                        </td>
+                        <td th:text="${product.description}">
+                        </td>
+                        <td th:text="${#dates.format(product.createDate, 'yyyy/MM/dd hh:mm:ss')}">
                         </td>
 
                         <td>
 
-                            <a target="_blank" th:href="'/home/addOrderPage?userId='+${user.id}" class='btn btn-xs green' title='订单添加'
-                            ><span class='glyphicon glyphicon-plus'></span></a>
-
-                            <a href="javascript:" class='btn btn-xs green' title='查看趋势图'
-                               th:onclick="|showTrendMap(${user.id})|"
-                            ><span class="glyphicon glyphicon-search"></span></a>
-
-                            <a href="javascript:" class='btn btn-xs green' title='修改用户信息'
-                               th:onclick="|getUserInfoByUserId(${user.id})|"
+                            <a href="javascript:" class='btn btn-xs green' title='修改鞋子信息'
+                               th:onclick="|getProductInfoByProductId(${product.id})|"
                             ><span class='glyphicon glyphicon-pencil'></span></a>
 
                         </td>
@@ -241,36 +281,6 @@
             </div>
 
             <nav>
-                <!-- <ul class="pagination">
-
-                     <li>
-                         <a th:href="|javascript:cp(1)|">首页</a>
-                     </li>
-
-
-                     <li class="prev" th:if="${pageResult.data.hasPreviousPage}">
-                         <a th:href="|javascript:cp(${pageResult.data.prePage})|">
-                             <i class="ace-icon fa fa-angle-double-left"></i>
-                         </a>
-                     </li>
-                     &lt;!&ndash;遍历条数&ndash;&gt;
-                     <li th:each="nav:${pageResult.data.navigatepageNums}">
-                         <a th:href="|javascript:cp(${nav})|" th:text="${nav}"
-                            th:if="${nav != pageResult.data.pageNum}"></a>
-                         <span style="font-weight: bold;background: #6faed9;" th:if="${nav == pageResult.data.pageNum}"
-                               th:text="${nav}"></span>
-                     </li>
-
-                     <li class="next" th:if="${pageResult.data.hasNextPage}">
-                         <a th:href="|javascript:cp(${pageResult.data.nextPage})|">
-                             <i class="ace-icon fa fa-angle-double-right"></i>
-                         </a>
-                     </li>
-
-                     <li>
-                         <a th:href="|javascript:cp(${pageResult.data.pages})|">尾页</a>
-                     </li>
-                 </ul>-->
 
                 <ul class="pagination">
                     <li th:class="${indexPage==1}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage-1})|">上一页</a>
@@ -321,27 +331,6 @@
 </div>
 
 
-<!--模态框 展示趋势图-->
-
-<div id="myModal" class="modal fade bs-example-modal-lg">
-    <div class="modal-dialog modal-lg" style="height: 50%;width: 100%">
-        <div class="modal-content" style="height: 100%;width: 100%">
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalTitle">Welcome Back!</h4>
-            </div>
-            <div class="modal-body" style="height: 90%;">
-                <div id="echartsContainer" style="height: 100%;">
-
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div>
-
 <form class="form-horizontal" role="form">
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -352,40 +341,88 @@
                 <!--  显示模态框白色背景，所有内容都写在这个div里面  -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>修改用户信息</h4>
+                    <h4>修改商品信息</h4>
                 </div>
 
                 <div class="modal-body">
                     <!--  模态框内容，我在此处添加一个表单 -->
-                    <input type="hidden" id="userId" name="userId">
+                    <input type="hidden" id="productId" name="productId">
                     <div class="form-group">
-                        <label for="phoneNum" class="col-sm-2 control-label">手机号</label>
+                        <label for="name" class="col-sm-2 control-label">鞋名称</label>
                         <div class="col-sm-9">
-                            <input type="tel" id="phoneNum" name="phoneNum" class="form-control well"
-                                   placeholder="请输入手机号" required/>
+                            <input type="text" id="name" name="name" class="form-control well"
+                                   placeholder="请输入鞋名称" required/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="realName" class="col-sm-2 control-label">用户姓名</label>
+                        <label for="code" class="col-sm-2 control-label">商品码</label>
                         <div class="col-sm-9">
-                            <input type="text" id="realName" name="realName" class="form-control well"
-                                   placeholder="请输入用户名" required/>
+                            <input type="text" id="code" name="code" class="form-control well"
+                                   placeholder="请输入鞋商品码" required/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="birthday" class="col-sm-2 control-label">出生日期</label>
+                        <label for="price" class="col-sm-2 control-label">价格</label>
                         <div class="col-sm-9">
-                            <input type="date" id="birthday" name="birthday" class="form-control well"
-                                   placeholder="请输入出生日期" required/>
+                            <input type="number" id="price" name="price" class="form-control well"
+                                   placeholder="请输入鞋价格" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="color" class="col-sm-2 control-label">颜色</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="color" name="color" class="form-control well"
+                                   placeholder="请输入鞋颜色" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="size" class="col-sm-2 control-label">鞋码</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="size" name="size" class="form-control well"
+                                   placeholder="请输入鞋码" required/>
+                        </div>
+                    </div>
+                   <!-- <div class="form-group">
+                        <label for="number" class="col-sm-2 control-label">存货量</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="number" name="number" class="form-control well"
+                                   placeholder="请输入鞋存货量" required/>
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="attribute" class="col-sm-2 control-label">属性</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="attribute" name="attribute" class="form-control well"
+                                   placeholder="请输入鞋属性" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-sm-2 control-label">描述</label>
+                        <div class="col-sm-9">
+                            <textarea rows="3" cols="20" id="description" name="description" class="form-control well"
+                                      required>
+                                输入鞋子的描述信息
+                            </textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="createDate" class="col-sm-2 control-label">创建时间</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="createDate" name="createDate" class="form-control well"
+                                   placeholder="创建时间" required/>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info" onclick="updateUserInfo()">确认更新</button>
+                    <button type="submit" class="btn btn-info" onclick="updateProductInfo()">确认更新</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal">取消更新</button>
-                    <button type="button" class="btn btn-danger" onclick="confirm()">删除用户</button>
+                    <button type="button" class="btn btn-danger" onclick="confirm()">删除商品</button>
                 </div>
 
             </div>
@@ -394,31 +431,38 @@
 </form>
 
 
-
-
 <script>
 
 
-    function updateUserInfo() {
-        var userId = $("#userId").val();
-        var phoneNum = $("#phoneNum").val();
-        var realName = $("#realName").val();
-        var birthday = $("#birthday").val();
+    function updateProductInfo() {
+        var productId = $("#productId").val();
+        var name = $("#name").val();
+        var code = $("#code").val();
+        var price = $("#price").val();
+        var color = $("#color").val();
+        var size = $("#size").val();
+        var number = $("#number").val();
+        var attribute = $("#attribute").val();
+        var description = $("#description").val();
         $.ajax({
-            url: "/home/updateUser",
-            data: {userId: userId, phoneNum: phoneNum, realName: realName, birthday: birthday},
+            url: "/home/updateProduct",
+            data: {
+                productId: productId,
+                name: name,
+                code: code,
+                price: price,
+                color: color,
+                size: size,
+                number: number,
+                description: description,
+                attribute: attribute
+            },
             type: "POST",
             timeout: 5000,
             dataType: "json",
             cache: false,
             success: function (d) {
-                if (d.code == 200) {
-                    /*$('#updateModal').modal('hide');
-                    toastr.success("更新成功");*/
-                    window.location.reload();
-                } else {
-                    toastr.error("发生错误！原因：" + d.message);
-                }
+                window.location.reload();
             }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
                 console.log("ajax错误类型：" + type);
                 console.log(err);
@@ -428,10 +472,10 @@
     }
 
 
-    function getUserInfoByUserId(userId) {
+    function getProductInfoByProductId(productId) {
         $.ajax({
-            url: "/home/getUserInfoByUserId",
-            data: {userId: userId},
+            url: "/home/getProductInfoByProductId",
+            data: {productId: productId},
             type: "POST",
             timeout: 5000,
             dataType: "json",
@@ -439,16 +483,21 @@
             success: function (d) {
                 if (d.code == 200) {
                     $('#updateModal').modal("show");
-                    $("#userId").val(d.data.id);
-                    $("#phoneNum").val(d.data.phoneNum);
-                    $("#realName").val(d.data.realName);
-
+                    $("#productId").val(d.data.id);
+                    $("#name").val(d.data.name);
+                    $("#code").val(d.data.code);
+                    $("#price").val(d.data.price);
+                    $("#color").val(d.data.color);
+                    $("#size").val(d.data.size);
+                    $("#number").val(d.data.number);
+                    $("#attribute").val(d.data.attribute);
+                    $("#description").val(d.data.description);
                     var date = new Date();
-                    date.setTime(d.data.birthday);
+                    date.setTime(d.data.createDate);
                     var mon = date.getMonth() + 1;
                     var day = date.getDate();
                     var myDate = date.getFullYear() + "-" + (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day);
-                    document.getElementById("birthday").value = myDate;
+                    document.getElementById("createDate").value = myDate;
 
                 } else {
                     toastr.error("发生错误！原因：" + d.message);
@@ -462,18 +511,17 @@
     }
 
 
-    function deleteUser() {
-        var userId = $("#userId").val();
+    function deleteProduct() {
+        var productId = $("#productId").val();
         $.ajax({
-            url: "/home/deleteUser",
-            data: {userId: userId},
+            url: "/home/deleteProduct",
+            data: {productId: productId},
             type: "POST",
             timeout: 5000,
             dataType: "json",
             cache: false,
             success: function (d) {
                 if (d.code == 200) {
-                    toastr.success("删除成功");
                     window.location.reload();
                 } else {
                     toastr.error("发生错误！原因：" + d.message);
@@ -503,7 +551,7 @@
             + "<span class='glyphicon glyphicon-envelope'>&nbsp;</span>信息！<button type='button' class='close' data-dismiss='modal'>"
             + "<span style='font-size:20px;  ' class='glyphicon glyphicon-remove'></span><tton></div>"
             + "<div class='modal-body text-center' id='myConfirmContent' style='font-size:18px; '>"
-            + "是否确定要删除该用户？该操作无法还原，请谨慎操作"
+            + "是否确定要删除该数据？该操作无法还原，请谨慎操作"
             + "</div>"
             + "<div class='modal-footer ' style=''>"
             + "<button class='btn btn-danger ' id='confirmOk' >确定<tton>"
@@ -516,7 +564,7 @@
         $("#confirmOk").on("click", function () {
             $("#myConfirm").modal("hide");
             $('#updateModal').modal('hide');
-            deleteUser(); // 执行函数
+            deleteProduct(); // 执行函数
         });
     }
 </script>

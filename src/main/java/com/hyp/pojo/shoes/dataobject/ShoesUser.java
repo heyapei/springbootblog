@@ -18,6 +18,10 @@ public class ShoesUser {
      */
     @Column(name = "real_name")
     private String realName;
+    /**
+     * 积分值
+     */
+    private Integer empirical;
 
     /**
      * 密码
@@ -41,6 +45,28 @@ public class ShoesUser {
      */
     @Column(name = "create_time")
     private Date createTime;
+
+
+    @Override
+    public String toString() {
+        return "ShoesUser{" +
+                "id=" + id +
+                ", realName='" + realName + '\'' +
+                ", empirical=" + empirical +
+                ", passWord='" + passWord + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", birthday=" + birthday +
+                ", createTime=" + createTime +
+                '}';
+    }
+
+    public Integer getEmpirical() {
+        return empirical;
+    }
+
+    public void setEmpirical(Integer empirical) {
+        this.empirical = empirical;
+    }
 
     /**
      * 获取主键

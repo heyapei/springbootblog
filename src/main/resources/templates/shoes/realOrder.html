@@ -1,0 +1,371 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2019/11/14 16:23 
+-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>确认订单信息页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="票据管理系统"/>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/jQuery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!--加载弹出框插件-->
+
+    <link rel="stylesheet" type="text/css" href="/static/toastr/toastr.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/toastr/toastr.min.js"></script>
+    <!--日期选择插件-->
+    <link rel="stylesheet" type="text/css" href="/static/datetimepicker/bootstrap-datetimepicker.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/datetimepicker/moment-with-locales.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--数据图形化插件-->
+    <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
+    <!--table插件-->
+    <link rel="stylesheet" type="text/css" href="/static/table/bootstrap-table.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/tableExport.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/jquery.base64.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table-export.js"></script>
+    <!--js文件-->
+    <script type="text/javascript" charset="utf-8" src="/static/shoes/js/userInfo.js"></script>
+
+    <script>
+        /*弹出框插件*/
+        toastr.options = {
+            closeButton: true,  //是否显示关闭按钮（提示框右上角关闭按钮）
+            debug: false,  //是否为调试；
+            progressBar: true,  //是否显示进度条（设置关闭的超时时间进度条）
+            positionClass: "toast-top-center",  //消息框在页面显示的位置
+            onclick: null,  //点击消息框自定义事件
+            showDuration: "300",  //显示动作时间
+            hideDuration: "1000",  //隐藏动作时间
+            timeOut: "2000",  //自动关闭超时时间
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",  //显示的方式
+            hideMethod: "fadeOut"  //隐藏的方式
+        };
+
+
+        var text = document.title;  //定义文章的title
+        var timerID;    //定义时间变量
+        function scrollTitle() {    //定义函数
+            clearTimeout(timerID);  //清除定时器
+            document.title = text.substring(1, text.length) + text.substring(0, 1); //substring()方法用于提取字符创中介于两个指定下标之间的字符
+            text = document.title.substring(0, text.length);
+            timerID = setTimeout("scrollTitle()", 600)
+        }
+    </script>
+
+    <style>
+        .table tbody tr td {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        .table th {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+
+        /*翻页*/
+        .jump {
+            margin: 0px 0;
+            float: right;
+        }
+
+        .jump_text {
+            float: right;
+            margin: 0 0 0 5px;
+            line-height: 33px;
+        }
+
+        .jump_text input {
+            width: 40px;
+            border: rgba(212, 212, 212, 1.00) 1px solid;
+            height: 30px;
+            line-height: 33px;
+            background: #fff;
+        }
+
+        /*取消number的样式*/
+        /* google、safari */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        /* 火狐 */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+
+        <!--头部信息-->
+        <div class="col-md-12 column">
+            <div class="col-md-2 column">
+            </div>
+
+            <div class="col-md-8 column">
+                <div class="page-header">
+                    <h3 class="text-center" id="tipTitle">
+                        订单锁定成功！请确定。。
+                    </h3>
+                </div>
+            </div>
+
+            <div class="col-md-2 column">
+
+            </div>
+
+        </div>
+
+
+        <!--显示信息-->
+
+
+        <div class="col-md-12 column">
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr style="white-space: nowrap;">
+                        <th>
+                            订单列表
+                        </th>
+                        <th>
+                            订单详情
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td>
+                            <table class="table table-hover table-bordered table-condensed">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        用户姓名
+                                    </td>
+                                    <td th:text="${shoesUser.realName}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        用户手机号
+                                    </td>
+                                    <td th:text="${shoesUser.phoneNum}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        已有积分
+                                    </td>
+                                    <td th:text="${shoesUser.empirical}">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        订单号
+                                    </td>
+                                    <td th:text="${shoesOrder.id}" id="orderId">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        总金额
+                                    </td>
+                                    <td th:text="${shoesOrder.money}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        积分
+                                    </td>
+                                    <td th:text="${shoesOrder.empirical}">
+                                    </td>
+                                </tr>
+                                <tr class="success">
+                                    <td>
+                                        减免金额
+                                    </td>
+                                    <td th:text="${shoesOrder.reduction}">
+                                    </td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>
+                                        最终金额
+                                    </td>
+                                    <td th:text="${shoesOrder.money}-${shoesOrder.reduction}">
+                                    </td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>
+                                        成功后积分
+                                    </td>
+                                    <td th:text="${shoesOrder.money}-${shoesOrder.reduction}+${shoesOrder.empirical}">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                        <td>
+                            <table class="table table-hover table-bordered table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        商品码
+                                    </th>
+                                    <th>
+                                        名字
+                                    </th>
+                                    <th>
+                                        颜色
+                                    </th>
+                                    <th>
+                                        鞋码
+                                    </th>
+                                    <th>
+                                        价格
+                                    </th>
+                                    <th>
+                                        数量
+                                    </th>
+                                    <th>
+                                        总额
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="orderItem,orderItemStat : ${realOrderVOList}">
+                                    <td th:text="${orderItem.code}">
+                                    </td>
+                                    <td th:text="${orderItem.name}">
+                                    </td>
+                                    <td th:text="${orderItem.color}">
+                                    </td>
+                                    <td th:text="${orderItem.size}">
+                                    </td>
+                                    <td th:text="${orderItem.price}">
+                                    </td>
+                                    <td th:text="${orderItem.number}">
+                                    </td>
+                                    <td th:text="${orderItem.money}">
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button type="submit" class="btn " onclick="printTicket()" id="addOrderBtn">下单并打印小票</button>
+                <button type="submit" class="btn btn-warning" onclick="closePage()" id="closePageBtn"
+                        style="float: right">关闭当前页面
+                </button>
+            </div>
+        </div>
+        <div class="copy_layout login" style="padding:1.5em 0;background:#fff;text-align:center;margin: 4em 0 0em 0;">
+            <p>Copyright © 2020. All Rights Reserved | Design by hyp</p>
+        </div>
+    </div>
+</div>
+
+
+<!--反正是隐藏内容-->
+<div id="bdtts_div_id">
+    <audio id="tts_autio_id" autoplay="autoplay">
+        <source id="tts_source_id" type="audio/mpeg">
+        <embed id="tts_embed_id" height="0" width="0" src="">
+    </audio>
+</div>
+
+<script>
+
+    function closePage() {
+        window.opener = null;
+        window.open('', '_self');
+        window.close();
+    }
+
+    function printTicket() {
+        var orderId = $("#orderId").text();
+        if (orderId == null || orderId.length <= 0) {
+            alert("订单号错误");
+            return;
+        }
+        $.ajax({
+            url: "/home/printTicket",
+            data: {orderId: orderId},
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            success: function (d) {
+                if (d.code == 200) {
+                    $("#addOrderBtn").hide();
+                    $("#tipTitle").text("下单成功");
+                    document.getElementById("tipTitle").style.color = "green";
+                    doTTS("非常感谢您的支持！");
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+
+
+    }
+
+    function doTTS(audioText) {
+        var ttsDiv = document.getElementById('bdtts_div_id');
+        var ttsAudio = document.getElementById('tts_autio_id');
+        // 这样就可实现播放内容的替换了
+        ttsDiv.removeChild(ttsAudio);
+        var au1 = '<audio id="tts_autio_id" autoplay="autoplay">';
+        var sss = '<source id="tts_source_id" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=5&text=' + audioText + '" type="audio/mpeg">';
+        var eee = '<embed id="tts_embed_id" height="0" width="0" src="">';
+        var au2 = '</audio>';
+        ttsDiv.innerHTML = au1 + sss + eee + au2;
+        var ttsAudio = document.getElementById('tts_autio_id');
+        ttsAudio.play();
+    }
+</script>
+
+
+</body>
+</html>

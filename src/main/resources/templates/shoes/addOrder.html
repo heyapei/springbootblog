@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${shoesUser.phoneNum}+'的新订单  '"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="票据管理系统"/>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/jQuery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <!--加载弹出框插件-->
+    <link rel="stylesheet" type="text/css" href="/static/toastr/toastr.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/toastr/toastr.min.js"></script>
+    <!--日期选择插件-->
+    <link rel="stylesheet" type="text/css" href="/static/datetimepicker/bootstrap-datetimepicker.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/datetimepicker/moment-with-locales.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--数据图形化插件-->
+    <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
+    <!--table插件-->
+    <link rel="stylesheet" type="text/css" href="/static/table/bootstrap-table.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/tableExport.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/jquery.base64.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table-export.js"></script>
+    <!--js文件-->
+    <script type="text/javascript" charset="utf-8" src="/static/shoes/js/userInfo.js"></script>
+
+    <script>
+        /*弹出框插件*/
+        toastr.options = {
+            closeButton: true,  //是否显示关闭按钮（提示框右上角关闭按钮）
+            debug: false,  //是否为调试；
+            progressBar: true,  //是否显示进度条（设置关闭的超时时间进度条）
+            positionClass: "toast-top-center",  //消息框在页面显示的位置
+            onclick: null,  //点击消息框自定义事件
+            showDuration: "300",  //显示动作时间
+            hideDuration: "1000",  //隐藏动作时间
+            timeOut: "2000",  //自动关闭超时时间
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",  //显示的方式
+            hideMethod: "fadeOut"  //隐藏的方式
+        };
+
+        var text = document.title;  //定义文章的title
+        var timerID;    //定义时间变量
+        function newText() {    //定义函数
+            clearTimeout(timerID);  //清除定时器
+            document.title = text.substring(1, text.length) + text.substring(0, 1); //substring()方法用于提取字符创中介于两个指定下标之间的字符
+            text = document.title.substring(0, text.length);
+            timerID = setTimeout("newText()", 600)
+        }
+
+    </script>
+
+    <style>
+        .table tbody tr td {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        .table th {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        /*取消number的样式*/
+        /* google、safari */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        /* 火狐 */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
+
+</head>
+<body onload="newText()">
+<div class="container-fluid">
+    <div class="row clearfix">
+
+        <!--头部信息-->
+        <div class="col-md-12 column">
+            <div class="col-md-2 column">
+                <div id="xiaocong_weatherforecast">
+
+                </div>
+            </div>
+            <div class="col-md-8 column">
+                <div class="page-header">
+                    <h3 class="text-center">
+                        新订单
+                    </h3>
+                </div>
+            </div>
+
+            <div class="col-md-2 column">
+
+            </div>
+        </div>
+
+        <div class="col-md-12 column ">
+
+            <form id="addOrderForm" method="post" class="form-horizontal">
+                <input type="hidden" id="userId" name="userId" th:value="${shoesUser.id}">
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="phoneNum">用户</label>
+                    <div class="col-md-5">
+                        <input type="text" id="phoneNum" class="form-control" readonly
+                               th:value="${shoesUser.phoneNum}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="phoneNum">鞋子</label>
+                    <div class="col-md-5">
+                        <div class="form-inline">
+
+                            <input type="text" class="form-control" placeholder="输入鞋子的商品码"
+                                   id="addOrderForm-shoesCode"
+                                   onblur="keyBlur()"
+                                   onkeyup="searchMore()"
+                                   onfocus="searchMore()" autocomplete="off"
+                                   onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}"
+                            />
+                            <button onclick="findProduct()" class="btn" type="button">查找鞋子</button>
+                            <div>
+                                <table id="content_table" bgcolor="#FFFAFA" border="0"
+                                       cellspacing="0" cellpadding="0">
+                                    <tbody id="content_table_body">
+                                    <tr>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <script>
+                                function searchMore() {
+                                    var key = $(" #addOrderForm-shoesCode ").val();
+                                    if (key == "" || key.length <= 0) {
+                                        clearContent();
+                                        return;
+                                    }
+                                    clearContent();
+                                    $.ajax({
+                                        url: "/home/keySearchByShoesCode",
+                                        type: "POST",
+                                        cache: false,
+                                        timeout: 5000,
+                                        data: {
+                                            shoesCode: key
+                                        },
+                                        //contentType : "application/json;charset=UTF-8",//发送数据的格式
+                                        dataType: "json",//回调
+                                        success: function (response) {
+
+                                            if (response.code == 200) {
+
+                                                var listResponse = [];
+                                                var listResponse1 = [];
+                                                var list = response.data;
+                                                for (var i = 0; i < list.length; i++) {
+                                                    var code = list[i].code;
+                                                    var name = list[i].name;
+                                                    var color = list[i].color;
+                                                    var size = list[i].size;
+                                                    var desc = "名称:" + name + ",颜色:" + color + ",鞋码:" + size;
+                                                    listResponse1.push(desc);
+                                                    listResponse.push(code);
+                                                }
+                                                tdFunction(listResponse, listResponse1);
+                                            } else {
+                                                toastr.error("发生错误！原因：" + response.message);
+                                            }
+
+                                        },
+                                        error: function (data) {
+                                            console.log(data);
+                                        }
+                                    });
+                                }
+
+                                function keyBlur() {
+                                    clearContent();
+                                }
+
+                                function clearContent() {
+                                    var contentTableBody = document.getElementById("content_table_body");
+                                    var size = contentTableBody.childNodes.length;
+                                    for (var i = size - 1; i >= 0; i--) {
+                                        contentTableBody.removeChild(contentTableBody.childNodes[i]);
+                                    }
+                                }
+
+
+                                function tdFunction(response, listResponse1) {
+
+                                    var size = response.length;
+                                    for (var i = 0; i < size; i++) {
+                                        var desc = listResponse1[i];
+                                        var nextNode = response[i];
+                                        var tr = document.createElement("tr");
+                                        var td = document.createElement("td");
+                                        td.setAttribute("bgcolor", "#FFFAFA");
+                                        td.setAttribute("border", "0");
+                                        td.onmousemove = function () {
+                                            this.className = 'mouseOver';
+                                        };
+                                        td.onmouseout = function () {
+                                            this.className = 'mouseOut';
+                                        };
+
+                                        var aHtml = "&nbsp;&nbsp;&nbsp;<a href='#' title='" + desc + "' id='ahtml-desc'>" + nextNode + "</a>";
+                                        //var text = document.createTextNode(aHtml);
+                                        td.innerHTML = aHtml;
+
+                                        td.onmousedown = function () {
+                                            document.getElementById("addOrderForm-shoesCode").value =
+                                                this.innerHTML.substring(this.innerHTML.indexOf("ahtml-desc") + 12,
+                                                    this.innerHTML.indexOf("</a>"));
+                                        };
+
+                                        tr.appendChild(td);
+                                        document.getElementById("content_table_body").appendChild(tr);
+                                    }
+
+                                }
+
+
+                            </script>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="phoneNum">鞋子订单如下：</label>
+                    <div class="col-md-5" th:if="${shoesOrder}!=null">
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>
+                                    订单号
+                                </th>
+                                <th>
+                                    总价格
+                                </th>
+                                <th>
+                                    积分值
+                                </th>
+                                <th th:if="${shoesOrder}!=null">
+                                    减免金额
+                                </th>
+                                <th th:if="${shoesOrder}!=null">
+                                    实际应收
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="success">
+                                <td id="orderId" th:text="${shoesOrder?.id}">
+                                </td>
+                                <td id="orderMoney" th:text="${shoesOrder?.money}">
+                                </td>
+                                <td id="orderEmpirical" th:text="${shoesOrder?.empirical}">
+                                </td>
+                                <td th:if="${shoesOrder}!=null">
+                                    <input type="number" id="orderReduction" th:default="0"
+                                           onchange="countRealPay()"
+                                           onblur="countRealPay()"
+                                           onkeyup="countRealPay()"
+                                           onfocus="countRealPay()"
+                                           placeholder="值为整数"
+                                           style="width: 70px;"
+                                    >
+                                    <script>
+                                        function countRealPay() {
+                                            var orderMoney = $("#orderMoney").text();
+                                            var orderReduction = $("#orderReduction").val();
+                                            if (orderReduction == null || orderReduction.length <= 0) {
+                                                orderReduction = 0;
+                                            }
+                                            var realPay = orderMoney - orderReduction;
+                                            $("#orderRealPay").text(realPay);
+                                        }
+                                    </script>
+                                </td>
+                                <td id="orderRealPay" th:if="${shoesOrder}!=null" th:text="${shoesOrder?.empirical}-0">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-hover table-bordered table-condensed">
+                            <thead>
+                            <tr>
+                                <th>
+                                    商品码
+                                </th>
+                                <th>
+                                    名字
+                                </th>
+                                <th>
+                                    颜色
+                                </th>
+                                <th>
+                                    鞋码
+                                </th>
+                                <th>
+                                    价格
+                                </th>
+                                <th>
+                                    数量
+                                </th>
+                                <th>
+                                    总额
+                                </th>
+                                <th>
+                                    创建时间
+                                </th>
+                                <th style="width: 200px">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="shoesOrderItem">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </form>
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary" onclick="realAddOrder()">下单</button>
+                    <script>
+                        function realAddOrder() {
+                            var orderId = $("#orderId").text();
+                            var orderReduction = $("#orderReduction").val();
+                            if (orderReduction == null || orderReduction.length <= 0) {
+                                orderReduction = 0;
+                            }
+                            $.ajax({
+                                url: "/home/realAddOrder",
+                                data: {orderId: orderId, orderReduction: orderReduction},
+                                type: "POST",
+                                cache: false,
+                                dataType: "json",
+                                timeout: 5000,
+                                success: function (d) {
+                                    if (d.code == 200) {
+                                        window.location.href = "/home/realOrderPage?orderId=" + orderId;
+                                        /*  alert("准备打印小票，请以小票数据为准");*/
+                                    } else {
+                                        toastr.error("发生错误！原因：" + d.message);
+                                    }
+                                }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                                    console.log("ajax错误类型：" + type);
+                                    console.log(err);
+                                }
+
+                            });
+
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="copy_layout login"
+                 style="padding:1.5em 0;background:#fff;text-align:center;margin: 4em 0 0em 0;">
+                <p>Copyright © 2020. All Rights Reserved | Design by hyp</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    鞋子的信息
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-condensed table-bordered">
+                    <tbody>
+
+                    <tr>
+                        <td>
+                            编码
+                        </td>
+                        <td id="shoesCode">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            名称
+                        </td>
+                        <td id="shoesName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            指导价格
+                        </td>
+                        <td id="shoesPrice">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            颜色
+                        </td>
+                        <td id="shoesColor">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            鞋码
+                        </td>
+                        <td id="shoesSize">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            数量
+                        </td>
+                        <td>
+                            <div class="form-inline">
+                                <input type="number" id="shoesNumber" value="1" style="width: 50px"> 双
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="addOrderAndOrderItem()">
+                    添加到订单中
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal-orderItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title">
+                    详情修改
+                </h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="orderItemId">
+
+
+                数量：<input type="text" id="orderItemNumber" class="form-control" style="width: 70px"/>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="updateOrderItem()">
+                    更新订单详情
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateOrderItemModal(orderItemId, shoesNumber) {
+        $("#orderItemId").val(orderItemId);
+        $("#orderItemNumber").val(shoesNumber);
+        $("#myModal-orderItem").modal("show");
+
+    }
+
+    function updateOrderItem() {
+        var orderItemId = $("#orderItemId").val();
+        var orderItemNumber = $("#orderItemNumber").val();
+
+        $.ajax({
+            url: "/home/updateOrderItemById",
+            data: {orderItemId: orderItemId, orderItemNumber: orderItemNumber},
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (d) {
+                if (d.code == 200) {
+                    window.location.reload();
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+    }
+
+    function delOrderItem(orderItemId) {
+
+        $.ajax({
+            url: "/home/deleteOrderItemById",
+            data: {orderItemId: orderItemId},
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (d) {
+                if (d.code == 200) {
+                    window.location.reload();
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+    }
+
+    function addOrderAndOrderItem() {
+
+        var userId = $("#userId").val();
+        var shoesNumber = $("#shoesNumber").val();
+        var shoesCode = $("#shoesCode").text();
+        if (userId == null || userId == "") {
+            alert("错误的用户信息");
+            return;
+        }
+        if (shoesCode == null || shoesCode == "") {
+            alert("错误的商品信息");
+            return;
+        }
+
+        $.ajax({
+            url: "/home/addOrderAndOrderItem",
+            data: {productCode: shoesCode, userId: userId, shoesNumber: shoesNumber},
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (d) {
+                if (d.code == 200) {
+                    window.location.reload();
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+
+        });
+
+
+    }
+
+    function findProduct() {
+        var productCode = $("#addOrderForm-shoesCode").val();
+        if (productCode == null || productCode.length <= 0) {
+            alert("请先输入鞋子的商品码");
+            return;
+        }
+        $.ajax({
+            url: "/home/getProductInfoByProductCode",
+            data: {productCode: productCode},
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (d) {
+                if (d.code == 200) {
+                    $("#myModal").modal("show");
+                    $("#shoesName").html(d.data.name);
+                    $("#shoesCode").html(d.data.code);
+                    $("#shoesPrice").html(d.data.price);
+                    $("#shoesColor").html(d.data.color);
+                    $("#shoesSize").html(d.data.size);
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+
+                //location.reload();
+            }
+        });
+    }
+
+
+    $(function () {
+        getOrderItems();
+    });
+
+    /**
+     * 获取订单详情
+     */
+    function getOrderItems() {
+        var orderId = $("#orderId").text();
+        if (orderId == null || orderId.length <= 0) {
+            return;
+        }
+        $.ajax({
+            url: "/home/getOrderItemByOrderId",
+            data: {orderId: orderId},
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (d) {
+                var bodyHtml = "";
+                if (d.code == 200) {
+                    var list = d.data;
+                    for (var i = 0; i < list.length; i++) {
+                        var productId = list[i].productId;
+                        var orderItemId = list[i].id;
+                        var money = list[i].money;
+                        var number = list[i].number;
+                        var price = list[i].price;
+                        var createDate = list[i].createDate;
+                        var productCode = "";
+                        var productName = "";
+                        var productColor = "";
+                        var productSize = "";
+                        $.ajax({
+                            url: "/home/getProductInfoByProductId",
+                            data: {productId: productId},
+                            type: "POST",
+                            cache: false,
+                            async: false,
+                            dataType: "json",
+                            timeout: 5000,
+                            success: function (d) {
+                                if (d.code == 200) {
+                                    productName = d.data.name;
+                                    productCode = d.data.code;
+                                    productColor = d.data.color;
+                                    productSize = d.data.size;
+                                } else {
+                                    toastr.error("发生错误！原因：" + d.message);
+                                }
+
+                                //location.reload();
+                            }
+                        });
+                        /*<tr>
+                         <td>
+                             鞋码
+                         </td>
+                         <td id="shoesSize">
+                         </td>
+                     </tr>*/
+                        bodyHtml += "<tr><td>" + productCode + "</td><td>" + productName + "</td>" +
+                            "<td>" + productColor + "</td><td>" + productSize + "</td><td>" + price + "</td><td>" + number + "</td>" +
+                            "<td>" + money + "</td>" +
+                            "<td>" + createDate + "</td><td style='widows: 200px;'>" +
+                            "<button type='button' class='btn btn-default' onclick='updateOrderItemModal(" + orderItemId + "," + number + ")'>修改</button>&nbsp;&nbsp;" +
+                            "<button type='button' class='btn btn-default' onclick='confirm(" + orderItemId + ")'>删除</button>" +
+                            "</td></tr>"
+                    }
+                    $("#shoesOrderItem").innerHTML = "";
+                    $("#shoesOrderItem").prepend(bodyHtml);
+
+                } else {
+                    toastr.error("发生错误！原因：" + d.message);
+                }
+
+                //location.reload();
+            }
+        });
+    }
+
+
+    /**
+     * 重写确认框 fun:函数对象 params:参数列表， 可以是数组
+     */
+    function confirm(orderItemId) {
+        if ($("#myConfirm").length > 0) {
+            $("#myConfirm").remove();
+        }
+        var html = "<div class='modal fade' id='myConfirm' >"
+            + "<div class='modal-backdrop in' style='opacity:0; '></div>"
+            + "<div class='modal-dialog' style='z-index:2901; margin-top:60px; width:400px; '>"
+            + "<div class='modal-content'>"
+            + "<div class='modal-header'  style='font-size:16px; '>"
+            + "<span class='glyphicon glyphicon-envelope'>&nbsp;</span>信息！<button type='button' class='close' data-dismiss='modal'>"
+            + "<span style='font-size:20px;  ' class='glyphicon glyphicon-remove'></span><tton></div>"
+            + "<div class='modal-body text-center' id='myConfirmContent' style='font-size:18px; '>"
+            + "是否确定要删除该用户？该操作无法还原，请谨慎操作"
+            + "</div>"
+            + "<div class='modal-footer ' style=''>"
+            + "<button class='btn btn-danger ' id='confirmOk' >确定<tton>"
+            + "<button class='btn btn-info ' data-dismiss='modal'>取消<tton>"
+            + "</div>" + "</div></div></div>";
+        $("body").append(html);
+
+        $("#myConfirm").modal("show");
+
+        $("#confirmOk").on("click", function () {
+            $("#myConfirm").modal("hide");
+            $('#updateModal').modal('hide');
+            delOrderItem(orderItemId); // 执行函数
+        });
+    }
+
+
+</script>
+</body>
+</html>

@@ -3,8 +3,10 @@ package com.hyp.service.shoes.impl;
 import com.hyp.mapper.ShoesOrderMapper;
 import com.hyp.pojo.shoes.dataobject.ShoesOrder;
 import com.hyp.service.shoes.ShoesOrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -17,6 +19,7 @@ import java.util.Map;
  * @Date 2020/1/1 11:33
  * @Description: TODO
  */
+@Slf4j
 @Service
 public class ShoesOrderServiceImpl implements ShoesOrderService {
     @Autowired
@@ -24,16 +27,86 @@ public class ShoesOrderServiceImpl implements ShoesOrderService {
 
     @Override
     public int addShoesOrder(ShoesOrder shoesOrder) {
-        return 0;
+        return shoesOrderMapper.insertSelective(shoesOrder);
     }
 
     @Override
     public int updateShoesOrder(ShoesOrder shoesOrder) {
-        return 0;
+        return shoesOrderMapper.updateByPrimaryKeySelective(shoesOrder);
     }
 
     @Override
     public ShoesOrder getShoesOrderByOrderId(int orderId) {
+        Example example = new Example(ShoesOrder.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("id", orderId);
+        List<ShoesOrder> shoesOrderList = shoesOrderMapper.selectByExample(example);
+        if (shoesOrderList != null && shoesOrderList.size() > 0) {
+            return shoesOrderList.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public ShoesOrder getShoesOrderByShoesOrder(ShoesOrder shoesOrder) {
+        Example example = new Example(ShoesOrder.class);
+        Example.Criteria criteria = example.createCriteria();
+        if (shoesOrder != null) {
+            // 通过订单号
+            if (shoesOrder.getId() != null) {
+                criteria.andEqualTo("id", shoesOrder.getId());
+            }
+            // 通过状态值查询
+            if (shoesOrder.getState() != null) {
+                criteria.andEqualTo("state", shoesOrder.getState());
+            }
+            // 通过userId查询
+            if (shoesOrder.getUserId() != null) {
+                criteria.andEqualTo("userId", shoesOrder.getUserId());
+            }
+
+            List<ShoesOrder> shoesOrderList = shoesOrderMapper.selectByExample(example);
+
+            log.info(shoesOrderList.toString());
+
+            if (shoesOrderList != null && shoesOrderList.size() > 0) {
+                return shoesOrderList.get(0);
+            }
+
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<ShoesOrder> getShoesOrderByPhoneAndTime(ShoesOrder shoesOrder) {
+        Example example = new Example(ShoesOrder.class);
+        Example.Criteria criteria = example.createCriteria();
+        if (shoesOrder != null) {
+
+            // 通过userId查询
+            if (shoesOrder.getUserId() != null) {
+                criteria.andEqualTo("userId", shoesOrder.getUserId());
+            }
+            if (shoesOrder.getCreateDate() != null) {
+                criteria.andLessThanOrEqualTo("createDate", shoesOrder.getCreateDate());
+
+            }
+
+            if (shoesOrder.getEndDate() != null) {
+                criteria.andGreaterThanOrEqualTo("createDate", shoesOrder.getEndDate());
+            }
+
+            List<ShoesOrder> shoesOrderList = shoesOrderMapper.selectByExample(example);
+
+            log.info(shoesOrderList.toString());
+
+            if (shoesOrderList != null && shoesOrderList.size() > 0) {
+                return shoesOrderList;
+            }
+
+        }
+
         return null;
     }
 

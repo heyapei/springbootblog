@@ -60,8 +60,8 @@ public class ShoesUserServiceImpl implements ShoesUserService {
                 criteria.andEqualTo("userId", userId);
                 String startTime = year + "-" + s.toString() + "-01";
                 String endTime = year + "-" + s.toString() + 1 + "-" + c.getActualMaximum(Calendar.DAY_OF_MONTH);
-                criteria.andLessThanOrEqualTo("endDate", startTime);
-                criteria.andGreaterThanOrEqualTo("endDate", endTime);
+                criteria.andLessThanOrEqualTo("endDate", endTime);
+                criteria.andGreaterThanOrEqualTo("endDate", startTime);
                 List<ShoesOrder> shoesOrders = shoesOrderMapper.selectByExample(example);
                 // 订单数量
                 orderNum += shoesOrders.size();

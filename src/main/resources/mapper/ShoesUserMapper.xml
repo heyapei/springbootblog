@@ -9,6 +9,7 @@
         <result column="real_name" property="realName" jdbcType="VARCHAR"/>
         <result column="pass_word" property="passWord" jdbcType="VARCHAR"/>
         <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
+        <result column="empirical" property="empirical" jdbcType="INTEGER"/>
         <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
     </resultMap>
