@@ -10,6 +10,7 @@ import com.hyp.mapper.ShoesUserMapper;
 import com.hyp.pojo.shoes.dataobject.*;
 import com.hyp.pojo.shoes.dto.ShoesCookieDTO;
 import com.hyp.pojo.shoes.utils.PrintTest;
+import com.hyp.pojo.shoes.vo.OrderItemVO;
 import com.hyp.pojo.shoes.vo.RealOrderVO;
 import com.hyp.service.shoes.ShoesOrderItemService;
 import com.hyp.service.shoes.ShoesOrderService;
@@ -139,7 +140,84 @@ public class Shoes {
 
 
     /**
-     * 更新订单列表
+     * 查询订单详情列表
+     */
+    @RequestMapping("/orderItemInfoByPage")
+    public String orderItemInfoByPage(@RequestParam(value = "orderItemInfo-phoneNum", required = false) String phoneNum,
+                                      @RequestParam(value = "orderInfo-startDate", required = false) String startDate,
+                                      @RequestParam(value = "orderInfo-endDate", required = false) String endDate,
+                                      @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
+                                      @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
+
+        if (phoneNum == null) {
+            map.addAttribute("pageResult", null);
+            map.addAttribute("indexPage", null);
+            map.addAttribute("totalPage", null);
+            map.addAttribute("phoneNum", null);
+            return "shoes/orderItemInfo";
+        }
+
+        ShoesUser shoesUser = null;
+        Example example = new Example(ShoesUser.class);
+        Example.Criteria criteria = example.createCriteria();
+        if (phoneNum != null) {
+            criteria.andEqualTo("phoneNum", phoneNum);
+            shoesUser = shoesUserMapper.selectOneByExample(example);
+        }
+        List<Integer> orderIdList = new ArrayList<>();
+        ShoesOrderItem shoesOrderItem = null;
+        if (shoesUser != null) {
+            List<ShoesOrder> shoesOrderByUserId = shoesOrderService.getShoesOrderByUserId(shoesUser.getId());
+            for (ShoesOrder shoesOrder : shoesOrderByUserId) {
+                orderIdList.add(shoesOrder.getId());
+            }
+        } else {
+            // 如果没有查找到用户也不显示任何内容
+            map.addAttribute("pageResult", null);
+            map.addAttribute("indexPage", null);
+            map.addAttribute("totalPage", null);
+            map.addAttribute("phoneNum", phoneNum);
+            return "shoes/orderItemInfo";
+        }
+
+        List<ShoesOrderItem> orderItemByShoesOrderItem = null;
+        if (orderIdList.size() > 0) {
+            for (Integer orderId : orderIdList) {
+                shoesOrderItem = new ShoesOrderItem();
+                shoesOrderItem.setOrderId(orderId);
+                orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+            }
+        } else {
+            shoesOrderItem = new ShoesOrderItem();
+            orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+        }
+
+        PageHelper.startPage(page, size);
+        List<OrderItemVO> orderItemVOS = new ArrayList<>();
+        if (orderItemByShoesOrderItem != null) {
+            for (ShoesOrderItem orderItem : orderItemByShoesOrderItem) {
+                OrderItemVO orderItemVO = new OrderItemVO();
+                ShoesProduct productInfoByProductId = shoesProductService.getProductInfoByProductId(orderItem.getProductId());
+                BeanUtils.copyProperties(productInfoByProductId, orderItemVO);
+                BeanUtils.copyProperties(orderItem, orderItemVO);
+                orderItemVO.setOrderId(orderItem.getOrderId());
+                orderItemVO.setCreateDate(orderItem.getCreateDate());
+                orderItemVOS.add(orderItemVO);
+            }
+        }
+
+        PageInfo pageInfo = new PageInfo(orderItemVOS);
+        Result<Object> objectResult = ResultGenerator.genSuccessResult(pageInfo);
+        map.addAttribute("pageResult", objectResult);
+        map.addAttribute("indexPage", pageInfo.getPageNum());
+        map.addAttribute("totalPage", pageInfo.getPages());
+        map.addAttribute("phoneNum", phoneNum);
+        return "shoes/orderItemInfo";
+    }
+
+
+    /**
+     * 查询订单列表
      */
     @RequestMapping("/orderInfoByPage")
     public String orderInfoByPage(@RequestParam(value = "orderInfo-phoneNum", required = false) String phoneNum,
@@ -222,7 +300,8 @@ public class Shoes {
             resultObject = ResultGenerator.genFailResult("没有找到订单数据");
         } else {
             shoesOrderByOrderId.setReduction(orderReduction);
-            shoesOrderByOrderId.setEmpirical(shoesOrderByOrderId.getMoney().intValue() - orderReduction);
+            // 积分按照真实付款金额1:1计算
+            shoesOrderByOrderId.setEmpirical(shoesOrderByOrderId.getMoney().intValue());
             //shoesOrderByOrderId.setState(2);
             int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
             if (i > 0) {

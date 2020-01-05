@@ -112,6 +112,12 @@ public class ShoesOrderServiceImpl implements ShoesOrderService {
 
     @Override
     public List<ShoesOrder> getShoesOrderByUserId(int userId) {
+        Example example = new Example(ShoesOrder.class);
+        Example.Criteria criteria = example.createCriteria();
+        if (userId > 0) {
+            criteria.andEqualTo("userId", userId);
+            return shoesOrderMapper.selectByExample(example);
+        }
         return null;
     }
 

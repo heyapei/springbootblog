@@ -39,6 +39,7 @@ public class ShoesOrderItemServiceImpl implements ShoesOrderItemService {
     @Override
     public List<ShoesOrderItem> getOrderItemByShoesOrderItem(ShoesOrderItem shoesOrderItem) {
         Example example = new Example(ShoesOrderItem.class);
+        example.orderBy("createDate").desc();
         Example.Criteria criteria = example.createCriteria();
         if (shoesOrderItem != null) {
             // 通过订单号

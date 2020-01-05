@@ -128,7 +128,7 @@
             <div class="col-md-8 column">
                 <div class="page-header">
                     <h3 class="text-center">
-                        用户信息查询
+                        订单详情查询
                     </h3>
                 </div>
             </div>
@@ -143,28 +143,28 @@
         <div class="col-md-12 column">
 
 
-            <form role="form" class="form-inline" action="/home/orderInfoByPage"
+            <form role="form" class="form-inline" action="/home/orderItemInfoByPage"
                   method="post" id="courseStatisticsForm">
                 <div class="form-group">
                     <label for="orderInfo-phoneNum" title="输入手机号进行查询">用户手机号</label>
                     <input class="form-control" id="orderInfo-phoneNum" placeholder="请输入用户手机号" style="height: 30px;"
-                           name="orderInfo-phoneNum" th:value="${phoneNum}">
+                           name="orderItemInfo-phoneNum" th:value="${phoneNum}">
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="orderInfo-startDate" title="输入开始时间">时间搜索</label>
                     <input class="form-control" id="orderInfo-startDate" placeholder="开始时间" type="date"
                            name="orderInfo-startDate" th:value="${shoesOrder.createDate}">
                     <input class="form-control" id="orderInfo-endDate" placeholder="结束时间" type="date"
                            name="orderInfo-endDate" th:value="${shoesOrder.endDate}">
-                </div>
+                </div>-->
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="single-pageSize" title="每页所展示的条目数">每页条数</label>
                     <input class="form-control" id="single-pageSize" placeholder="条数" type="number"
                            style="height: 30px;"
                            name="pageSize" th:value="${pageResult.getData().getPageSize()}">
-                </div>
+                </div>-->
 
                 <button type="submit" class="btn">查询</button>
 
@@ -175,6 +175,7 @@
 
         </div>
 
+        <!--<p th:text="${pageResult}"></p>-->
 
         <!--显示信息-->
 
@@ -188,52 +189,58 @@
                     <thead>
                     <tr style="white-space: nowrap;">
                         <th>
-                            用户ID
-                        </th>
-                        <th>
                             订单号
                         </th>
                         <th>
-                            款项
+                            商品码
                         </th>
                         <th>
-                            操作
+                            名称
+                        </th>
+                        <th>
+                            颜色
+                        </th>
+                        <th>
+                            鞋码
+                        </th>
+                        <th>
+                            价格
+                        </th>
+                        <th>
+                            数量
+                        </th>
+                        <th>
+                            总价格
+                        </th>
+                        <th>
+                            创建时间
                         </th>
 
 
                     </tr>
                     </thead>
                     <tbody>
+                    <tr th:each="orderItemVO,orderItemVOStat : ${pageResult?.data?.list}">
 
-                    <tr th:each="user,userStat : ${pageResult.data.list}">
-
-                        <td th:text="${user.realName}">
+                        <td th:text="${orderItemVO.orderId}">
                         </td>
 
-                        <td th:text="${user.phoneNum}">
+                        <td th:text="${orderItemVO.code}">
                         </td>
-                        <td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}">
+                        <td th:text="${orderItemVO.name}">
                         </td>
-
-                        <td th:text="${#dates.format(user.createTime, 'yyyy/MM/dd hh:mm:ss')}">
-
+                        <td th:text="${orderItemVO.color}">
                         </td>
-
-                        <td>
-
-                            <a target="_blank" th:href="'/home/addOrderPage?userId='+${user.id}" class='btn btn-xs green' title='订单添加'
-                            ><span class='glyphicon glyphicon-plus'></span></a>
-
-                            <a href="javascript:" class='btn btn-xs green' title='查看趋势图'
-                               th:onclick="|showTrendMap(${user.id})|"
-                            ><span class="glyphicon glyphicon-search"></span></a>
-
-                            <a href="javascript:" class='btn btn-xs green' title='修改用户信息'
-                               th:onclick="|getUserInfoByUserId(${user.id})|"
-                            ><span class='glyphicon glyphicon-pencil'></span></a>
-
+                        <td th:text="${orderItemVO.size}">
                         </td>
-
+                        <td th:text="${orderItemVO.price}">
+                        </td>
+                        <td th:text="${orderItemVO.number}">
+                        </td>
+                        <td th:text="${orderItemVO.money}">
+                        </td>
+                        <td th:text="${#dates.format(orderItemVO.createDate, 'yyyy/MM/dd HH:mm:ss')}">
+                        </td>
                     </tr>
 
                     </tbody>
@@ -241,38 +248,8 @@
             </div>
 
             <nav>
-                <!-- <ul class="pagination">
 
-                     <li>
-                         <a th:href="|javascript:cp(1)|">首页</a>
-                     </li>
-
-
-                     <li class="prev" th:if="${pageResult.data.hasPreviousPage}">
-                         <a th:href="|javascript:cp(${pageResult.data.prePage})|">
-                             <i class="ace-icon fa fa-angle-double-left"></i>
-                         </a>
-                     </li>
-                     &lt;!&ndash;遍历条数&ndash;&gt;
-                     <li th:each="nav:${pageResult.data.navigatepageNums}">
-                         <a th:href="|javascript:cp(${nav})|" th:text="${nav}"
-                            th:if="${nav != pageResult.data.pageNum}"></a>
-                         <span style="font-weight: bold;background: #6faed9;" th:if="${nav == pageResult.data.pageNum}"
-                               th:text="${nav}"></span>
-                     </li>
-
-                     <li class="next" th:if="${pageResult.data.hasNextPage}">
-                         <a th:href="|javascript:cp(${pageResult.data.nextPage})|">
-                             <i class="ace-icon fa fa-angle-double-right"></i>
-                         </a>
-                     </li>
-
-                     <li>
-                         <a th:href="|javascript:cp(${pageResult.data.pages})|">尾页</a>
-                     </li>
-                 </ul>-->
-
-                <ul class="pagination">
+                <!--<ul class="pagination">
                     <li th:class="${indexPage==1}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage-1})|">上一页</a>
                     </li>
                     <li th:if="${indexPage-3 >=1}"><a th:href="|javascript:cp(${indexPage-3})|"
@@ -291,10 +268,10 @@
 
                     <li th:class="${indexPage==totalPage}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage+1})|">下一页</a>
                     </li>
-                </ul>
+                </ul>-->
 
 
-                <div class="jump">
+                <!--<div class="jump">
                             <span class="jump_text">
                                 当前<label th:title="'当前共有'+${pageResult.getData().getSize()}+'条目录'"
                                          th:text="${pageResult.getData().getSize()}"></label>/<label
@@ -310,7 +287,7 @@
                                 <button type="button" class="btn btn-primary btn-sm"
                                         th:onclick="|javascript:goPage(${pageResult.getData().getTotal()})|">跳转</button>
                             </span>
-                </div>
+                </div>-->
 
 
             </nav>
@@ -392,8 +369,6 @@
         </div>
     </div>
 </form>
-
-
 
 
 <script>

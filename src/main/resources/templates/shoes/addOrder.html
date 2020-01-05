@@ -261,7 +261,7 @@
                                 <th>
                                     总价格
                                 </th>
-                                <th>
+                                <th title="积分值按照真实付款金额1:1计算">
                                     积分值
                                 </th>
                                 <th th:if="${shoesOrder}!=null">
@@ -278,7 +278,7 @@
                                 </td>
                                 <td id="orderMoney" th:text="${shoesOrder?.money}">
                                 </td>
-                                <td id="orderEmpirical" th:text="${shoesOrder?.empirical}">
+                                <td id="orderEmpirical" th:text="${shoesOrder?.empirical}" title="积分值按照真实付款金额1:1计算">
                                 </td>
                                 <td th:if="${shoesOrder}!=null">
                                     <input type="number" id="orderReduction" th:default="0"
@@ -286,7 +286,6 @@
                                            onblur="countRealPay()"
                                            onkeyup="countRealPay()"
                                            onfocus="countRealPay()"
-                                           placeholder="值为整数"
                                            style="width: 70px;"
                                     >
                                     <script>
@@ -298,6 +297,7 @@
                                             }
                                             var realPay = orderMoney - orderReduction;
                                             $("#orderRealPay").text(realPay);
+                                            $("#orderEmpirical").text(realPay);
                                         }
                                     </script>
                                 </td>
