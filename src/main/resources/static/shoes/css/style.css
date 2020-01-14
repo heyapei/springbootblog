@@ -852,7 +852,7 @@ i.dollar1{
 /*-- graphs --*/
 .graphs{
   padding: 2em 1em;
-  background: #f2f4f8;
+  /*background: #f2f4f8;*/
   font-family: 'Roboto', sans-serif;
 }
 canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar{
