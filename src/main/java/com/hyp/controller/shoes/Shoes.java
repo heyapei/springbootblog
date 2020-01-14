@@ -1,21 +1,28 @@
 package com.hyp.controller.shoes;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hyp.mapper.ShoesUserMapper;
+import com.hyp.pojo.datatransferobject.WeatherDTO;
 import com.hyp.pojo.shoes.dataobject.*;
 import com.hyp.pojo.shoes.dto.ShoesCookieDTO;
 import com.hyp.pojo.shoes.utils.PrintTest;
 import com.hyp.pojo.shoes.vo.OrderItemVO;
 import com.hyp.pojo.shoes.vo.RealOrderVO;
+import com.hyp.pojo.shoes.vo.ShoesItemAndProduct;
+import com.hyp.pojo.shoes.vo.ShoesTicketVO;
 import com.hyp.service.shoes.ShoesOrderItemService;
 import com.hyp.service.shoes.ShoesOrderService;
 import com.hyp.service.shoes.ShoesProductService;
 import com.hyp.service.shoes.ShoesUserService;
+import com.hyp.utils.HttpClientUtil;
+import com.hyp.utils.IpUtils;
+import com.hyp.utils.JsonUtils;
 import com.hyp.utils.returncore.Result;
 import com.hyp.utils.returncore.ResultGenerator;
 import com.hyp.utils.shoes.ShoesCookie;
@@ -24,6 +31,8 @@ import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,39 +75,226 @@ public class Shoes {
     private ShoesOrderItemService shoesOrderItemService;
 
 
+
+
+    /**
+     * 返回天气的信息
+     *
+     * @return
+     */
+    @RequestMapping("/getWeather")
+    @ResponseBody
+    public List<WeatherDTO> getWeather(HttpServletRequest request) {
+
+        HttpClientUtil httpClientUtil = new HttpClientUtil();
+
+        String ipFromRequest = IpUtils.getIpFromRequest(request);
+        log.info("请求地址：" + ipFromRequest);
+        //读取json
+        //a6189d40a6e51b60ef1e55f7593fe962
+
+        String weatherReturn = httpClientUtil.getParameter("http://t.weather.sojson.com/api/weather/city/101180602", null, null, 2000, 2000, 2000);
+       /* String weatherReturn = "{\"message\":\"success感谢又拍云(upyun.com)提供CDN赞助\"," +
+                "\"status\":200,\"date\":\"20191130\",\"time\":\"2019-11-30 14:50:13\"," +
+                "\"cityInfo\":{\"city\":\"青浦区\",\"citykey\":\"101020800\",\"parent\":\"上海市\",\"updateTime\":\"14:00\"}," +
+                "\"data\":{\"shidu\":\"90%\",\"pm25\":21.0,\"pm10\":39.0,\"quality\":\"优\",\"wendu\":" +
+                "\"11\",\"ganmao\":\"各类人群可自由活动\",\"forecast\":[{\"date\":\"30\"," +
+                "\"high\":\"高温 13℃\",\"low\":\"低温 9℃\",\"ymd\":\"2019-11-30\",\"week\":\"星期六\",\"sunrise\":\"06:34\",\"sunset\":\"16:53\",\"aqi\":47,\"fx\":\"东北风\",\"fl\":\"<3级\",\"type\":\"小雨\",\"notice\":\"雨虽小，注意保暖别感冒\"},{\"date\":\"01\",\"high\":\"高温 13℃\",\"low\":\"低温 5℃\",\"ymd\":\"2019-12-01\",\"week\":\"星期日\",\"sunrise\":\"06:35\",\"sunset\":\"16:53\",\"aqi\":122,\"fx\":\"西北风\",\"fl\":\"3-4级\",\"type\":\"小雨\",\"notice\":\"雨虽小，注意保暖别感冒\"},{\"date\":\"02\",\"high\":\"高温 11℃\",\"low\":\"低温 0℃\",\"ymd\":\"2019-12-02\",\"week\":\"星期一\",\"sunrise\":\"06:36\",\"sunset\":\"16:53\",\"aqi\":57,\"fx\":\"北风\",\"fl\":\"3-4级\",\"type\":\"阴\",\"notice\":\"不要被阴云遮挡住好心情\"},{\"date\":\"03\",\"high\":\"高温 11℃\",\"low\":\"低温 -1℃\",\"ymd\":\"2019-12-03\",\"week\":\"星期二\",\"sunrise\":\"06:36\",\"sunset\":\"16:53\",\"aqi\":56,\"fx\":\"北风\",\"fl\":\"3-4级\",\"type\":\"晴\",\"notice\":\"愿你拥有比阳光明媚的心情\"},{\"date\":\"04\",\"high\":\"高温 12℃\",\"low\":\"低温 2℃\",\"ymd\":\"2019-12-04\",\"week\":\"星期三\",\"sunrise\":\"06:37\",\"sunset\":\"16:53\",\"aqi\":67,\"fx\":\"北风\",\"fl\":\"4-5级\",\"type\":\"多云\",\"notice\":\"阴晴之间，谨防紫外线侵扰\"},{\"date\":\"05\",\"high\":\"高温 13℃\",\"low\":\"低温 5℃\",\"ymd\":\"2019-12-05\",\"week\":\"星期四\",\"sunrise\":\"06:38\",\"sunset\":\"16:53\",\"aqi\":48,\"fx\":\"东北风\",\"fl\":\"<3级\",\"type\":\"晴\",\"notice\":\"愿你拥有比阳光明媚的心情\"},{\"date\":\"06\",\"high\":\"高温 9℃\",\"low\":\"低温 3℃\",\"ymd\":\"2019-12-06\",\"week\":\"星期五\",\"sunrise\":\"06:39\",\"sunset\":\"16:53\",\"fx\":\"北风\",\"fl\":\"3-4级\",\"type\":\"小雨\",\"notice\":\"雨虽小，注意保暖别感冒\"},{\"date\":\"07\",\"high\":\"高温 9℃\",\"low\":\"低温 2℃\",\"ymd\":\"2019-12-07\",\"week\":\"星期六\",\"sunrise\":\"06:40\",\"sunset\":\"16:53\",\"fx\":\"北风\",\"fl\":\"<3级\",\"type\":\"多云\",\"notice\":\"阴晴之间，谨防紫外线侵扰\"},{\"date\":\"08\",\"high\":\"高温 10℃\",\"low\":\"低温 4℃\",\"ymd\":\"2019-12-08\",\"week\":\"星期日\",\"sunrise\":\"06:40\",\"sunset\":\"16:53\",\"fx\":\"东北风\",\"fl\":\"<3级\",\"type\":\"晴\",\"notice\":\"愿你拥有比阳光明媚的心情\"},{\"date\":\"09\",\"high\":\"高温 13℃\",\"low\":\"低温 5℃\",\"ymd\":\"2019-12-09\",\"week\":\"星期一\",\"sunrise\":\"06:41\",\"sunset\":\"16:53\",\"fx\":\"东风\",\"fl\":\"<3级\",\"type\":\"多云\",\"notice\":\"阴晴之间，谨防紫外线侵扰\"},{\"date\":\"10\",\"high\":\"高温 14℃\",\"low\":\"低温 8℃\",\"ymd\":\"2019-12-10\",\"week\":\"星期二\",\"sunrise\":\"06:42\",\"sunset\":\"16:53\",\"fx\":\"东北风\",\"fl\":\"<3级\",\"type\":\"多云\",\"notice\":\"阴晴之间，谨防紫外线侵扰\"},{\"date\":\"11\",\"high\":\"高温 14℃\",\"low\":\"低温 6℃\",\"ymd\":\"2019-12-11\",\"week\":\"星期三\",\"sunrise\":\"06:43\",\"sunset\":\"16:53\",\"fx\":\"西北风\",\"fl\":\"<3级\",\"type\":\"多云\",\"notice\":\"阴晴之间，谨防紫外线侵扰\"},{\"date\":\"12\",\"high\":\"高温 10℃\",\"low\":\"低温 5℃\",\"ymd\":\"2019-12-12\",\"week\":\"星期四\",\"sunrise\":\"06:43\",\"sunset\":\"16:54\",\"fx\":\"东北风\",\"fl\":\"3-4级\",\"type\":\"晴\",\"notice\":\"愿你拥有比阳光明媚的心情\"},{\"date\":\"13\",\"high\":\"高温 10℃\",\"low\":\"低温 6℃\",\"ymd\":\"2019-12-13\",\"week\":\"星期五\",\"sunrise\":\"06:44\",\"sunset\":\"16:54\",\"fx\":\"东风\",\"fl\":\"3-4级\",\"type\":\"晴\",\"notice\":\"愿你拥有比阳光明媚的心情\"},{\"date\":\"14\",\"high\":\"高温 12℃\",\"low\":\"低温 7℃\",\"ymd\":\"2019-12-14\",\"week\":\"星期六\",\"sunrise\":\"06:45\",\"sunset\":\"16:54\",\"fx\":\"东风\",\"fl\":\"<3级\",\"type\":\"多云\",\"notice\":\"阴晴之间，谨防紫外线侵扰\"}],\"yesterday\":{\"date\":\"29\",\"high\":\"高温 12℃\",\"low\":\"低温 9℃\",\"ymd\":\"2019-11-29\",\"week\":\"星期五\",\"sunrise\":\"06:33\",\"sunset\":\"16:53\",\"aqi\":32,\"fx\":\"东北风\",\"fl\":\"3-4级\",\"type\":\"阴\",\"notice\":\"不要被阴云遮挡住好心情\"}}}";*/
+        JSONObject parse = JSONObject.parseObject(weatherReturn);
+        JSONObject data = parse.getJSONObject("data");
+        JSONArray forecast = data.getJSONArray("forecast");
+        List<WeatherDTO> weatherDTOS = new ArrayList<>();
+        for (Object o : forecast) {
+            WeatherDTO weatherDTO = JsonUtils.jsonToPojo(o.toString(), WeatherDTO.class);
+            weatherDTO.setHigh(weatherDTO.getHigh().substring(3, weatherDTO.getHigh().indexOf("℃")));
+            weatherDTO.setLow(weatherDTO.getLow().substring(3, weatherDTO.getLow().indexOf("℃")));
+            weatherDTOS.add(weatherDTO);
+        }
+        return weatherDTOS;
+    }
+
+
+    /**
+     * 删除订单
+     *
+     * @return
+     */
+    @RequestMapping("/deleteOrderByOrderId")
+    @ResponseBody
+    public Result deleteOrderByOrderId(HttpServletRequest httpServletRequest, @RequestParam Integer orderId) {
+
+        Result resultObject = null;
+
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
+        } else {
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
+
+        boolean isRightSystem = (resultObject == null || resultObject.getCode() == 200);
+
+        if (isRightSystem) {
+            ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(orderId);
+            if (shoesOrderByOrderId == null) {
+                resultObject = ResultGenerator.genFailResult("没有找到订单数据");
+            } else {
+                BigDecimal money = shoesOrderByOrderId.getMoney();
+                Integer reduction = shoesOrderByOrderId.getReduction();
+                ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(shoesOrderByOrderId.getUserId());
+                shoesUser.setId(shoesOrderByOrderId.getUserId());
+                // 计算出来最后的积分值
+                money = money.subtract(BigDecimal.valueOf(reduction));
+                Integer empirical = shoesUser.getEmpirical() - money.intValue();
+                shoesUser.setEmpirical(empirical);
+                shoesUserMapper.updateByPrimaryKey(shoesUser);
+                shoesOrderByOrderId.setState(2);
+                int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
+                if (i > 0) {
+                    shoesOrderService.deleteOrderAndOrderItem(orderId);
+                } else {
+                    resultObject = ResultGenerator.genFailResult("确认订单错误");
+                }
+            }
+        }
+
+        return resultObject;
+    }
+
+
+    /**
+     * 通过orderId获取详细内容
+     */
+    @RequestMapping("/showOrderItemByOrderId")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public String orderItemInfoByPage(HttpServletRequest httpServletRequest,
+                                      @RequestParam Integer orderId,
+                                      @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
+                                      @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
+
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
+        if (orderId == null) {
+            map.addAttribute("pageResult", null);
+            map.addAttribute("indexPage", null);
+            map.addAttribute("totalPage", null);
+            map.addAttribute("phoneNum", null);
+            return "shoes/orderItemInfo";
+        }
+
+
+        ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
+        shoesOrderItem.setOrderId(orderId);
+        List<ShoesOrderItem> orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+
+        PageHelper.startPage(page, size);
+        List<OrderItemVO> orderItemVOS = new ArrayList<>();
+        if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() >= 0) {
+            ShoesOrderItem orderItem = orderItemByShoesOrderItem.get(0);
+            OrderItemVO orderItemVO = new OrderItemVO();
+            ShoesProduct productInfoByProductId = shoesProductService.getProductInfoByProductId(orderItem.getProductId());
+            BeanUtils.copyProperties(productInfoByProductId, orderItemVO);
+            BeanUtils.copyProperties(orderItem, orderItemVO);
+            orderItemVO.setOrderId(orderItem.getOrderId());
+            orderItemVO.setCreateDate(orderItem.getCreateDate());
+            orderItemVOS.add(orderItemVO);
+        }
+
+        PageInfo pageInfo = new PageInfo(orderItemVOS);
+        Result<Object> objectResult = ResultGenerator.genSuccessResult(pageInfo);
+        map.addAttribute("pageResult", objectResult);
+        map.addAttribute("indexPage", pageInfo.getPageNum());
+        map.addAttribute("totalPage", pageInfo.getPages());
+        map.addAttribute("phoneNum", null);
+        return "shoes/orderItemInfo";
+    }
+
+
     /**
      * 打印小票
      *
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @RequestMapping("/printTicket")
     @ResponseBody
-    public Result printTicket(@RequestParam Integer orderId) {
+    public Result printTicket(HttpServletRequest httpServletRequest, @RequestParam Integer orderId) {
 
-        Result resultObject;
-        ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(orderId);
-        if (shoesOrderByOrderId == null) {
-            resultObject = ResultGenerator.genFailResult("没有找到订单数据");
-        } else {
-            BigDecimal money = shoesOrderByOrderId.getMoney();
-            Integer reduction = shoesOrderByOrderId.getReduction();
-            ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(shoesOrderByOrderId.getUserId());
-            shoesUser.setId(shoesOrderByOrderId.getUserId());
-            // 计算出来最后的积分值
-            money = money.subtract(BigDecimal.valueOf(reduction));
-            Integer empirical = shoesUser.getEmpirical() + money.intValue();
-            shoesUser.setEmpirical(empirical);
-            shoesUserMapper.updateByPrimaryKey(shoesUser);
-            shoesOrderByOrderId.setState(2);
-            int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
-            if (i > 0) {
-                resultObject = ResultGenerator.genSuccessResult();
-                //打印小票
-                PrintTest.print1();
-            } else {
-                resultObject = ResultGenerator.genFailResult("确认订单错误");
+        Result resultObject = null;
+
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
             }
+        } else {
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
 
+        boolean isRightSystem = (resultObject == null || resultObject.getCode() == 200);
+
+        if (isRightSystem) {
+            ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(orderId);
+            if (shoesOrderByOrderId == null) {
+                resultObject = ResultGenerator.genFailResult("没有找到订单数据");
+            } else {
+                BigDecimal money = shoesOrderByOrderId.getMoney();
+                Integer reduction = shoesOrderByOrderId.getReduction();
+                ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(shoesOrderByOrderId.getUserId());
+                shoesUser.setId(shoesOrderByOrderId.getUserId());
+                // 计算出来最后的积分值
+                money = money.subtract(BigDecimal.valueOf(reduction));
+                Integer empirical = shoesUser.getEmpirical() + money.intValue();
+                shoesUser.setEmpirical(empirical);
+                shoesUserMapper.updateByPrimaryKey(shoesUser);
+                shoesOrderByOrderId.setState(2);
+                int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
+                if (i > 0) {
+                    resultObject = ResultGenerator.genSuccessResult();
+                    ShoesTicketVO shoesTicketVO = new ShoesTicketVO();
+                    shoesTicketVO.setShoesOrder(shoesOrderByOrderId);
+                    shoesTicketVO.setShoesUser(shoesUserMapper.selectByPrimaryKey(shoesUser.getId()));
+                    ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
+                    shoesOrderItem.setOrderId(orderId);
+                    List<ShoesOrderItem> orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+                    log.info(orderItemByShoesOrderItem.toString());
+                    List<ShoesItemAndProduct> shoesItemAndProductList = new ArrayList<>();
+
+                    for (ShoesOrderItem orderItem : orderItemByShoesOrderItem) {
+                        ShoesItemAndProduct shoesItemAndProduct = new ShoesItemAndProduct();
+                        ShoesProduct productInfoByProductId = shoesProductService.getProductInfoByProductId(orderItem.getProductId());
+                        shoesItemAndProduct.setColor(productInfoByProductId.getColor());
+                        shoesItemAndProduct.setSize(productInfoByProductId.getSize());
+                        shoesItemAndProduct.setName(productInfoByProductId.getName());
+                        shoesItemAndProduct.setPrice(productInfoByProductId.getPrice());
+                        shoesItemAndProduct.setNumber(orderItem.getNumber());
+                        shoesItemAndProductList.add(shoesItemAndProduct);
+                    }
+                    shoesTicketVO.setShoesItemAndProductList(shoesItemAndProductList);
+                    //打印小票
+                    new PrintTest().print3(shoesTicketVO);
+                } else {
+                    resultObject = ResultGenerator.genFailResult("确认订单错误");
+                }
+            }
         }
 
 
@@ -112,8 +308,22 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/realOrderPage")
-    public String realOrderPage(@RequestParam Integer orderId,
+    public String realOrderPage(HttpServletRequest httpServletRequest, @RequestParam Integer orderId,
                                 ModelMap modelMap) {
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                modelMap.addAttribute("errorCode", "NOT FOUND");
+                modelMap.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            modelMap.addAttribute("errorCode", "NO COOKIE");
+            modelMap.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
         ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(orderId);
         ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(shoesOrderByOrderId.getUserId());
         ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
@@ -143,11 +353,26 @@ public class Shoes {
      * 查询订单详情列表
      */
     @RequestMapping("/orderItemInfoByPage")
-    public String orderItemInfoByPage(@RequestParam(value = "orderItemInfo-phoneNum", required = false) String phoneNum,
+    public String orderItemInfoByPage(HttpServletRequest httpServletRequest,
+                                      @RequestParam(value = "orderItemInfo-phoneNum", required = false) String phoneNum,
                                       @RequestParam(value = "orderInfo-startDate", required = false) String startDate,
                                       @RequestParam(value = "orderInfo-endDate", required = false) String endDate,
                                       @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
                                       @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
+
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
 
         if (phoneNum == null) {
             map.addAttribute("pageResult", null);
@@ -220,32 +445,93 @@ public class Shoes {
      * 查询订单列表
      */
     @RequestMapping("/orderInfoByPage")
-    public String orderInfoByPage(@RequestParam(value = "orderInfo-phoneNum", required = false) String phoneNum,
+    public String orderInfoByPage(HttpServletRequest httpServletRequest,
+                                  @RequestParam(value = "orderInfo-phoneNum", required = false) String phoneNum,
                                   @RequestParam(value = "orderInfo-startDate", required = false) String startDate,
                                   @RequestParam(value = "orderInfo-endDate", required = false) String endDate,
                                   @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
                                   @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
+
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
         ShoesOrder shoesOrder = new ShoesOrder();
 
         int userId = 0;
         Example example = new Example(ShoesUser.class);
         Example.Criteria criteria = example.createCriteria();
         List<ShoesUser> shoesUserList = null;
-        if (phoneNum != null) {
+        if (phoneNum != null && !phoneNum.equals("")) {
             criteria.andEqualTo("phoneNum", phoneNum);
+            shoesUserList = shoesUserMapper.selectByExample(example);
         }
-        shoesUserList = shoesUserMapper.selectByExample(example);
+
         ShoesUser shoesUser = null;
-        if (shoesUserList == null || shoesUserList.size() <= 0) {
+        if (shoesUserList != null && shoesUserList.size() > 0) {
             shoesUser = shoesUserList.get(0);
             userId = shoesUser.getId();
+            shoesOrder.setUserId(userId);
+        } else if (StringUtils.isNotBlank(phoneNum)) {
+            shoesOrder.setUserId(userId);
         }
 
-        shoesOrder.setUserId(userId);
+
+        if (StringUtils.isNotBlank(startDate)) {
+            SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);
+
+            startDate = startDate.replaceAll(",", "");
+            log.info(startDate + "开始时间");
+            try {
+                shoesOrder.setCreateDate(formatter.parse(startDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        if (StringUtils.isNotBlank(endDate)) {
+            SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+            endDate = endDate.replaceAll(",", "") + " 23:59:59";
+            log.info("结束时间：" + endDate);
+            try {
+                shoesOrder.setEndDate(formatter.parse(endDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+        log.info(shoesOrder.toString() + "开始时间");
+        /*if (userId > 0) {
+            shoesOrder.setUserId(userId);
+        } else {
+            map.addAttribute("pageResult", null);
+            map.addAttribute("indexPage", 0);
+            map.addAttribute("totalPage", 0);
+            map.addAttribute("phoneNum", phoneNum);
+            map.addAttribute("shoesOrder", shoesOrder);
+            return "shoes/orderInfo";
+        }*/
+
 
         PageHelper.startPage(page, size);
-
         List<ShoesOrder> shoesOrderByPhoneAndTime = shoesOrderService.getShoesOrderByPhoneAndTime(shoesOrder);
+        if (shoesOrderByPhoneAndTime == null || shoesOrderByPhoneAndTime.size() <= 0) {
+            map.addAttribute("pageResult", null);
+            map.addAttribute("indexPage", 0);
+            map.addAttribute("totalPage", 0);
+            map.addAttribute("phoneNum", phoneNum);
+            map.addAttribute("shoesOrder", shoesOrder);
+            return "shoes/orderInfo";
+        }
         PageInfo pageInfo = new PageInfo(shoesOrderByPhoneAndTime);
         Result<Object> objectResult = ResultGenerator.genSuccessResult(pageInfo);
         map.addAttribute("pageResult", objectResult);
@@ -253,7 +539,7 @@ public class Shoes {
         map.addAttribute("totalPage", pageInfo.getPages());
         map.addAttribute("phoneNum", phoneNum);
         map.addAttribute("shoesOrder", shoesOrder);
-        return "orderItemInfo";
+        return "shoes/orderInfo";
     }
 
 
@@ -264,7 +550,7 @@ public class Shoes {
      */
     @RequestMapping("/keySearchByShoesCode")
     @ResponseBody
-    public Result updateOrderItemById(@RequestParam String shoesCode) {
+    public Result keySearchByShoesCode(@RequestParam String shoesCode) {
 
         Result resultObject = null;
 
@@ -290,28 +576,41 @@ public class Shoes {
      */
     @RequestMapping("/realAddOrder")
     @ResponseBody
-    public Result realAddOrder(@RequestParam Integer orderId,
+    public Result realAddOrder(HttpServletRequest httpServletRequest, @RequestParam Integer orderId,
                                @RequestParam(required = false, defaultValue = "0") Integer orderReduction) {
 
-        Result resultObject;
-
-        ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(orderId);
-        if (shoesOrderByOrderId == null) {
-            resultObject = ResultGenerator.genFailResult("没有找到订单数据");
-        } else {
-            shoesOrderByOrderId.setReduction(orderReduction);
-            // 积分按照真实付款金额1:1计算
-            shoesOrderByOrderId.setEmpirical(shoesOrderByOrderId.getMoney().intValue());
-            //shoesOrderByOrderId.setState(2);
-            int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
-            if (i > 0) {
-                resultObject = ResultGenerator.genSuccessResult();
-                //打印小票
-                //PrintTest.print1();
-            } else {
-                resultObject = ResultGenerator.genFailResult("确认订单错误");
+        Result resultObject = null;
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
             }
+        } else {
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
 
+        boolean isRightSystem = (resultObject == null || resultObject.getCode() == 200);
+        if (isRightSystem) {
+            ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(orderId);
+            if (shoesOrderByOrderId == null) {
+                resultObject = ResultGenerator.genFailResult("没有找到订单数据");
+            } else {
+                shoesOrderByOrderId.setReduction(orderReduction);
+                // 积分按照真实付款金额1:1计算
+                shoesOrderByOrderId.setEmpirical(shoesOrderByOrderId.getMoney().intValue());
+                //shoesOrderByOrderId.setState(2);
+                int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
+                if (i > 0) {
+                    resultObject = ResultGenerator.genSuccessResult();
+                    //打印小票
+                    //PrintTest.print1();
+                } else {
+                    resultObject = ResultGenerator.genFailResult("确认订单错误");
+                }
+
+            }
         }
 
 
@@ -326,32 +625,38 @@ public class Shoes {
      */
     @RequestMapping("/updateOrderItemById")
     @ResponseBody
-    public Result updateOrderItemById(@RequestParam Integer orderItemId,
+    public Result updateOrderItemById(HttpServletRequest httpServletRequest, @RequestParam Integer orderItemId,
                                       @RequestParam Integer orderItemNumber) {
-
-        log.info(orderItemId + "===" + orderItemNumber);
 
         Result resultObject = null;
 
-        if (orderItemId == null) {
-            resultObject = ResultGenerator.genFailResult("orderItemId不能为空");
+
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            log.info("cuowu1");
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
+
+        if (resultObject == null || resultObject.getCode() == 200) {
+            if (orderItemId == null) {
+                resultObject = ResultGenerator.genFailResult("orderItemId不能为空");
+            }
         }
 
         if (resultObject == null || resultObject.getCode() == 200) {
             if (orderItemNumber == null) {
                 resultObject = ResultGenerator.genFailResult("orderItemId不能为空");
-            } else {
-                log.info("cuowu2-2");
             }
-        } else {
-            log.info("cuowu2-1");
         }
 
 
         if (resultObject == null || resultObject.getCode() == 200) {
-            log.info("能进入该方法");
+
 
             ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
             shoesOrderItem.setId(orderItemId);
@@ -359,6 +664,7 @@ public class Shoes {
             List<ShoesOrderItem> orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
             if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() > 0) {
                 shoesOrderItem = orderItemByShoesOrderItem.get(0);
+                shoesOrderItem.setNumber(orderItemNumber);
                 shoesOrderItem.setMoney(shoesOrderItem.getPrice().multiply(new BigDecimal(String.valueOf(orderItemNumber))));
 
                 log.info("orderitem数据：" + shoesOrderItem.toString());
@@ -409,44 +715,59 @@ public class Shoes {
      */
     @RequestMapping("/deleteOrderItemById")
     @ResponseBody
-    public Result deleteOrderItemById(@RequestParam Integer orderItemId) {
-        Result resultObject;
+    public Result deleteOrderItemById(HttpServletRequest httpServletRequest, @RequestParam Integer orderItemId) {
+        Result resultObject = null;
 
-        if (orderItemId == null) {
-            resultObject = ResultGenerator.genFailResult("orderItemId不能为空");
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
-            shoesOrderItem.setId(orderItemId);
-            List<ShoesOrderItem> shoesOrderItemByShoesOrderItem = shoesOrderItemService.getShoesOrderItemByShoesOrderItem(shoesOrderItem);
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
 
-            if (shoesOrderItemByShoesOrderItem == null || shoesOrderItemByShoesOrderItem.size() <= 0) {
-                resultObject = ResultGenerator.genFailResult("找不到数据");
+        boolean isRightSystem = (resultObject == null || resultObject.getCode() == 200);
+        if (isRightSystem) {
+            if (orderItemId == null) {
+                resultObject = ResultGenerator.genFailResult("orderItemId不能为空");
             } else {
+                ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
+                shoesOrderItem.setId(orderItemId);
+                List<ShoesOrderItem> shoesOrderItemByShoesOrderItem = shoesOrderItemService.getShoesOrderItemByShoesOrderItem(shoesOrderItem);
 
-                ShoesOrderItem shoesOrderItem1 = shoesOrderItemByShoesOrderItem.get(0);
-                log.info("订单详情1：" + shoesOrderItem1.toString());
-                ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(shoesOrderItem1.getOrderId());
-                if (shoesOrderByOrderId == null) {
-                    resultObject = ResultGenerator.genFailResult("订单未能匹配成功");
+                if (shoesOrderItemByShoesOrderItem == null || shoesOrderItemByShoesOrderItem.size() <= 0) {
+                    resultObject = ResultGenerator.genFailResult("找不到数据");
                 } else {
 
-                    int i = shoesOrderItemService.delShoesOrderItemByShoesOrderItem(shoesOrderItem);
-                    if (i < 0) {
-                        resultObject = ResultGenerator.genFailResult("删除成功");
+                    ShoesOrderItem shoesOrderItem1 = shoesOrderItemByShoesOrderItem.get(0);
+                    log.info("订单详情1：" + shoesOrderItem1.toString());
+                    ShoesOrder shoesOrderByOrderId = shoesOrderService.getShoesOrderByOrderId(shoesOrderItem1.getOrderId());
+                    if (shoesOrderByOrderId == null) {
+                        resultObject = ResultGenerator.genFailResult("订单未能匹配成功");
                     } else {
-                        Integer empirical = shoesOrderByOrderId.getEmpirical() - shoesOrderItem1.getMoney().intValue();
-                        BigDecimal totalMoney = shoesOrderByOrderId.getMoney().subtract(shoesOrderItem1.getMoney());
-                        shoesOrderByOrderId.setEmpirical(empirical);
-                        shoesOrderByOrderId.setMoney(totalMoney);
-                        log.info(shoesOrderByOrderId.toString() + "数据是否正确");
-                        // 更新订单
-                        shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
-                        resultObject = ResultGenerator.genSuccessResult();
-                    }
-                }
 
+                        int i = shoesOrderItemService.delShoesOrderItemByShoesOrderItem(shoesOrderItem);
+                        if (i < 0) {
+                            resultObject = ResultGenerator.genFailResult("删除成功");
+                        } else {
+                            Integer empirical = shoesOrderByOrderId.getEmpirical() - shoesOrderItem1.getMoney().intValue();
+                            BigDecimal totalMoney = shoesOrderByOrderId.getMoney().subtract(shoesOrderItem1.getMoney());
+                            shoesOrderByOrderId.setEmpirical(empirical);
+                            shoesOrderByOrderId.setMoney(totalMoney);
+                            log.info(shoesOrderByOrderId.toString() + "数据是否正确");
+                            // 更新订单
+                            shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
+                            resultObject = ResultGenerator.genSuccessResult();
+                        }
+                    }
+
+                }
             }
         }
+
 
         return resultObject;
     }
@@ -546,11 +867,23 @@ public class Shoes {
      */
     @RequestMapping("/getOrderItemByOrderId")
     @ResponseBody
-    public Result<List<ShoesOrderItem>> getOrderItemByOrderId(@RequestParam Integer orderId) {
+    public Result<List<ShoesOrderItem>> getOrderItemByOrderId(HttpServletRequest httpServletRequest, @RequestParam Integer orderId) {
 
-        Result<List<ShoesOrderItem>> shoesOrderResult;
+        Result<List<ShoesOrderItem>> shoesOrderResult = null;
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesOrderResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
+        } else {
+            shoesOrderResult = ResultGenerator.genFailResult("需要先登录");
+        }
 
-        if (orderId != null) {
+        boolean isRightSystem = (shoesOrderResult == null || shoesOrderResult.getCode() == 200);
+
+        if (isRightSystem && orderId != null) {
             ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
             shoesOrderItem.setOrderId(orderId);
 
@@ -576,12 +909,23 @@ public class Shoes {
      */
     @RequestMapping("/getShoesOrderByIncomplete")
     @ResponseBody
-    public Result<ShoesOrder> getShoesOrderByIncomplete(@RequestParam Integer userId) {
+    public Result<ShoesOrder> getShoesOrderByIncomplete(HttpServletRequest httpServletRequest, @RequestParam Integer userId) {
 
 
-        Result<ShoesOrder> shoesOrderResult;
+        Result<ShoesOrder> shoesOrderResult = null;
 
-        if (userId != null) {
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesOrderResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
+        } else {
+            shoesOrderResult = ResultGenerator.genFailResult("需要先登录");
+        }
+        boolean isRightSystem = (shoesOrderResult == null || shoesOrderResult.getCode() == 200);
+        if (isRightSystem && userId != null) {
             ShoesOrder shoesOrder = new ShoesOrder();
             shoesOrder.setUserId(userId);
             shoesOrder.setState(1);
@@ -607,10 +951,22 @@ public class Shoes {
      */
     @RequestMapping("/getProductInfoByProductCode")
     @ResponseBody
-    public Result<ShoesProduct> getProductInfoByProductCode(@RequestParam String productCode) {
-        Result<ShoesProduct> shoesProductResult;
+    public Result<ShoesProduct> getProductInfoByProductCode(HttpServletRequest httpServletRequest, @RequestParam String productCode) {
+        Result<ShoesProduct> shoesProductResult = null;
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesProductResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
+        } else {
+            shoesProductResult = ResultGenerator.genFailResult("需要先登录");
+        }
+        boolean isRightSystem = (shoesProductResult == null || shoesProductResult.getCode() == 200);
+
         ShoesProduct shoesProduct = shoesProductService.getProductInfoByProductCode(productCode);
-        if (shoesProduct == null) {
+        if (isRightSystem && shoesProduct == null) {
             shoesProductResult = ResultGenerator.genFailResult("没有发现商品信息");
         } else {
             shoesProductResult = ResultGenerator.genSuccessResult(shoesProduct);
@@ -627,7 +983,21 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/addOrderPage")
-    public String addOrderPage(@RequestParam String userId, ModelMap map) {
+    public String addOrderPage(HttpServletRequest httpServletRequest, @RequestParam String userId, ModelMap map) {
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
         ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
         ShoesOrder shoesOrder = new ShoesOrder();
         shoesOrder.setUserId(Integer.parseInt(userId));
@@ -647,7 +1017,8 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/addProductInfo")
-    public String addProductInfo(@RequestParam(required = false) String attribute,
+    public String addProductInfo(HttpServletRequest httpServletRequest,
+                                 @RequestParam(required = false) String attribute,
                                  @RequestParam(required = false, defaultValue = "-1") int size,
                                  @RequestParam(required = false) String name,
                                  @RequestParam(required = false) String code,
@@ -655,6 +1026,20 @@ public class Shoes {
                                  @RequestParam(required = false) String description,
                                  @RequestParam(required = false, defaultValue = "-1") Double price,
                                  ModelMap map) {
+
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
 
         if (price < 0 || size < 0 || StringUtils.isBlank(attribute) || StringUtils.isBlank(name) || StringUtils.isBlank(code) || StringUtils.isBlank(color)) {
             return "shoes/addProductInfo";
@@ -685,14 +1070,28 @@ public class Shoes {
      */
     @RequestMapping("/deleteProduct")
     @ResponseBody
-    public Result<ShoesProduct> deleteProduct(@RequestParam int productId) {
-        int i = shoesProductService.delProduct(productId);
-        Result<ShoesProduct> shoesUserResult;
-        if (i <= 0) {
-            shoesUserResult = ResultGenerator.genFailResult("没有发现商品信息");
+    public Result<ShoesProduct> deleteProduct(HttpServletRequest httpServletRequest, @RequestParam int productId) {
+        Result<ShoesProduct> shoesUserResult = null;
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            shoesUserResult = ResultGenerator.genSuccessResult();
+            shoesUserResult = ResultGenerator.genFailResult("需要先登录");
         }
+        boolean isRightSystem = (shoesUserResult == null || shoesUserResult.getCode() == 200);
+        if (isRightSystem) {
+            int i = shoesProductService.delProduct(productId);
+            if (i <= 0) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现商品信息");
+            } else {
+                shoesUserResult = ResultGenerator.genSuccessResult();
+            }
+        }
+
         return shoesUserResult;
     }
 
@@ -703,7 +1102,9 @@ public class Shoes {
      */
     @RequestMapping("/updateProduct")
     @ResponseBody
-    public Result<ShoesProduct> updateProduct(@RequestParam(required = false) String attribute,
+    public Result<ShoesProduct> updateProduct(HttpServletRequest httpServletRequest,
+
+                                              @RequestParam(required = false) String attribute,
                                               @RequestParam(required = false, defaultValue = "-1") int size,
                                               @RequestParam(required = false) String name,
                                               @RequestParam(required = false, defaultValue = "-1") Double price,
@@ -711,51 +1112,66 @@ public class Shoes {
                                               @RequestParam(required = false) String color,
                                               @RequestParam(required = false) int productId,
                                               @RequestParam(required = false) String description) {
-        Result<ShoesProduct> shoesProductResult;
+        Result<ShoesProduct> shoesProductResult = null;
 
-        if (productId == 0) {
-            shoesProductResult = ResultGenerator.genFailResult("productId必要");
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesProductResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            ShoesProduct shoesProduct = shoesProductService.getProductInfoByProductId(productId);
-            if (shoesProduct == null) {
-                shoesProductResult = ResultGenerator.genFailResult("没有发现商品信息");
+            shoesProductResult = ResultGenerator.genFailResult("需要先登录");
+        }
+        boolean isRightSystem = (shoesProductResult == null || shoesProductResult.getCode() == 200);
+
+        if (isRightSystem) {
+            if (productId == 0) {
+                shoesProductResult = ResultGenerator.genFailResult("productId必要");
             } else {
-
-                log.info("数据如下" + price);
-                if (price >= 0) {
-                    shoesProduct.setPrice(new BigDecimal(price));
-                }
-                if (StringUtils.isNotBlank(attribute)) {
-                    shoesProduct.setAttribute(attribute);
-                }
-                if (size >= 0) {
-                    shoesProduct.setSize(size);
-                }
-                if (StringUtils.isNotBlank(attribute)) {
-                    shoesProduct.setAttribute(attribute);
-                }
-                if (StringUtils.isNotBlank(name)) {
-                    shoesProduct.setName(name);
-                }
-                if (StringUtils.isNotBlank(code)) {
-                    shoesProduct.setCode(code);
-                }
-                if (StringUtils.isNotBlank(color)) {
-                    shoesProduct.setColor(color);
-                }
-                if (StringUtils.isNotBlank(description)) {
-                    shoesProduct.setDescription(description);
-                }
-
-                log.info("实体类" + shoesProduct.toString());
-                int i = shoesProductService.updateProduct(shoesProduct);
-                if (i > 0) {
-                    shoesProductResult = ResultGenerator.genSuccessResult(shoesProduct);
+                ShoesProduct shoesProduct = shoesProductService.getProductInfoByProductId(productId);
+                if (shoesProduct == null) {
+                    shoesProductResult = ResultGenerator.genFailResult("没有发现商品信息");
                 } else {
-                    shoesProductResult = ResultGenerator.genFailResult("更新失败");
+
+                    log.info("数据如下" + price);
+                    if (price >= 0) {
+                        shoesProduct.setPrice(new BigDecimal(price));
+                    }
+                    if (StringUtils.isNotBlank(attribute)) {
+                        shoesProduct.setAttribute(attribute);
+                    }
+                    if (size >= 0) {
+                        shoesProduct.setSize(size);
+                    }
+                    if (StringUtils.isNotBlank(attribute)) {
+                        shoesProduct.setAttribute(attribute);
+                    }
+                    if (StringUtils.isNotBlank(name)) {
+                        shoesProduct.setName(name);
+                    }
+                    if (StringUtils.isNotBlank(code)) {
+                        shoesProduct.setCode(code);
+                    }
+                    if (StringUtils.isNotBlank(color)) {
+                        shoesProduct.setColor(color);
+                    }
+                    if (StringUtils.isNotBlank(description)) {
+                        shoesProduct.setDescription(description);
+                    }
+
+                    log.info("实体类" + shoesProduct.toString());
+                    int i = shoesProductService.updateProduct(shoesProduct);
+                    if (i > 0) {
+                        shoesProductResult = ResultGenerator.genSuccessResult(shoesProduct);
+                    } else {
+                        shoesProductResult = ResultGenerator.genFailResult("更新失败");
+                    }
                 }
             }
         }
+
         return shoesProductResult;
     }
 
@@ -785,13 +1201,27 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/productInfoByPage")
-    public String productInfoByPage(@RequestParam(value = "productInfo-attribute", required = false) String attribute,
+    public String productInfoByPage(HttpServletRequest httpServletRequest,
+                                    @RequestParam(value = "productInfo-attribute", required = false) String attribute,
                                     @RequestParam(value = "productInfo-size", required = false, defaultValue = "-1") int shoesSize,
                                     @RequestParam(value = "productInfo-name", required = false) String name,
                                     @RequestParam(value = "productInfo-code", required = false) String code,
                                     @RequestParam(value = "productInfo-color", required = false) String color,
                                     @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
                                     @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
         ShoesProduct shoesProduct = new ShoesProduct();
         shoesProduct.setAttribute(attribute);
         if (shoesSize >= 0) {
@@ -849,14 +1279,31 @@ public class Shoes {
      */
     @RequestMapping("/deleteUser")
     @ResponseBody
-    public Result<ShoesUser> deleteUser(@RequestParam int userId) {
-        int i = shoesUserMapper.deleteByPrimaryKey(userId);
-        Result<ShoesUser> shoesUserResult;
-        if (i <= 0) {
-            shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+    public Result<ShoesUser> deleteUser(HttpServletRequest httpServletRequest,
+                                        @RequestParam int userId) {
+
+        Result<ShoesUser> shoesUserResult = null;
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            shoesUserResult = ResultGenerator.genSuccessResult();
+            shoesUserResult = ResultGenerator.genFailResult("需要先登录");
         }
+        boolean isRightSystem = (shoesUserResult == null || shoesUserResult.getCode() == 200);
+
+        if (isRightSystem) {
+            int i = shoesUserMapper.deleteByPrimaryKey(userId);
+            if (i <= 0) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+            } else {
+                shoesUserResult = ResultGenerator.genSuccessResult();
+            }
+        }
+
         return shoesUserResult;
     }
 
@@ -867,45 +1314,61 @@ public class Shoes {
      */
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Result<ShoesUser> updateUserInfo(@RequestParam int userId,
+    public Result<ShoesUser> updateUserInfo(HttpServletRequest httpServletRequest,
+                                            @RequestParam int userId,
                                             @RequestParam(required = false) String phoneNum,
                                             @RequestParam(required = false) String realName,
                                             @RequestParam(required = false) String birthday) {
-        Result<ShoesUser> shoesUserResult;
+        Result<ShoesUser> shoesUserResult = null;
 
-        if (userId == 0) {
-            shoesUserResult = ResultGenerator.genFailResult("userId必要");
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
-            if (shoesUser == null) {
-                shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+            shoesUserResult = ResultGenerator.genFailResult("需要先登录");
+        }
+        boolean isRightSystem = (shoesUserResult == null || shoesUserResult.getCode() == 200);
+
+        if (isRightSystem) {
+            if (userId == 0) {
+                shoesUserResult = ResultGenerator.genFailResult("userId必要");
             } else {
-
-                SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);
-                if (StringUtils.isNotBlank(phoneNum)) {
-                    shoesUser.setPhoneNum(phoneNum);
-                }
-                if (StringUtils.isNotBlank(realName)) {
-                    shoesUser.setRealName(realName);
-                }
-
-                if (StringUtils.isNotBlank(birthday)) {
-                    try {
-                        shoesUser.setBirthday(formatter.parse(birthday));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-                int i = shoesUserMapper.updateByPrimaryKey(shoesUser);
-                if (i > 0) {
-                    shoesUserResult = ResultGenerator.genSuccessResult(shoesUser);
+                ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
+                if (shoesUser == null) {
+                    shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
                 } else {
-                    shoesUserResult = ResultGenerator.genFailResult("更新失败");
+
+                    SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);
+                    if (StringUtils.isNotBlank(phoneNum)) {
+                        shoesUser.setPhoneNum(phoneNum);
+                    }
+                    if (StringUtils.isNotBlank(realName)) {
+                        shoesUser.setRealName(realName);
+                    }
+
+                    if (StringUtils.isNotBlank(birthday)) {
+                        try {
+                            shoesUser.setBirthday(formatter.parse(birthday));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    int i = shoesUserMapper.updateByPrimaryKey(shoesUser);
+                    if (i > 0) {
+                        shoesUserResult = ResultGenerator.genSuccessResult(shoesUser);
+                    } else {
+                        shoesUserResult = ResultGenerator.genFailResult("更新失败");
+                    }
                 }
             }
         }
+
         return shoesUserResult;
     }
 
@@ -916,14 +1379,30 @@ public class Shoes {
      */
     @RequestMapping("/getUserInfoByUserId")
     @ResponseBody
-    public Result<ShoesUser> getUserInfoByUserId(@RequestParam int userId) {
-        Result<ShoesUser> shoesUserResult;
-        ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
-        if (shoesUser == null) {
-            shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+    public Result<ShoesUser> getUserInfoByUserId(HttpServletRequest httpServletRequest,
+                                                 @RequestParam int userId) {
+        Result<ShoesUser> shoesUserResult = null;
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
         } else {
-            shoesUserResult = ResultGenerator.genSuccessResult(shoesUser);
+            shoesUserResult = ResultGenerator.genFailResult("需要先登录");
         }
+        boolean isRightSystem = (shoesUserResult == null || shoesUserResult.getCode() == 200);
+
+        if (isRightSystem) {
+            ShoesUser shoesUser = shoesUserMapper.selectByPrimaryKey(userId);
+            if (shoesUser == null) {
+                shoesUserResult = ResultGenerator.genFailResult("没有发现用户信息");
+            } else {
+                shoesUserResult = ResultGenerator.genSuccessResult(shoesUser);
+            }
+        }
+
         return shoesUserResult;
 
     }
@@ -935,9 +1414,24 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/addUserInfo")
-    public String addUserInfo(@RequestParam(required = false) String phoneNum,
+    public String addUserInfo(HttpServletRequest httpServletRequest,
+                              @RequestParam(required = false) String phoneNum,
                               @RequestParam(required = false) String realName,
                               @RequestParam(required = false) String birthday, ModelMap map) {
+
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
 
         if (StringUtils.isBlank(phoneNum) || StringUtils.isBlank(realName) || StringUtils.isBlank(birthday)) {
             return "shoes/addUserInfo";
@@ -997,9 +1491,24 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/userInfoByPage")
-    public String userInfoByPage(@RequestParam(required = false) String phoneNum,
+    public String userInfoByPage(HttpServletRequest httpServletRequest,
+                                 @RequestParam(required = false) String phoneNum,
                                  @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
                                  @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size, ModelMap map) {
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
         PageHelper.startPage(page, size);
         List<ShoesUser> userInfoByPage;
         Example example = new Example(ShoesUser.class);
@@ -1050,7 +1559,20 @@ public class Shoes {
 
     @RequestMapping("/indexCount")
     public String indexCount(HttpServletRequest httpServletRequest, ModelMap map) {
-        int userId = ShoesCookie.getUserId(httpServletRequest);
+        int userId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            userId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
         ShoesSystem shoesSystem = shoesService.shoesSystemUserById(userId);
         map.addAttribute("shoesSystem", shoesSystem);
         SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);

@@ -1,0 +1,363 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2019/11/14 16:23 
+-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>订单信息查询页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="票据管理系统"/>
+    <link href="/static/favicon/myoperation/index.ico" mce_href="/static/favicon/myoperation/index.ico" rel="icon"
+          type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/jQuery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!--加载弹出框插件-->
+
+    <link rel="stylesheet" type="text/css" href="/static/toastr/toastr.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/toastr/toastr.min.js"></script>
+    <!--日期选择插件-->
+    <link rel="stylesheet" type="text/css" href="/static/datetimepicker/bootstrap-datetimepicker.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/datetimepicker/moment-with-locales.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="/static/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--数据图形化插件-->
+    <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
+    <!--table插件-->
+    <link rel="stylesheet" type="text/css" href="/static/table/bootstrap-table.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/tableExport.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/jquery.base64.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table-export.js"></script>
+    <!--js文件-->
+    <script type="text/javascript" charset="utf-8" src="/static/shoes/js/userInfo.js"></script>
+
+    <script>
+        /*弹出框插件*/
+        toastr.options = {
+            closeButton: true,  //是否显示关闭按钮（提示框右上角关闭按钮）
+            debug: false,  //是否为调试；
+            progressBar: true,  //是否显示进度条（设置关闭的超时时间进度条）
+            positionClass: "toast-top-center",  //消息框在页面显示的位置
+            onclick: null,  //点击消息框自定义事件
+            showDuration: "300",  //显示动作时间
+            hideDuration: "1000",  //隐藏动作时间
+            timeOut: "2000",  //自动关闭超时时间
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",  //显示的方式
+            hideMethod: "fadeOut"  //隐藏的方式
+        };
+    </script>
+
+    <style>
+        .table tbody tr td {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        .table th {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+
+        /*翻页*/
+        .jump {
+            margin: 0px 0;
+            float: right;
+        }
+
+        .jump_text {
+            float: right;
+            margin: 0 0 0 5px;
+            line-height: 33px;
+        }
+
+        .jump_text input {
+            width: 40px;
+            border: rgba(212, 212, 212, 1.00) 1px solid;
+            height: 30px;
+            line-height: 33px;
+            background: #fff;
+        }
+
+        /*取消number的样式*/
+        /* google、safari */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        /* 火狐 */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+
+        <!--头部信息-->
+        <div class="col-md-12 column">
+
+            <div class="col-md-2 column">
+                <div id="xiaocong_weatherforecast">
+
+                </div>
+            </div>
+
+
+            <div class="col-md-8 column">
+                <div class="page-header">
+                    <h3 class="text-center"
+                        th:text="${phoneNum != null && phoneNum != ''? (phoneNum)+'用户订单信息查询' : '全订单信息查询'}">查询页面</h3>
+                </div>
+            </div>
+
+            <div class="col-md-2 column">
+
+            </div>
+
+        </div>
+
+        <!--中间信息-->
+        <div class="col-md-12 column">
+
+
+            <form role="form" class="form-inline" action="/home/orderInfoByPage"
+                  method="post" id="courseStatisticsForm">
+                <div class="form-group">
+                    <label for="single-phoneNum" title="输入手机号进行查询">用户手机号</label>
+                    <input class="form-control" id="single-phoneNum" placeholder="请输入用户手机号" style="height: 30px;"
+                           name="orderInfo-phoneNum" th:value="${phoneNum}">
+                </div>
+                <div class="form-group">
+                    <div class="form-inline">
+                        <label title="下单时间起始时间段">下单时间</label>
+                        <input class="form-control" type="date" placeholder="订单搜索开始时间" style="height: 30px;"
+                               name="orderInfo-startDate"
+                               th:value="${#dates.format(shoesOrder?.createDate, 'yyyy-MM-dd')}">
+                        <input class="form-control" type="date" placeholder="订单搜索结束时间" style="height: 30px;"
+                               name="orderInfo-endDate" th:value="${#dates.format(shoesOrder?.endDate, 'yyyy-MM-dd')}">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="single-pageSize" title="每页所展示的条目数">每页条数</label>
+                    <input class="form-control" id="single-pageSize" placeholder="条数" type="number"
+                           style="height: 30px;"
+                           name="pageSize" th:value="${pageResult?.getData()?.getPageSize()}">
+                </div>
+
+                <button type="submit" class="btn">查询</button>
+
+            </form>
+
+            <br><br>
+
+
+        </div>
+
+
+        <!--显示信息-->
+
+
+        <div class="col-md-12 column">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-toggle="table" data-show-columns="true"
+                       data-search="true" data-show-refresh="true" data-show-toggle="true"
+                       data-export-types="['excel']" id="courseStatisticsTable">
+                    <thead>
+                    <tr style="white-space: nowrap;">
+
+                        <th>
+                            订单号
+                        </th>
+                        <th>
+                            订单金额
+                        </th>
+                        <th>
+                            订单减免
+                        </th>
+                        <th>
+                            获取积分
+                        </th>
+                        <th>
+                            实际付款金额
+                        </th>
+                        <th data-sortable="true">
+                            创建时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="shoesOrder,shoesOrderStat : ${pageResult?.data?.list}">
+                        <td th:text="${shoesOrder.id}">
+                        </td>
+                        <td th:text="${shoesOrder.money}">
+                        </td>
+                        <td th:text="${shoesOrder.reduction}">
+                        </td>
+                        <td th:text="${shoesOrder.empirical}">
+                        </td>
+                        <td th:text="${shoesOrder.money}-${shoesOrder.reduction}">
+                        </td>
+                        <td th:text="${#dates.format(shoesOrder.createDate, 'yyyy/MM/dd hh:mm:ss')}">
+                        </td>
+
+                        <td>
+
+                            <button class='btn btn-xs green' title='查看订单中商品详细'
+                                    th:onclick="|showOrderItem(${shoesOrder.id})|"
+                            ><span class='glyphicon glyphicon-search'></span>商品
+                            </button>
+                            <script>
+                                function showOrderItem(orderId) {
+                                    if (orderId == '') {
+                                        alert("错误的订单");
+                                        return;
+                                    } else {
+                                        window.location.href = "/home/showOrderItemByOrderId?orderId=" + orderId;
+                                    }
+
+                                }
+                            </script>
+                            <button th:if="${shoesOrder.state==2}" class='btn btn-xs green'
+                                    title='删除订单并且删除订单中详细列表' th:onclick="|deleteOrderByOrderId(${shoesOrder.id})|"
+                            ><span class='glyphicon glyphicon-minus'></span>删除
+                            </button>
+                            <script>
+                                function deleteOrderByOrderId(orderId) {
+                                    if (orderId == '') {
+                                        alert("错误的订单");
+                                        return;
+                                    }
+
+                                    if (confirm("是否已经明白操作结果？是否确认删除该订单?")) {
+                                        //点击确定后操作
+                                        $.ajax({
+                                            url: "/home/deleteOrderByOrderId",
+                                            data: {orderId: orderId},
+                                            type: "POST",
+                                            cache: false,
+                                            dataType: "json",
+                                            success: function (d) {
+                                                if (d.code == 200) {
+                                                    //doTTS("删除成功！重置成功");
+                                                    alert("删除成功");
+                                                    window.location.reload();
+                                                } else {
+                                                    toastr.error("发生错误！原因：" + d.message);
+                                                }
+                                            }, error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                                                console.log("ajax错误类型：" + type);
+                                                console.log(err);
+                                            }
+
+                                        });
+
+                                    }
+                                }
+
+                                function doTTS(audioText) {
+                                    var ttsDiv = document.getElementById('bdtts_div_id');
+                                    var ttsAudio = document.getElementById('tts_autio_id');
+                                    // 这样就可实现播放内容的替换了
+                                    ttsDiv.removeChild(ttsAudio);
+                                    var au1 = '<audio id="tts_autio_id" autoplay="autoplay">';
+                                    var sss = '<source id="tts_source_id" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=5&text=' + audioText + '" type="audio/mpeg">';
+                                    var eee = '<embed id="tts_embed_id" height="0" width="0" src="">';
+                                    var au2 = '</audio>';
+                                    ttsDiv.innerHTML = au1 + sss + eee + au2;
+                                    var ttsAudio = document.getElementById('tts_autio_id');
+                                    ttsAudio.play();
+                                }
+                            </script>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <nav>
+
+
+                <ul class="pagination">
+                    <li th:class="${indexPage==1}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage-1})|">上一页</a>
+                    </li>
+                    <li th:if="${indexPage-3 >=1}"><a th:href="|javascript:cp(${indexPage-3})|"
+                                                      th:text="${indexPage -3}">1</a></li>
+                    <li th:if="${indexPage-2 >=1}"><a th:href="|javascript:cp(${indexPage-2})|"
+                                                      th:text="${indexPage -2}">1</a></li>
+                    <li th:if="${indexPage-1 >=1}"><a th:href="|javascript:cp(${indexPage-1})|"
+                                                      th:text="${indexPage -1}">1</a></li>
+                    <li class="active"><a href="#" th:text="${indexPage}">1</a></li>
+                    <li th:if="${indexPage+1 <=totalPage}"><a th:href="|javascript:cp(${indexPage+1})|"
+                                                              th:text="${indexPage +1}">1</a></li>
+                    <li th:if="${indexPage+2 <=totalPage}"><a th:href="|javascript:cp(${indexPage+2})|"
+                                                              th:text="${indexPage +2}">1</a></li>
+                    <li th:if="${indexPage+3 <=totalPage}"><a th:href="|javascript:cp(${indexPage+3})|"
+                                                              th:text="${indexPage +3}">1</a></li>
+
+                    <li th:class="${indexPage==totalPage}?'disabled' : ''"><a th:href="|javascript:cp(${indexPage+1})|">下一页</a>
+                    </li>
+                </ul>
+
+
+                <div class="jump">
+                            <span class="jump_text">
+                                当前<label th:title="'当前共有'+${pageResult?.getData()?.getSize()}+'条目录'"
+                                         th:text="${pageResult?.getData()?.getSize()}"></label>/<label
+                                    th:title="'每页显示'+${pageResult?.getData()?.getPageSize()}+'条目录'"
+                                    th:text="${pageResult?.getData()?.getPageSize()}"></label>条 | <label
+                                    th:title="'当前在第'+${pageResult?.getData()?.getPageNum()}+'页'"
+                                    th:text="${pageResult?.getData()?.getPageNum()}"></label>/<label
+                                    th:title="'总共'+${pageResult?.getData()?.getPages()}+'页'"
+                                    th:text="${pageResult?.getData()?.getPages()}"></label>页,跳到
+                                <input type="number" name="jumpPage"
+                                       id="jumpPage" th:value="${pageResult?.getData()?.getPageNum()}"
+                                       οnkeyup="this.value=this.value.replace(/[^0-9-]+/,'');">页
+                                <button type="button" class="btn btn-primary btn-sm"
+                                        th:onclick="|javascript:goPage(${pageResult?.getData()?.getTotal()})|">跳转</button>
+                            </span>
+                </div>
+
+
+            </nav>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -25,6 +25,9 @@
     <script src="/static/shoes/js/rickshaw.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
 
+    <!--数据图形化插件-->
+    <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
+
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -50,7 +53,16 @@
                             <i class="pull-left fa fa-thumbs-up icon-rounded"></i>
                             <div class="stats">
                                 <h5><strong th:text="${todayData['todayOrderCount']}">0</strong></h5>
-                                <span>今日订单</span>
+                                <span>购买人数</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-thumbs-up icon-rounded"></i>
+                            <div class="stats">
+                                <h5><strong th:text="${todayData['orderItemSize']}">0</strong></h5>
+                                <span>售出鞋子数量</span>
                             </div>
                         </div>
                     </div>
@@ -71,10 +83,193 @@
                 </div>
 
             </div>
+
+            <div class="graphs">
+
+                <div class="col-md-6">
+                    <!--天气数据-->
+                    <div>
+                        <p class="text-center" id="weatherTip">
+                            销售数据丢失，联系我吧！(●'◡'●)
+                        </p>
+                    </div>
+
+                    <!--图表内容-->
+                    <div id="weather" style="width: 100%;height: 400px">
+
+                    </div>
+                </div>
+
+                <!--销售数据-->
+                <div class="col-md-6">
+
+                    <div>
+                        <p class="text-center">
+                            销售数据丢失，联系我吧！(●'◡'●)
+                        </p>
+                    </div>
+
+                    <!--图表内容-->
+                    <div id="sale" style="width: 100%;height: 400px">
+
+                    </div>
+
+                </div>
+                <!--销售额数据-->
+                <!--<div class="col-md-3 ">
+
+                    <div>
+                        <p class="text-center">
+                            销售额数据丢失，联系我吧！(●'◡'●)
+                        </p>
+                    </div>
+
+                    &lt;!&ndash;图表内容&ndash;&gt;
+                    <div id="SalesVolume" style="width: 100%;height: 400px">
+
+                    </div>
+
+                </div>-->
+
+            </div>
+
         </div>
+
+
+
+
+
     </div>
 </div>
 
 
 </body>
+
+<script>
+
+    $(function () {
+
+        /*天气情况*/
+        weatherChart();
+
+    })
+
+    function weatherChart() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('weather'));
+        myChart.showLoading();
+
+        $.ajax({
+            type: "GET",
+            url: "/home/getWeather",
+            timeout: 5000,
+            success: function (data) {
+                var datum = data[0];
+                var week = datum.week;
+                var sunrise = datum.sunrise;
+                var sunset = datum.sunset;
+                var fx = datum.fx;
+                var fl = datum.fl;
+                var notice = datum.notice;
+                var tip = "今天是" + week + ",日出/落时间" + sunrise + "-" + sunset + "," + fx + "(" + fl + ")<br/><b style='color: darkorange'>" + notice + "</b>";
+                // 显示提示
+                document.getElementById("weatherTip").innerHTML = tip;
+
+
+                // 渲染图表
+                var date = [];
+                var highTemp = [];
+                var lowTemp = [];
+
+                for (var i = 0, l = data.length; i < l; i++) {
+                    var weather = data[i];
+                    var ymd = weather.ymd;
+                    date.push(ymd);
+                    var high = weather.high;
+                    highTemp.push(high);
+                    var low = weather.low;
+                    lowTemp.push(low);
+                }
+
+                var option = {
+                    tooltip: {
+                        trigger: 'axis'/*,
+                    formatter: function (a) {
+                        return ('数据名称:' + date['name']);
+                    }*/
+                    },
+                    legend: {
+                        data: ['最高气温', '最低气温']
+                    },
+                    toolbox: {
+
+                        show: true,
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: date
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            formatter: '{value} °C'
+                        }
+                    },
+                    series: [
+                        {
+                            name: '最高气温',
+                            type: 'line',
+                            data: highTemp,
+                            markPoint: {
+                                data: [
+                                    {type: 'max', name: '最大值'},
+                                    {type: 'min', name: '最小值'}
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    {type: 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name: '最低气温',
+                            type: 'line',
+                            data: lowTemp,
+                            markPoint: {
+                                data: [
+                                    {type: 'max', name: '最大值'},
+                                    {type: 'min', name: '最小值'}
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    {type: 'average', name: '平均值'}
+                                ]
+                            }
+                        }
+                    ]
+                };
+
+
+// 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+                myChart.hideLoading();
+                window.addEventListener("resize", function () {
+                    myChart.resize();
+                });
+
+            },
+            error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+        });
+    }
+</script>
+
 </html>

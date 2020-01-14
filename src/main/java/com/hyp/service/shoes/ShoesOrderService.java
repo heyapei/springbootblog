@@ -14,6 +14,14 @@ import java.util.Map;
  */
 public interface ShoesOrderService {
 
+    /**
+     * 通过Id删除shoesOrder和OrderItem
+     *
+     * @param orderId
+     * @return
+     */
+    int deleteOrderAndOrderItem(int orderId);
+
 
     /**
      * 创建shoesOrder

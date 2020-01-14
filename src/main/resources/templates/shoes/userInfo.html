@@ -225,6 +225,9 @@
                             <a target="_blank" th:href="'/home/addOrderPage?userId='+${user.id}" class='btn btn-xs green' title='订单添加'
                             ><span class='glyphicon glyphicon-plus'></span></a>
 
+                            <a th:href="'/home/orderInfoByPage?orderInfo-phoneNum='+${user.phoneNum}" class='btn btn-xs green' title='查看用户订单'
+                            ><span class='glyphicon glyphicon-user'></span></a>
+
                             <a href="javascript:" class='btn btn-xs green' title='查看趋势图'
                                th:onclick="|showTrendMap(${user.id})|"
                             ><span class="glyphicon glyphicon-search"></span></a>

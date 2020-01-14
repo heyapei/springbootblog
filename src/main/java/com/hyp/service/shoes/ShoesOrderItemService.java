@@ -12,6 +12,14 @@ import java.util.List;
  */
 public interface ShoesOrderItemService {
 
+    /**
+     * 通过orderId删除orderItem
+     *
+     * @param orderId
+     * @return
+     */
+    int deleteOrderItemByOrderId(int orderId);
+
 
     /**
      * 更新orderItem

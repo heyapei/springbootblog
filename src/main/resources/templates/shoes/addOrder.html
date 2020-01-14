@@ -101,9 +101,11 @@
             </div>
             <div class="col-md-8 column">
                 <div class="page-header">
-                    <h3 class="text-center">
-                        新订单
-                    </h3>
+                    <!-- <h3 class="text-center">
+                         新订单
+                     </h3>-->
+                    <h3 class="text-center"
+                        th:text="${shoesUser.phoneNum != null && shoesUser.phoneNum != ''? (shoesUser.phoneNum)+'的新订单' : '创建新订单'}">创建新订单</h3>
                 </div>
             </div>
 
@@ -477,12 +479,9 @@
                     详情修改
                 </h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body form-inline">
                 <input type="hidden" id="orderItemId">
-
-
-                数量：<input type="text" id="orderItemNumber" class="form-control" style="width: 70px"/>
-
+                数量：<input type="number" id="orderItemNumber" class="form-control" style="width: 70px"/>
 
             </div>
             <div class="modal-footer">
@@ -716,7 +715,7 @@
             + "<span class='glyphicon glyphicon-envelope'>&nbsp;</span>信息！<button type='button' class='close' data-dismiss='modal'>"
             + "<span style='font-size:20px;  ' class='glyphicon glyphicon-remove'></span><tton></div>"
             + "<div class='modal-body text-center' id='myConfirmContent' style='font-size:18px; '>"
-            + "是否确定要删除该用户？该操作无法还原，请谨慎操作"
+            + "是否确定要删除该商品？该操作无法还原，请谨慎操作"
             + "</div>"
             + "<div class='modal-footer ' style=''>"
             + "<button class='btn btn-danger ' id='confirmOk' >确定<tton>"

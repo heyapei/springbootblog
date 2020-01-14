@@ -1,11 +1,15 @@
 package com.hyp.service.shoes.impl;
 
+import com.hyp.mapper.ShoesOrderItemMapper;
 import com.hyp.mapper.ShoesOrderMapper;
 import com.hyp.pojo.shoes.dataobject.ShoesOrder;
+import com.hyp.pojo.shoes.dataobject.ShoesOrderItem;
+import com.hyp.service.shoes.ShoesOrderItemService;
 import com.hyp.service.shoes.ShoesOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.math.BigDecimal;
@@ -24,6 +28,26 @@ import java.util.Map;
 public class ShoesOrderServiceImpl implements ShoesOrderService {
     @Autowired
     private ShoesOrderMapper shoesOrderMapper;
+    @Autowired
+    private ShoesOrderItemMapper shoesOrderItemMapper;
+    @Autowired
+    private ShoesOrderItemService shoesOrderItemService;
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public int deleteOrderAndOrderItem(int orderId) {
+
+        int i = 0;
+        try {
+            shoesOrderMapper.deleteByPrimaryKey(orderId);
+            shoesOrderItemService.deleteOrderItemByOrderId(orderId);
+            i = 1;
+        } catch (Exception e) {
+            i = -1;
+            e.printStackTrace();
+        }
+        return i;
+    }
 
     @Override
     public int addShoesOrder(ShoesOrder shoesOrder) {
@@ -82,6 +106,7 @@ public class ShoesOrderServiceImpl implements ShoesOrderService {
     public List<ShoesOrder> getShoesOrderByPhoneAndTime(ShoesOrder shoesOrder) {
         Example example = new Example(ShoesOrder.class);
         Example.Criteria criteria = example.createCriteria();
+        example.orderBy("createDate").desc();
         if (shoesOrder != null) {
 
             // 通过userId查询
@@ -89,25 +114,24 @@ public class ShoesOrderServiceImpl implements ShoesOrderService {
                 criteria.andEqualTo("userId", shoesOrder.getUserId());
             }
             if (shoesOrder.getCreateDate() != null) {
-                criteria.andLessThanOrEqualTo("createDate", shoesOrder.getCreateDate());
+                criteria.andGreaterThanOrEqualTo("createDate", shoesOrder.getCreateDate());
 
             }
 
             if (shoesOrder.getEndDate() != null) {
-                criteria.andGreaterThanOrEqualTo("createDate", shoesOrder.getEndDate());
-            }
-
-            List<ShoesOrder> shoesOrderList = shoesOrderMapper.selectByExample(example);
-
-            log.info(shoesOrderList.toString());
-
-            if (shoesOrderList != null && shoesOrderList.size() > 0) {
-                return shoesOrderList;
+                criteria.andLessThanOrEqualTo("createDate", shoesOrder.getEndDate());
             }
 
         }
 
-        return null;
+        List<ShoesOrder> shoesOrderList = shoesOrderMapper.selectByExample(example);
+        log.info(shoesOrderList.toString() + "查询出来的数据");
+
+        if (shoesOrderList != null && shoesOrderList.size() > 0) {
+            return shoesOrderList;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -130,12 +154,21 @@ public class ShoesOrderServiceImpl implements ShoesOrderService {
     @Override
     public Map<String, String> getTodayShoesOrder(String startDate, String endDate) {
         Map<String, String> todayOrder = new HashMap<>(2);
+        Integer orderItems = new Integer(0);
         BigDecimal money = new BigDecimal(0f);
         List<ShoesOrder> shoesOrderByDateRange = shoesOrderMapper.getShoesOrderByDateRange(startDate, endDate);
         for (ShoesOrder shoesOrder : shoesOrderByDateRange) {
-            money = money.add(shoesOrder.getMoney());
+            money = money.add(shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction()))));
+            ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
+            shoesOrderItem.setOrderId(shoesOrder.getId());
+
+
+            List<ShoesOrderItem> orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+            int size = orderItemByShoesOrderItem.size();
+            orderItems += size;
         }
         todayOrder.put("todayMoney", String.valueOf(money));
+        todayOrder.put("orderItemSize", String.valueOf(orderItems));
         todayOrder.put("todayOrderCount", String.valueOf(shoesOrderByDateRange.size()));
         return todayOrder;
     }

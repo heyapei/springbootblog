@@ -22,6 +22,14 @@ public class ShoesOrderItemServiceImpl implements ShoesOrderItemService {
     private ShoesOrderItemMapper shoesOrderItemMapper;
 
     @Override
+    public int deleteOrderItemByOrderId(int orderId) {
+        Example example = new Example(ShoesOrderItem.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("orderId", orderId);
+        return shoesOrderItemMapper.deleteByExample(example);
+    }
+
+    @Override
     public int updateShoesOrderItemByShoesOrderItem(ShoesOrderItem shoesOrderItem) {
         return shoesOrderItemMapper.updateByPrimaryKeySelective(shoesOrderItem);
     }
@@ -46,7 +54,7 @@ public class ShoesOrderItemServiceImpl implements ShoesOrderItemService {
             if (shoesOrderItem.getId() != null) {
                 criteria.andEqualTo("id", shoesOrderItem.getId());
             }
-            // 通过状态值查询
+            // 通过订单号
             if (shoesOrderItem.getOrderId() != null) {
                 criteria.andEqualTo("orderId", shoesOrderItem.getOrderId());
             }
