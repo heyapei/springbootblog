@@ -2,7 +2,10 @@ package com.hyp.mapper;
 
 import com.hyp.pojo.shoes.dataobject.ShoesOrderItem;
 import com.hyp.utils.MyMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 /**
@@ -14,5 +17,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ShoesOrderItemMapper extends MyMapper<ShoesOrderItem> {
 
-
+    /**
+     * 查询最近countNum个热销产品
+     * @param countNum
+     * @return
+     */
+    List<ShoesOrderItem> hotSaleCount(@Param("countNum")int countNum, @Param("startDate")String startDate, @Param("endDate")String endDate);
 }

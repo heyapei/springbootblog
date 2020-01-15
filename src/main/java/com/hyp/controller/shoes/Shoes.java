@@ -11,6 +11,7 @@ import com.hyp.mapper.ShoesUserMapper;
 import com.hyp.pojo.datatransferobject.WeatherDTO;
 import com.hyp.pojo.shoes.dataobject.*;
 import com.hyp.pojo.shoes.dto.ShoesCookieDTO;
+import com.hyp.pojo.shoes.utils.DatesUtil;
 import com.hyp.pojo.shoes.utils.PrintTest;
 import com.hyp.pojo.shoes.vo.OrderItemVO;
 import com.hyp.pojo.shoes.vo.RealOrderVO;
@@ -75,6 +76,86 @@ public class Shoes {
     private ShoesOrderItemService shoesOrderItemService;
 
 
+    /**
+     * 返回热销产品的信息
+     *
+     * @return
+     */
+    @RequestMapping("/getHotSale")
+    @ResponseBody
+    public Map<String, String[]> getHotSale(@RequestParam(required = false, defaultValue = "1") Integer countDate) {
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        // 1 本周 2 上个月 3 今年全部 4 去年全部 5 所有全部 6 本月 7 最近三个月
+        String tip = null;
+        String startDate = null;
+        String endDate = null;
+        switch (countDate) {
+            case 1:
+                tip = "本周产品热销排名（前20）";
+                startDate = formatter.format(DatesUtil.getBeginDayOfWeek());
+                endDate = formatter.format(DatesUtil.getEndDayOfWeek());
+                break;
+            case 2:
+                tip = "上个月产品热销排名（前20）";
+                startDate = formatter.format(DatesUtil.getBeginDayOfLastMonth());
+                endDate = formatter.format(DatesUtil.getEndDayOfLastMonth());
+                break;
+            case 6:
+                tip = "本月产品热销排名（前20）";
+                startDate = formatter.format(DatesUtil.getBeginDayOfMonth());
+                endDate = formatter.format(DatesUtil.getEndDayOfMonth());
+                break;
+            case 3:
+                tip = "今年产品热销排名（前20）";
+                startDate = formatter.format(DatesUtil.getBeginDayOfYear());
+                endDate = formatter.format(DatesUtil.getEndDayOfYear());
+                break;
+            case 4:
+                tip = "去年产品热销排名（前20）";
+                startDate = DatesUtil.getNowYear() - 1 + "-01-01 00:00:00";
+                endDate = DatesUtil.getNowYear() + "-01-01 00:00:00";
+                break;
+            case 7:
+                tip = "近三个月产品热销排名（前20）";
+                //当前时间
+                Date dNow = DatesUtil.getBeginDayOfMonth();
+                //得到日历
+                Calendar calendar = Calendar.getInstance();
+                //把当前时间赋给日历
+                calendar.setTime(dNow);
+                //设置为前3月
+                calendar.add(Calendar.MONTH, -3);
+                //得到前3月的时间
+                Date dBefore = calendar.getTime();
+                startDate = formatter.format(dBefore);
+                endDate = formatter.format(DatesUtil.getEndDayOfMonth());
+                break;
+            case 5:
+            default:
+                tip = "热销产品排名（前20）";
+                break;
+
+        }
+
+        Map<String, String[]> hotsale = new HashMap<>(2);
+
+        List<ShoesOrderItem> shoesOrderItems = shoesOrderItemService.hotSaleCount(20, startDate, endDate);
+        int size = shoesOrderItems.size();
+        if (shoesOrderItems != null && size > 0) {
+            String[] countNum = new String[size];
+            String[] productName = new String[size];
+            for (int i = 0; i < shoesOrderItems.size(); i++) {
+                countNum[i] = String.valueOf(shoesOrderItems.get(i).getNumber());
+                productName[i] = shoesProductService.getProductInfoByProductId(shoesOrderItems.get(i).getProductId()).getName();
+            }
+            hotsale.put("countNum", countNum);
+            hotsale.put("productName", productName);
+        }
+        String[] tips = new String[1];
+        tips[0] = tip;
+        hotsale.put("tips", tips);
+        return hotsale;
+    }
 
 
     /**

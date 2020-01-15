@@ -13,6 +13,14 @@ import java.util.List;
 public interface ShoesOrderItemService {
 
     /**
+     * 查询最近countNum个热销产品
+     * @param countNum
+     * @return
+     */
+    List<ShoesOrderItem> hotSaleCount(int countNum,String startDate,String endDate);
+
+
+    /**
      * 通过orderId删除orderItem
      *
      * @param orderId

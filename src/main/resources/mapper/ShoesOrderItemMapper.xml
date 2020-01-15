@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hyp.mapper.ShoesOrderItemMapper" >
-  <resultMap id="BaseResultMap" type="com.hyp.pojo.shoes.dataobject.ShoesOrderItem" >
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="product_id" property="productId" jdbcType="INTEGER" />
-    <result column="price" property="price" jdbcType="DECIMAL" />
-    <result column="number" property="number" jdbcType="INTEGER" />
-    <result column="order_id" property="orderId" jdbcType="INTEGER" />
-    <result column="money" property="money" jdbcType="DECIMAL" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
-  </resultMap>
+<mapper namespace="com.hyp.mapper.ShoesOrderItemMapper">
+    <resultMap id="BaseResultMap" type="com.hyp.pojo.shoes.dataobject.ShoesOrderItem">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+        <result column="number" property="number" jdbcType="INTEGER"/>
+        <result column="order_id" property="orderId" jdbcType="INTEGER"/>
+        <result column="money" property="money" jdbcType="DECIMAL"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="end_date" property="endDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap type="com.hyp.pojo.shoes.dataobject.ShoesOrderItem" id="hotSaleMap">
+        <result column="product_id" property="productId"/>
+        <result column="count" property="number"/>
+    </resultMap>
+
+    <sql id="hotSaleWhere">
+        <where>
+            <trim suffixOverrides="and">
+                <if test="startDate != null and startDate !=''" >
+                    DATE(end_date) &gt;= #{startDate,jdbcType=VARCHAR} and
+                </if>
+                <if test="endDate != null and endDate !=''" >
+                    DATE(end_date) &lt;= #{endDate,jdbcType=VARCHAR} and
+                </if>
+            </trim>
+        </where>
+    </sql>
+
+    <select id="hotSaleCount" resultMap="hotSaleMap">
+       SELECT product_id,count(product_id) as count
+       from shoes_order_item
+        <include refid="hotSaleWhere" />
+        GROUP BY product_id ORDER BY  count  LIMIT #{countNum,jdbcType=INTEGER};
+    </select>
+
+
 </mapper>

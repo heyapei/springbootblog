@@ -1,7 +1,6 @@
 package com.hyp.service.shoes.impl;
 
 import com.hyp.mapper.ShoesOrderItemMapper;
-import com.hyp.pojo.shoes.dataobject.ShoesOrder;
 import com.hyp.pojo.shoes.dataobject.ShoesOrderItem;
 import com.hyp.service.shoes.ShoesOrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,12 @@ import java.util.List;
 public class ShoesOrderItemServiceImpl implements ShoesOrderItemService {
     @Autowired
     private ShoesOrderItemMapper shoesOrderItemMapper;
+
+
+    @Override
+    public List<ShoesOrderItem> hotSaleCount(int countNum,String startDate,String endDate) {
+        return shoesOrderItemMapper.hotSaleCount(countNum,startDate,endDate);
+    }
 
     @Override
     public int deleteOrderItemByOrderId(int orderId) {
