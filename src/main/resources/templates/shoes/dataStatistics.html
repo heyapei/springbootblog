@@ -1,0 +1,134 @@
+<!--
+  @Description: TODO 
+ 
+  @Author    何亚培
+  @Version   V1.0  
+  @Date      2020/1/15 15:46 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <script src="/static/js/jquery.js"></script>
+    <link href="/static/shoes/css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/static/shoes/js/metisMenu.min.js"></script>
+    <script src="/static/shoes/js/custom.js"></script>
+    <!-- Graph JavaScript -->
+    <script src="/static/shoes/js/d3.v3.js"></script>
+    <script src="/static/shoes/js/rickshaw.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!--数据图形化插件-->
+    <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="/static/shoes/css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="/static/shoes/css/lines.css" rel='stylesheet' type='text/css'/>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+            <div id="wxImg" style="display:none;height:500px;width:500px;position:absolute;">
+                <img id="wxImgId">
+            </div>
+
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#panel-812303" data-toggle="tab">销售数据</a>
+                    </li>
+                    <li>
+                        <a href="#panel-812305" data-toggle="tab">销售额数据</a>
+                    </li>
+                    <li>
+                        <a href="#panel-812304" data-toggle="tab">最新新闻</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="panel-812303">
+                        <!--提示内容-->
+                        <div>
+                            <p id="saleTip" class="text-center">
+                                数据丢失，联系我吧！(●'◡'●)
+                            </p>
+                        </div>
+
+                        <!--图表内容-->
+                        <div id="sale" style="width: 100%;height: 400px">
+
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane" id="panel-812305">
+                        <!--提示内容-->
+                        <div>
+                            <p id="saleMoneyTip" class="text-center">
+                                数据丢失，联系我吧！(●'◡'●)
+                            </p>
+                        </div>
+
+                        <!--图表内容-->
+                        <div id="saleMoney" style="width: 100%;height: 400px">
+
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane" id="panel-812304">
+                        <ul class="list-group" id="news">
+                            数据丢失，联系我吧！(●'◡'●)
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        getNews();
+    });
+
+    function getNews() {
+
+        $.ajax({
+            type: "GET",
+            url: "/home/getNews",
+            dataType: "json",
+            timeout: 5000,
+            success: function (data) {
+                console.log(data);
+
+                var tip = "";
+
+                for (var i = 0, l = data.length; i < l; i++) {
+                    var news = data[i];
+                    var title = news.title;
+                    var category = news.category;
+                    var date = news.date;
+                    var url = news.url;
+                    tip += "<li class='list-group-item'><a target='_blank' href='" + url + "'>" + title + "  ---" + category + "  <label>" + date + "</label>" + "</a></li>";
+                }
+                document.getElementById("news").innerHTML = tip;
+            },
+            error: function (data, type, err) {
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+        });
+    }
+
+
+</script>
+
+</body>
+</html>

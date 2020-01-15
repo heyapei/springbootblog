@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hyp.mapper.ShoesUserMapper;
+import com.hyp.pojo.datatransferobject.NewDTO;
 import com.hyp.pojo.datatransferobject.WeatherDTO;
 import com.hyp.pojo.shoes.dataobject.*;
 import com.hyp.pojo.shoes.dto.ShoesCookieDTO;
@@ -75,6 +76,48 @@ public class Shoes {
     @Autowired
     private ShoesOrderItemService shoesOrderItemService;
 
+
+    /**
+     * 跳转到数据分析页面
+     *
+     * @return
+     */
+    @RequestMapping("/dataStatistics")
+    public String dataStatistics(HttpServletRequest httpServletRequest, ModelMap map) {
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
+        return "shoes/dataStatistics";
+    }
+
+
+    /**
+     * 返回新闻
+     *
+     * @return
+     */
+    @RequestMapping("/getNews")
+    @ResponseBody
+    public List<NewDTO> getNews() {
+        HttpClientUtil httpClientUtil = new HttpClientUtil();
+        String newsReturn = httpClientUtil.getParameter("http://v.juhe.cn/toutiao/index?type=shishang&key=320fe5990868976ec7a68fa3627c7fe2", null, null, 2000, 2000, 2000);
+        JSONObject parse = JSONObject.parseObject(newsReturn);
+        JSONObject result = parse.getJSONObject("result");
+        String data = result.getString("data");
+        List<NewDTO> NewDTOs = JsonUtils.jsonToList(data, NewDTO.class);
+        return NewDTOs;
+    }
 
     /**
      * 返回热销产品的信息
