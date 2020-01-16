@@ -152,20 +152,69 @@ public class Shoes {
         showUserBuy.put("shoesAverage", new String[]{String.valueOf(shoesAverage)});
         String buyDate[] = null;
         String buyNum[] = null;
+        String shoesAve[] = null;
         if (buyRoute != null && buyRoute.size() > 0) {
+            SimpleDateFormat formatter1 = new SimpleDateFormat(dateFormat);
             int buyRoteSize = buyRoute.size();
             buyDate = new String[buyRoteSize];
             buyNum = new String[buyRoteSize];
+            shoesAve = new String[buyRoteSize];
             int i = 0;
+            Map<String, String> shoesNum2 = new HashMap<>(16);
             for (String key : buyRoute.keySet()) {
                 String value = buyRoute.get(key).toString();
+                String startDate = key + " 00:00:00";
+                String endDate = key + " 23:59:59";
+                log.info(startDate + "查看一下日期格式");
+                try {
+                    shoesOrder.setCreateDate(formatter1.parse(startDate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    shoesOrder.setEndDate(formatter1.parse(endDate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                List<ShoesOrder> shoesOrderByPhoneAndTime1 = shoesOrderService.getShoesOrderByPhoneAndTime(shoesOrder);
+                BigDecimal realMoney1 = new BigDecimal(0);
+                double shoesAve1 = 0d;
+                int shoesNum1 = 0;
+                if (shoesOrderByPhoneAndTime1 != null && shoesOrderByPhoneAndTime1.size() > 0) {
+                    for (ShoesOrder order : shoesOrderByPhoneAndTime1) {
+
+                        Integer reduction = order.getReduction();
+                        realMoney1 = realMoney1.add(order.getMoney().subtract(BigDecimal.valueOf(reduction)));
+
+                        if (!shoesNum2.containsKey(key)) {
+                            shoesNum1 = 0;
+                            shoesNum2.put(key, String.valueOf(shoesNum1));
+                        }
+
+                        ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
+                        shoesOrderItem.setOrderId(order.getId());
+                        List<ShoesOrderItem> orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+                        if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() > 0) {
+                            shoesNum1 += orderItemByShoesOrderItem.size();
+                        }
+                    }
+
+                }
+
+                log.info("个人总金额" + realMoney1.doubleValue() + "==鞋子数量" + shoesNum1);
+                if (shoesNum1 > 0) {
+                    shoesAve1 = realMoney1.doubleValue() / shoesNum1;
+                    shoesAve1 = new BigDecimal(String.valueOf(shoesAve1)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                }
                 buyDate[i] = key;
                 buyNum[i] = value;
+                shoesAve[i] = String.valueOf(shoesAve1);
                 i++;
             }
         }
         showUserBuy.put("buyDate", buyDate);
         showUserBuy.put("buyNum", buyNum);
+        showUserBuy.put("shoesAve", shoesAve);
 
 
         return showUserBuy;
