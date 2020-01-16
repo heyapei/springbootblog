@@ -565,8 +565,24 @@
                         }
                     },
                     legend: {
-                        data: ['蒸发量', '降水量']
+                        data: ['购买量', '平均金额']
                     },
+                    dataZoom: [{
+                        type: 'inside',
+                        start: 50,
+                        end: 100,
+                    }, {
+                        start: 0,
+                        end: 100,
+                        handleSize: '80%',
+                        handleStyle: {
+                            color: '#fff',
+                            shadowBlur: 3,
+                            shadowColor: 'rgba(0, 0, 0, 0.6)',
+                            shadowOffsetX: 2,
+                            shadowOffsetY: 2
+                        }
+                    }],
                     xAxis: [
                         {
                             type: 'category',
@@ -597,7 +613,7 @@
                             position: 'left',
                             axisLine: {
                                 lineStyle: {
-                                    color: colors[2]
+                                    color: colors[1]
                                 }
                             },
                             axisLabel: {
