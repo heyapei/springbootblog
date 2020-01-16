@@ -78,6 +78,101 @@ public class Shoes {
 
 
     /**
+     * 用户购买行为总结
+     *
+     * @return
+     */
+    @RequestMapping("/showUserBuy")
+    @ResponseBody
+    public Map<String, String[]> showUserBuy(@RequestParam Integer userId) {
+        SimpleDateFormat formatter = new SimpleDateFormat(shortDateFormat);
+        Date pastDate = DatesUtil.getPastDate(365);
+
+        Map<String, String[]> showUserBuy = new HashMap<>(5);
+        ShoesOrder shoesOrder = new ShoesOrder();
+        shoesOrder.setUserId(userId);
+        shoesOrder.setCreateDate(pastDate);
+        shoesOrder.setEndDate(new Date());
+        List<ShoesOrder> shoesOrderByPhoneAndTime = shoesOrderService.getShoesOrderByPhoneAndTime(shoesOrder);
+        BigDecimal realMoney = new BigDecimal(0);
+        int orderNum = 0;
+        int shoesNum = 0;
+        double orderAverage = 0;
+        double shoesAverage = 0;
+        Map<String, Integer> buyRoute = new HashMap<>(16);
+        if (shoesOrderByPhoneAndTime != null && shoesOrderByPhoneAndTime.size() > 0) {
+            /*购买路线*/
+            for (ShoesOrder order : shoesOrderByPhoneAndTime) {
+                Integer reduction = order.getReduction();
+                realMoney = realMoney.add(order.getMoney().subtract(BigDecimal.valueOf(reduction)));
+                ShoesOrderItem shoesOrderItem = new ShoesOrderItem();
+                shoesOrderItem.setOrderId(order.getId());
+                List<ShoesOrderItem> orderItemByShoesOrderItem = shoesOrderItemService.getOrderItemByShoesOrderItem(shoesOrderItem);
+                if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() > 0) {
+                    shoesNum += orderItemByShoesOrderItem.size();
+                }
+
+
+                /*统计购买路线*/
+                Date createDate = order.getCreateDate();
+                String format = formatter.format(createDate);
+                if (buyRoute.containsKey(format)) {
+                    Integer number = buyRoute.get(format);
+                    if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() > 0) {
+                        number += orderItemByShoesOrderItem.size();
+                    }
+                    buyRoute.put(format, number);
+                } else {
+                    if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() > 0) {
+                        buyRoute.put(format, orderItemByShoesOrderItem.size());
+                    }
+                }
+            }
+            orderNum = shoesOrderByPhoneAndTime.size();
+        }
+        double realMoneyDouble = realMoney.doubleValue();
+
+        /*总收款金额*/
+        showUserBuy.put("realMoney", new String[]{String.valueOf(realMoney)});
+        /*订单数量*/
+        showUserBuy.put("orderNum", new String[]{String.valueOf(orderNum)});
+        /*鞋子数量*/
+        showUserBuy.put("shoesNum", new String[]{String.valueOf(shoesNum)});
+        /*平均每单价格*/
+        if (orderNum > 0) {
+            orderAverage = realMoneyDouble / orderNum;
+            orderAverage = new BigDecimal(String.valueOf(orderAverage)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        }
+        showUserBuy.put("orderAverage", new String[]{String.valueOf(orderAverage)});
+        /*平均没双鞋子价格*/
+        if (shoesNum > 0) {
+            shoesAverage = realMoneyDouble / shoesNum;
+            shoesAverage = new BigDecimal(String.valueOf(shoesAverage)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        }
+        showUserBuy.put("shoesAverage", new String[]{String.valueOf(shoesAverage)});
+        String buyDate[] = null;
+        String buyNum[] = null;
+        if (buyRoute != null && buyRoute.size() > 0) {
+            int buyRoteSize = buyRoute.size();
+            buyDate = new String[buyRoteSize];
+            buyNum = new String[buyRoteSize];
+            int i = 0;
+            for (String key : buyRoute.keySet()) {
+                String value = buyRoute.get(key).toString();
+                buyDate[i] = key;
+                buyNum[i] = value;
+                i++;
+            }
+        }
+        showUserBuy.put("buyDate", buyDate);
+        showUserBuy.put("buyNum", buyNum);
+
+
+        return showUserBuy;
+    }
+
+
+    /**
      * 跳转到数据分析页面
      *
      * @return
@@ -97,8 +192,203 @@ public class Shoes {
             map.addAttribute("errorDesc", "请重新登录系统");
             return "communal/error/error";
         }
-
         return "shoes/dataStatistics";
+    }
+
+    /**
+     * 获取五年内年度数据-年度数据查询
+     *
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    @RequestMapping("/yearStatistics")
+    @ResponseBody
+    public Result yearStatistics(HttpServletRequest httpServletRequest) {
+
+        Result resultObject = null;
+
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
+        } else {
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
+
+        boolean isRightSystem = (resultObject == null || resultObject.getCode() == 200);
+        if (!isRightSystem) {
+            return resultObject;
+        }
+
+        Map<String, List<String>> map = new HashMap<>(5);
+
+        List<String> yearList = new ArrayList<>();
+        List<String> peopleList = new ArrayList<>();
+        List<String> orderList = new ArrayList<>();
+        List<String> moneyList = new ArrayList<>();
+        List<String> realMoneyList = new ArrayList<>();
+        Integer nowYear = DatesUtil.getNowYear();
+
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        // 获取五年内年度数据
+        for (int i = 0; i < 5; i++) {
+
+
+            String startDate = nowYear + "-01-01 00:00:00";
+            String endDate = nowYear + "-12-31 23:59:59";
+
+            ShoesOrder shoesOrder = new ShoesOrder();
+            try {
+                shoesOrder.setCreateDate(formatter.parse(startDate));
+                shoesOrder.setEndDate(formatter.parse(endDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            List<ShoesOrder> shoesOrderByPhoneAndTime = shoesOrderService.getShoesOrderByPhoneAndTime(shoesOrder);
+            if (shoesOrderByPhoneAndTime != null && shoesOrderByPhoneAndTime.size() > 0) {
+
+                BigDecimal money = new BigDecimal(0);
+                BigDecimal realMoney = new BigDecimal(0);
+                Set<Integer> peopleNum = new HashSet<>();
+                for (ShoesOrder order : shoesOrderByPhoneAndTime) {
+                    peopleNum.add(order.getUserId());
+                    money = order.getMoney().add(money);
+                    Integer reduction = order.getReduction();
+                    realMoney = realMoney.add(order.getMoney().subtract(BigDecimal.valueOf(reduction)));
+                }
+
+
+                yearList.add(String.valueOf(nowYear));
+                orderList.add(String.valueOf(shoesOrderByPhoneAndTime.size()));
+                peopleList.add(String.valueOf(peopleNum.size()));
+                moneyList.add(String.valueOf(money));
+                realMoneyList.add(String.valueOf(realMoney));
+            }
+            map.put("yearList", yearList);
+            map.put("peopleList", peopleList);
+            map.put("orderList", orderList);
+            map.put("moneyList", moneyList);
+            map.put("realMoneyList", realMoneyList);
+
+            nowYear--;
+        }
+
+        resultObject = ResultGenerator.genSuccessResult(map);
+        return resultObject;
+    }
+
+
+    /**
+     * 具体的月度数据
+     *
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    @RequestMapping("/monthStatistics")
+    @ResponseBody
+    public Result monthStatistics(HttpServletRequest httpServletRequest, @RequestParam(required = false) Integer searchYear) {
+
+        Result resultObject = null;
+
+        int sysUserId = 0;
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                resultObject = ResultGenerator.genFailResult("没有发现管理员信息");
+            }
+        } else {
+            resultObject = ResultGenerator.genFailResult("需要先登录");
+        }
+
+        boolean isRightSystem = (resultObject == null || resultObject.getCode() == 200);
+        if (!isRightSystem) {
+            return resultObject;
+        }
+
+        Map<String, List<String>> map = new HashMap<>(5);
+
+        List<String> monthList = new ArrayList<>();
+        List<String> peopleList = new ArrayList<>();
+        List<String> orderList = new ArrayList<>();
+        List<String> moneyList = new ArrayList<>();
+        List<String> realMoneyList = new ArrayList<>();
+        String tip;
+
+        if (searchYear == null || searchYear.equals("")) {
+            searchYear = DatesUtil.getNowYear();
+        }
+        tip = String.valueOf(searchYear);
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        // 获取五年内年度数据
+        for (int i = 12; i > 0; i--) {
+
+            String startDate = searchYear + "-" + i + "-01 00:00:00";
+            String endDate = searchYear + "-" + i + "-31 23:59:59";
+
+            ShoesOrder shoesOrder = new ShoesOrder();
+            try {
+                shoesOrder.setCreateDate(formatter.parse(startDate));
+                shoesOrder.setEndDate(formatter.parse(endDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            List<ShoesOrder> shoesOrderByPhoneAndTime = shoesOrderService.getShoesOrderByPhoneAndTime(shoesOrder);
+            if (shoesOrderByPhoneAndTime != null && shoesOrderByPhoneAndTime.size() > 0) {
+
+                BigDecimal money = new BigDecimal(0);
+                BigDecimal realMoney = new BigDecimal(0);
+
+                Set<Integer> peopleNum = new HashSet<>();
+                for (ShoesOrder order : shoesOrderByPhoneAndTime) {
+                    peopleNum.add(order.getUserId());
+                    money = order.getMoney().add(money);
+                    Integer reduction = order.getReduction();
+                    realMoney = realMoney.add(order.getMoney().subtract(BigDecimal.valueOf(reduction)));
+                }
+
+                monthList.add(String.valueOf(i));
+                orderList.add(String.valueOf(shoesOrderByPhoneAndTime.size()));
+                peopleList.add(String.valueOf(peopleNum.size()));
+                moneyList.add(String.valueOf(money));
+                realMoneyList.add(String.valueOf(realMoney));
+            }
+
+            List<String> tips = new ArrayList<>();
+            tips.add(tip);
+            map.put("tips", tips);
+
+            map.put("monthList", monthList);
+            map.put("peopleList", peopleList);
+            map.put("orderList", orderList);
+            map.put("moneyList", moneyList);
+            map.put("realMoneyList", realMoneyList);
+
+        }
+        resultObject = ResultGenerator.genSuccessResult(map);
+        return resultObject;
+    }
+
+
+    /**
+     * 销售和销售额的统计数据
+     * 本来是要给图表的 暂时不适用
+     *
+     * @return
+     */
+    @RequestMapping("/saleAndAmountChart")
+    @ResponseBody
+    public List<NewDTO> saleAndAmountChart() {
+        HttpClientUtil httpClientUtil = new HttpClientUtil();
+        String newsReturn = httpClientUtil.getParameter("http://v.juhe.cn/toutiao/index?type=shishang&key=320fe5990868976ec7a68fa3627c7fe2", null, null, 2000, 2000, 2000);
+        JSONObject parse = JSONObject.parseObject(newsReturn);
+        JSONObject result = parse.getJSONObject("result");
+        String data = result.getString("data");
+        List<NewDTO> NewDTOs = JsonUtils.jsonToList(data, NewDTO.class);
+        return NewDTOs;
     }
 
 
@@ -1577,6 +1867,33 @@ public class Shoes {
         }
 
         return "shoes/addUserInfo";
+    }
+
+
+    /**
+     * 查询商品码是否存在
+     *
+     * @return
+     */
+    @RequestMapping("/validateShoesCode")
+    @ResponseBody
+    public String validateShoesCode(@RequestParam String code) {
+
+        ShoesProduct productInfoByProductCode = shoesProductService.getProductInfoByProductCode(code);
+        boolean isValidate = false;
+        if (productInfoByProductCode == null) {
+            isValidate = true;
+        }
+        Map<String, Boolean> map = new HashMap<>(1);
+        map.put("valid", isValidate);
+        ObjectMapper mapper = new ObjectMapper();
+        String resultString = "";
+        try {
+            resultString = mapper.writeValueAsString(map);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return resultString;
     }
 
 

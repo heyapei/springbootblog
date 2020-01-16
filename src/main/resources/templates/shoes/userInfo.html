@@ -222,15 +222,19 @@
 
                         <td>
 
-                            <a target="_blank" th:href="'/home/addOrderPage?userId='+${user.id}" class='btn btn-xs green' title='订单添加'
+                            <a target="_blank" th:href="'/home/addOrderPage?userId='+${user.id}"
+                               class='btn btn-xs green' title='订单添加'
                             ><span class='glyphicon glyphicon-plus'></span></a>
 
-                            <a th:href="'/home/orderInfoByPage?orderInfo-phoneNum='+${user.phoneNum}" class='btn btn-xs green' title='查看用户订单'
-                            ><span class='glyphicon glyphicon-user'></span></a>
+                            <a th:href="'/home/orderInfoByPage?orderInfo-phoneNum='+${user.phoneNum}"
+                               class='btn btn-xs green' title='查看用户订单'
+                            ><span class='glyphicon glyphicon-search'></span></a>
 
-                            <a href="javascript:" class='btn btn-xs green' title='查看趋势图'
-                               th:onclick="|showTrendMap(${user.id})|"
-                            ><span class="glyphicon glyphicon-search"></span></a>
+                            <!--glyphicon glyphicon-user-->
+                            <!--glyphicon glyphicon-search-->
+                            <a href="javascript:" class='btn btn-xs green' title='用户分析'
+                               th:onclick="|showUserBuy(${user.id})|"
+                            ><span class="glyphicon glyphicon-user"></span></a>
 
                             <a href="javascript:" class='btn btn-xs green' title='修改用户信息'
                                th:onclick="|getUserInfoByUserId(${user.id})|"
@@ -398,10 +402,165 @@
 </form>
 
 
+<div class="modal fade" id="showUserBuy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <!--  定义模态框，过渡效果为淡入，id为myModal,tabindex=-1可以禁用使用tab切换，aria-labelledby用于引用模态框的标题，aria-hidden=true保持模态框在触发前窗口不可见  -->
+    <div class="modal-dialog modal-lg">
+        <!--  显示模态框对话框模型（若不写下一个div则没有颜色）  -->
+        <div class="modal-content">
+            <!--  显示模态框白色背景，所有内容都写在这个div里面  -->
+            <!--<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>用户购买总结</h4>
+            </div>-->
+
+            <div class="modal-body">
+                <fieldset>
+                    <legend>数据为用户最近365天的购买总结</legend>
+
+                    <div class="table-responsive">
+                        <table class="table  table-bordered table-condensed">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    消费总额
+                                </td>
+                                <td id="realMoney">
+                                </td>
+                                <td>
+                                    订单数量
+                                </td>
+                                <td id="orderNum">
+                                </td>
+                                <td>
+                                    商品数量
+                                </td>
+                                <td id="shoesNum">
+                                </td>
+                                <td>
+                                    平均每单
+                                </td>
+                                <td id="orderAverage">
+                                </td>
+                                <td>
+                                    平均每双
+                                </td>
+                                <td id="shoesAverage">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="showUserBuyChart" style="width: 100%;height: 400px">
+
+                    </div>
+                </fieldset>
+
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script>
 
+    function showUserBuy(userId) {
+
+        $('#showUserBuy').modal("show");
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('showUserBuyChart'));
+        myChart.showLoading();
+
+        $.ajax({
+            type: "GET",
+            url: "/home/showUserBuy?userId=" + userId,
+            timeout: 5000,
+            success: function (data) {
+
+                var shoesNum = data.shoesNum[0];
+                var orderAverage = data.orderAverage[0];
+                var orderNum = data.orderNum[0];
+                var realMoney = data.realMoney[0];
+                var shoesAverage = data.shoesAverage[0];
+                $("#shoesNum").text(shoesNum);
+                $("#orderAverage").text(orderAverage);
+                $("#orderNum").text(orderNum);
+                $("#realMoney").text(realMoney);
+                $("#shoesAverage").text(shoesAverage);
+
+                var buyDate = data.buyDate;
+                var buyNum = data.buyNum;
+
+
+                var option = {
+                    /*title: {
+                          text: '数据为用户最近365天的购买总结'
+                      },*/
+                    color: ['#3398DB'],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            dataView: {readOnly: false},
+                            saveAsImage: {}
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: buyDate,
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '商品数量',
+                            type: 'bar',
+                            barWidth: '60%',
+                            data: buyNum
+                        },
+                    ]
+                };
+
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+                myChart.hideLoading();
+                window.addEventListener("resize", function () {
+                    myChart.resize();
+                });
+
+                $('#showUserBuy').on('shown.bs.modal', function () {
+                    myChart.resize()
+                })
+
+            },
+            error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+        });
+    }
 
     function updateUserInfo() {
         var userId = $("#userId").val();
@@ -523,6 +682,10 @@
             deleteUser(); // 执行函数
         });
     }
+
+
 </script>
+
+
 </body>
 </html>

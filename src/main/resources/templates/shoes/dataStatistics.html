@@ -12,22 +12,66 @@
     <title>Title</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap-theme.min.css"/>
     <script src="/static/js/jquery.js"></script>
-    <link href="/static/shoes/css/custom.css" rel="stylesheet">
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/static/shoes/js/metisMenu.min.js"></script>
-    <script src="/static/shoes/js/custom.js"></script>
-    <!-- Graph JavaScript -->
-    <script src="/static/shoes/js/d3.v3.js"></script>
-    <script src="/static/shoes/js/rickshaw.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <!--数据图形化插件-->
     <script type="text/javascript" charset="utf-8" src="/static/echarts/echarts.min.js"></script>
-    <!-- Custom CSS -->
-    <link href="/static/shoes/css/style.css" rel='stylesheet' type='text/css'/>
-    <!-- Graph CSS -->
-    <link href="/static/shoes/css/lines.css" rel='stylesheet' type='text/css'/>
+    <!--table插件-->
+    <link rel="stylesheet" type="text/css" href="/static/table/bootstrap-table.min.css"/>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/tableExport.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/jquery.base64.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/table/bootstrap-table-export.js"></script>
 
+
+    <style>
+        .table tbody tr td {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        .table th {
+            text-align: center; /** 设置水平方向居中 */
+            vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        /*取消number的样式*/
+        /* google、safari */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        /* 火狐 */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        /*超链接样式*/
+        a.redlink:link {
+            color: #FF0000;
+            /*text-decoration:underline;*/
+            text-decoration: none;
+        }
+
+        a.redlink:visited {
+            color: #00FF00;
+            text-decoration: none;
+        }
+
+        a.redlink:hover {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        a.redlink:active {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -40,23 +84,117 @@
 
             <div class="tabbable">
                 <ul class="nav nav-tabs">
+
                     <li class="active">
-                        <a href="#panel-812303" data-toggle="tab">销售数据</a>
+                        <a href="#panel-812305" data-toggle="tab">销售数据</a>
                     </li>
                     <li>
-                        <a href="#panel-812305" data-toggle="tab">销售额数据</a>
+                        <a href="#panel-812303" data-toggle="tab">销售数据(图标)</a>
                     </li>
                     <li>
-                        <a href="#panel-812304" data-toggle="tab">最新新闻</a>
+                        <a href="#panel-812304" data-toggle="tab">时尚新闻</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="panel-812303">
+
+
+                    <div class="tab-pane active" id="panel-812305">
+
+                        <div class="col-md-6">
+                            <br><br><br><br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" data-toggle="table"
+                                       data-show-toggle="true"
+                                       data-export-types="['excel']" id="yearStatisticsTable">
+                                    <thead>
+                                    <tr style="white-space: nowrap;">
+                                        <th>
+                                            年度
+                                        </th>
+                                        <th>
+                                            人数
+                                        </th>
+                                        <th>
+                                            订单量
+                                        </th>
+                                        <th>
+                                            总金额
+                                        </th>
+                                        <th>
+                                            实收金额
+                                        </th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-danger" id="yearStatisticsTbody">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <br><br>
+
+                            <form role="form" class="form-inline"
+                                  method="post" id="courseStatisticsForm">
+                                <div class="form-group">
+                                    <label for="single-phoneNum" title="填入要查询的年份信息">年份</label>
+                                    <input class="form-control" id="single-phoneNum" placeholder="请填入年度信息" type="number"
+                                           style="height: 30px;"
+                                           name="orderInfo-phoneNum"
+                                           onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}"
+                                    >
+                                </div>
+
+                                <button type="button" class="btn" onclick="monthStatistics()">查询</button>
+
+                            </form>
+
+                            <div class="table-responsive">
+                                <p style="text-align: center" id="monthStatisticsTip">当前年度月份信息查询</p>
+                                <table class="table table-bordered table-hover" data-toggle="table"
+                                       data-show-toggle="true"
+                                       data-export-types="['excel']" id="monthStatisticsTable">
+                                    <thead>
+                                    <tr style="white-space: nowrap;">
+                                        <th>
+                                            月份
+                                        </th>
+                                        <th>
+                                            人数
+                                        </th>
+                                        <th>
+                                            订单量
+                                        </th>
+                                        <th>
+                                            总金额
+                                        </th>
+                                        <th>
+                                            实收金额
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-warning" id="monthStatisticsTbody">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tab-pane" id="panel-812303">
                         <!--提示内容-->
                         <div>
+
                             <p id="saleTip" class="text-center">
-                                数据丢失，联系我吧！(●'◡'●)
+                                <a href="javascript:alert('微信联系15518901416')" class="redlink">数据丢失，联系我吧！(●'◡'●)</a>
                             </p>
+
+
                         </div>
 
                         <!--图表内容-->
@@ -66,24 +204,10 @@
 
                     </div>
 
-                    <div class="tab-pane" id="panel-812305">
-                        <!--提示内容-->
-                        <div>
-                            <p id="saleMoneyTip" class="text-center">
-                                数据丢失，联系我吧！(●'◡'●)
-                            </p>
-                        </div>
-
-                        <!--图表内容-->
-                        <div id="saleMoney" style="width: 100%;height: 400px">
-
-                        </div>
-
-                    </div>
 
                     <div class="tab-pane" id="panel-812304">
                         <ul class="list-group" id="news">
-                            数据丢失，联系我吧！(●'◡'●)
+                            <a href="javascript:alert('微信联系15518901416')" class="redlink" style="text-align: center">数据丢失，联系我吧！(●'◡'●)</a>
                         </ul>
                     </div>
 
@@ -95,8 +219,142 @@
 
 <script>
     $(function () {
+        yearStatistics();
+        monthStatistics();
         getNews();
     });
+
+    function yearStatistics() {
+        $.ajax({
+            type: "GET",
+            url: "/home/yearStatistics",
+            timeout: 5000,
+            cache: false,
+            success: function (data) {
+                var json = JSON.stringify(data); // 先解析一下
+                var _json = JSON.parse(json);
+                var tdInnerHtml = "";
+                if (_json.code == 200) {
+                    var yearList = _json.data.yearList;
+                    var peopleList = _json.data.peopleList;
+                    var orderList = _json.data.orderList;
+                    var realMoneyList = _json.data.realMoneyList;
+                    var moneyList = _json.data.moneyList;
+
+                    for (var i = 0; i < yearList.length; i++) {
+                        tdInnerHtml = tdInnerHtml + "<tr>" +
+                            "<td>" + yearList[i] + "</td>" +
+                            "<td>" + peopleList[i] + "</td>" +
+                            "<td>" + orderList[i] + "</td>" +
+                            "<td>" + moneyList[i] + "</td>" +
+                            "<td>" + realMoneyList[i] + "</td>" +
+                            "</tr>";
+                    }
+
+                } else {
+                    tdInnerHtml = "<tr>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "</tr>";
+                }
+                $("#yearStatisticsTbody").html(tdInnerHtml);
+            },
+            error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+        });
+    }
+
+    function monthStatistics() {
+        var searchYear = $("#single-phoneNum").val();
+        $.ajax({
+            type: "GET",
+            url: "/home/monthStatistics?searchYear=" + searchYear,
+            timeout: 5000,
+            cache: false,
+            success: function (data) {
+                var json = JSON.stringify(data); // 先解析一下
+                var _json = JSON.parse(json);
+                var tdInnerHtml = "";
+                if (_json.code == 200) {
+                    var tips = _json.data.tips;
+                    $("#monthStatisticsTip").html(tips[0] + "年度的销售数据");
+
+                    var moneyList = _json.data.moneyList;
+                    var peopleList = _json.data.peopleList;
+                    var orderList = _json.data.orderList;
+                    var realMoneyList = _json.data.realMoneyList;
+                    var monthList = _json.data.monthList;
+                    for (var i = 0; i < moneyList.length; i++) {
+                        tdInnerHtml = tdInnerHtml + "<tr>" +
+                            "<td>" + monthList[i] + "</td>" +
+                            "<td>" + peopleList[i] + "</td>" +
+                            "<td>" + orderList[i] + "</td>" +
+                            "<td>" + moneyList[i] + "</td>" +
+                            "<td>" + realMoneyList[i] + "</td>" +
+                            "</tr>";
+                    }
+
+                } else {
+                    tdInnerHtml = "<tr>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "<td>出现错误</td>" +
+                        "</tr>";
+                }
+
+                $("#monthStatisticsTbody").html(tdInnerHtml);
+                //$("#yearStatisticsTbody").html(tdInnerHtml);
+
+                /*var monthStatistics_json = JSON.parse(json);
+                var peopleList = monthStatistics_json.peopleList;
+                var orderList = monthStatistics_json.orderList;
+                var monthList = monthStatistics_json.monthList;
+                var realMoneyList = monthStatistics_json.realMoneyList;
+                var moneyList = monthStatistics_json.moneyList;*/
+
+            },
+            error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+        });
+    }
+
+
+    /*function saleStatistics() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('sale'));
+        myChart.showLoading();
+
+        $.ajax({
+            type: "GET",
+            url: "/home/saleAndAmountChart",
+            timeout: 5000,
+            success: function (data) {
+
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+                myChart.hideLoading();
+                window.addEventListener("resize", function () {
+                    myChart.resize();
+                });
+
+            },
+            error: function (data, type, err) {  // 以下依次是返回过来的数据，错误类型，错误码
+                console.log("ajax错误类型：" + type);
+                console.log(err);
+            }
+        });
+    }*/
+
 
     function getNews() {
 
@@ -126,6 +384,35 @@
             }
         });
     }
+
+
+    $(function () {
+        /* var date = new Date;
+         var year = date.getFullYear();
+         $("#yearBeforeLast").val(year - 2 + "选课");
+         $("#yearLast").text(year - 1 + "选课");
+         $("#yearNow").html(year + "选课");*/
+
+        $('#yearStatisticsTable').bootstrapTable('destroy').bootstrapTable({
+            //导出功能设置（关键代码）
+            exportDataType: 'all',//'basic':当前页的数据, 'all':全部的数据, 'selected':选中的数据
+            showExport: true,  //是否显示导出按钮
+            buttonsAlign: "right",  //按钮位置
+            exportTypes: ['excel']  //导出文件类型，[ 'csv', 'txt', 'sql', 'doc', 'excel', 'xlsx', 'pdf']
+
+        });
+
+        $('#monthStatisticsTable').bootstrapTable('destroy').bootstrapTable({
+            //导出功能设置（关键代码）
+            exportDataType: 'all',//'basic':当前页的数据, 'all':全部的数据, 'selected':选中的数据
+            showExport: true,  //是否显示导出按钮
+            buttonsAlign: "right",  //按钮位置
+            exportTypes: ['excel']  //导出文件类型，[ 'csv', 'txt', 'sql', 'doc', 'excel', 'xlsx', 'pdf']
+
+        });
+
+
+    })
 
 
 </script>

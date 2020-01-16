@@ -105,5 +105,46 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+
+
+        $('#defaultForm').bootstrapValidator({
+            live: 'disabled',
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        notEmpty: {
+                            message: '不可为空，必填字段'
+                        },
+                        remote: {
+
+                            url: '/home/validateShoesCode',//验证地址
+                            message: '该商品码已经存在了',//提示消息
+                            delay: 1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置1秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                            type: 'POST'//请求方式
+                        }
+                    }
+                }
+            }
+        });
+
+        // Validate the form manually
+        $('#validateBtn').click(function () {
+            $('#defaultForm').bootstrapValidator('validate');
+        });
+
+        $('#resetBtn').click(function () {
+            $('#defaultForm').data('bootstrapValidator').resetForm(true);
+        });
+    });
+</script>
+
 </body>
 </html>

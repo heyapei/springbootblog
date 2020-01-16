@@ -1,6 +1,7 @@
 package com.hyp.pojo.shoes.utils;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 /*
  * 由于为了以后使用方便,所有方法的返回类型都设为了 java.util.Date 请在使用时根据自己的需要进行日期格式化处理,如:
@@ -321,6 +322,49 @@ public class DatesUtil {
         begincal = new GregorianCalendar(beginYear, beginMonth, max);
         list.add(begincal.getTime());
         return list;
+    }
+
+    /**
+     * 获取过去或者未来 任意天内的日期数组
+     *
+     * @param intervals intervals天内
+     * @return 日期数组
+     */
+    public static ArrayList<String> test(int intervals) {
+        ArrayList<String> pastDaysList = new ArrayList<>();
+        ArrayList<String> fetureDaysList = new ArrayList<>();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        for (int i = 0; i < intervals; i++) {
+            pastDaysList.add(format.format(getPastDate(i)));
+            fetureDaysList.add(format.format(getFetureDate(i)));
+        }
+        return pastDaysList;
+    }
+
+    /**
+     * 获取过去第几天的日期
+     *
+     * @param past
+     * @return
+     */
+    public static Date getPastDate(int past) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - past);
+        Date today = calendar.getTime();
+        return today;
+    }
+
+    /**
+     * 获取未来 第 past 天的日期
+     *
+     * @param past
+     * @return
+     */
+    public static Date getFetureDate(int past) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + past);
+        Date today = calendar.getTime();
+        return today;
     }
 
 }
