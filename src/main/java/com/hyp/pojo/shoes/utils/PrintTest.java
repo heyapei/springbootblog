@@ -113,7 +113,7 @@ public class PrintTest {
                                     yIndex = drawString(graphics2D, "减  免：" + shoesOrder.getReduction(), 5, yIndex + lineHeight, lineWidth, lineHeight);
                                 }
                                 yIndex = drawString(graphics2D, "实  收：" + (shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction())))), 5, yIndex + lineHeight, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "积  分：" + shoesOrder.getEmpirical(), 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "积  分：" + (shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction())))), 5, yIndex + lineHeight, lineWidth, lineHeight);
 
                                 /*用户信息*/
                                 ShoesUser shoesUser = shoesTicketVO.getShoesUser();

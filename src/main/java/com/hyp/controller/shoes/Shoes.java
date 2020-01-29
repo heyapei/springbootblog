@@ -619,6 +619,7 @@ public class Shoes {
                 int i = shoesOrderService.updateShoesOrder(shoesOrderByOrderId);
                 if (i > 0) {
                     shoesOrderService.deleteOrderAndOrderItem(orderId);
+                    resultObject = ResultGenerator.genSuccessResult();
                 } else {
                     resultObject = ResultGenerator.genFailResult("确认订单错误");
                 }

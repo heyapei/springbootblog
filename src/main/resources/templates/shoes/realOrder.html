@@ -283,13 +283,7 @@
                                     <td th:text="${shoesOrder.money}">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        积分
-                                    </td>
-                                    <td th:text="${shoesOrder.empirical}">
-                                    </td>
-                                </tr>
+
                                 <tr class="success">
                                     <td>
                                         减免金额
@@ -304,6 +298,15 @@
                                     <td th:text="${shoesOrder.money}-${shoesOrder.reduction}">
                                     </td>
                                 </tr>
+
+                                <tr class="warning">
+                                    <td>
+                                        积分
+                                    </td>
+                                    <td th:text="${shoesOrder.money}-${shoesOrder.reduction}">
+                                    </td>
+                                </tr>
+
                                 <tr class="warning">
                                     <td>
                                         成功后积分
