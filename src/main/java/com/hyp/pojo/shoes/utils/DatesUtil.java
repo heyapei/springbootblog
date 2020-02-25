@@ -256,7 +256,9 @@ public class DatesUtil {
         return beginDate;
     }
 
-    // 返回某月该季度的第一个月
+    /**
+     * 返回某月该季度的第一个月
+     */
     public static Date getFirstSeasonDate(Date date) {
         final int[] SEASON = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4};
         Calendar cal = Calendar.getInstance();
@@ -266,7 +268,9 @@ public class DatesUtil {
         return cal.getTime();
     }
 
-    // 返回某个日期下几天的日期
+    /**
+     * 返回某个日期下几天的日期
+     */
     public static Date getNextDay(Date date, int i) {
         Calendar cal = new GregorianCalendar();
         cal.setTime(date);
@@ -274,7 +278,9 @@ public class DatesUtil {
         return cal.getTime();
     }
 
-    // 返回某个日期前几天的日期
+    /**
+     * 返回某个日期前几天的日期
+     */
     public static Date getFrontDay(Date date, int i) {
         Calendar cal = new GregorianCalendar();
         cal.setTime(date);
@@ -282,8 +288,9 @@ public class DatesUtil {
         return cal.getTime();
     }
 
-    // 获取某年某月到某年某月按天的切片日期集合(间隔天数的集合)
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    /**
+     * 获取某年某月到某年某月按天的切片日期集合(间隔天数的集合)
+     */
     public static List getTimeList(int beginYear, int beginMonth, int endYear,
                                    int endMonth, int k) {
         List list = new ArrayList();
@@ -309,8 +316,9 @@ public class DatesUtil {
         return list;
     }
 
-    // 获取某年某月按天切片日期集合(某个月间隔多少天的日期集合)
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    /**
+     * 获取某年某月按天切片日期集合(某个月间隔多少天的日期集合)
+     */
     public static List getTimeList(int beginYear, int beginMonth, int k) {
         List list = new ArrayList();
         Calendar begincal = new GregorianCalendar(beginYear, beginMonth, 1);

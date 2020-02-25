@@ -18,10 +18,7 @@ import com.hyp.pojo.shoes.vo.OrderItemVO;
 import com.hyp.pojo.shoes.vo.RealOrderVO;
 import com.hyp.pojo.shoes.vo.ShoesItemAndProduct;
 import com.hyp.pojo.shoes.vo.ShoesTicketVO;
-import com.hyp.service.shoes.ShoesOrderItemService;
-import com.hyp.service.shoes.ShoesOrderService;
-import com.hyp.service.shoes.ShoesProductService;
-import com.hyp.service.shoes.ShoesUserService;
+import com.hyp.service.shoes.*;
 import com.hyp.utils.HttpClientUtil;
 import com.hyp.utils.IpUtils;
 import com.hyp.utils.JsonUtils;
@@ -75,6 +72,121 @@ public class Shoes {
     private ShoesProductService shoesProductService;
     @Autowired
     private ShoesOrderItemService shoesOrderItemService;
+    @Autowired
+    private ShoesReductionService shoesReductionService;
+
+
+    /**
+     * 添加积分消费情况
+     *
+     * @return
+     */
+    @RequestMapping("/addShoesReduction")
+    @ResponseBody
+    public String addShoesReduction(@RequestParam String phoneNum,
+                                     @RequestParam String event,
+                                     @RequestParam Integer reduction) {
+        ShoesReduction shoesReduction = new ShoesReduction();
+        shoesReduction.setEvent(event);
+        shoesReduction.setPhoneNum(phoneNum);
+        shoesReduction.setReduction(reduction);
+        shoesReduction.setCreateDate(new Date());
+        boolean b = shoesReductionService.addShoesReduction(shoesReduction);
+        if (b) {
+            return "积分消费记录成功";
+        } else {
+            return "积分消费记录失败！请重试";
+        }
+    }
+
+    /**
+     * 添加积分消费情况页面
+     *
+     * @return
+     */
+    @RequestMapping("/addShoesReductionPage")
+    public String addShoesReductionPage(HttpServletRequest httpServletRequest, ModelMap map,@RequestParam String phoneNum) {
+
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
+
+        ShoesReduction shoesReduction = new ShoesReduction();
+        shoesReduction.setPhoneNum(phoneNum);
+        List<ShoesReduction> shoesReduction1 = shoesReductionService.getShoesReduction(shoesReduction);
+        if (shoesReduction1 != null && shoesReduction1.size() > 0) {
+            map.addAttribute("errorCode", "NOT FOUND");
+            map.addAttribute("errorDesc", "没有找到用户");
+            return "communal/error/error";
+        }
+
+        map.addAttribute("phoneNum", phoneNum);
+        return "shoes/addShoesReduction";
+    }
+
+
+    /**
+     * 积分消费列表页面
+     *
+     * @return
+     */
+    @RequestMapping("/getShoesReduction")
+    public String getShoesReduction(HttpServletRequest httpServletRequest, ModelMap map,
+                                    @RequestParam(required = false) String phoneNum,
+                                    @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer page,
+                                    @RequestParam(value = "pageSize", required = false, defaultValue = "20") Integer size) {
+        if (ShoesCookie.isLogin(httpServletRequest)) {
+            int sysUserId = ShoesCookie.getUserId(httpServletRequest);
+            ShoesSystem shoesSystem = shoesService.shoesSystemUserById(sysUserId);
+            if (shoesSystem == null) {
+                map.addAttribute("errorCode", "NOT FOUND");
+                map.addAttribute("errorDesc", "请重新登录系统");
+                return "communal/error/error";
+            }
+        } else {
+            map.addAttribute("errorCode", "NO COOKIE");
+            map.addAttribute("errorDesc", "请重新登录系统");
+            return "communal/error/error";
+        }
+
+        ShoesReduction shoesReduction = new ShoesReduction();
+        if (StringUtils.isNotBlank(phoneNum)) {
+            shoesReduction.setPhoneNum(phoneNum);
+        }
+        PageHelper.startPage(page, size);
+        List<ShoesReduction> shoesReductionList = shoesReductionService.getShoesReduction(shoesReduction);
+        PageInfo pageInfo = new PageInfo(shoesReductionList);
+        Result<Object> objectResult = ResultGenerator.genSuccessResult(pageInfo);
+        map.addAttribute("pageResult", objectResult);
+        map.addAttribute("indexPage", pageInfo.getPageNum());
+        map.addAttribute("totalPage", pageInfo.getPages());
+        map.addAttribute("phoneNum", phoneNum);
+        return "shoes/shoesReduction";
+    }
+
+
+    /**
+     * 删除积分消费页面
+     *
+     * @return
+     */
+    @RequestMapping("/deleteShoesReduction")
+    @ResponseBody
+    public boolean deleteShoesReduction(@RequestParam Integer id) {
+        boolean b = shoesReductionService.deleteShoesReduction(id);
+        return b;
+    }
 
 
     /**
@@ -1946,6 +2058,28 @@ public class Shoes {
         return resultString;
     }
 
+
+    /**
+     * 查询用户手机号是否存在
+     *
+     * @return
+     */
+    @RequestMapping("/validatePhoneNum1")
+    @ResponseBody
+    public Result<String> validatePhoneNum1(@RequestParam String phoneNum) {
+        Example example = new Example(ShoesUser.class);
+        Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("phoneNum", phoneNum);
+        List<ShoesUser> shoesUsers = shoesUserMapper.selectByExample(example);
+        Result<String> shoesUserResult = null;
+        if (shoesUsers == null || shoesUsers.size() <= 0) {
+            shoesUserResult = ResultGenerator.genSuccessResult();
+        } else {
+            shoesUserResult = ResultGenerator.genFailResult("手机号已经存在");
+        }
+
+        return shoesUserResult;
+    }
 
     /**
      * 查询用户手机号是否存在

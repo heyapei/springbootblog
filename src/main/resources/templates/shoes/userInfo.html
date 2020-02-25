@@ -240,6 +240,9 @@
                                th:onclick="|getUserInfoByUserId(${user.id})|"
                             ><span class='glyphicon glyphicon-pencil'></span></a>
 
+                            <a th:href="@{'/home/addShoesReductionPage?phoneNum='+${user.phoneNum}}" class='btn btn-xs green' title='添加积分消费信息'
+                            ><span class='glyphicon glyphicon-tag'></span></a>
+
                         </td>
 
                     </tr>
@@ -349,6 +352,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <form class="form-horizontal" role="form">
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -657,10 +663,14 @@
     }
 
     function updateUserInfo() {
+        alert("请注意，如果更新手机号信息！更新完成如果进入明确手机号查询页面，说明手机号已经被使用！更新失败！");
         var userId = $("#userId").val();
         var phoneNum = $("#phoneNum").val();
         var realName = $("#realName").val();
         var birthday = $("#birthday").val();
+
+
+
         $.ajax({
             url: "/home/updateUser",
             data: {userId: userId, phoneNum: phoneNum, realName: realName, birthday: birthday},
