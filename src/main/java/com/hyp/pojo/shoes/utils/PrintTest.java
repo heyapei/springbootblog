@@ -42,9 +42,9 @@ public class PrintTest {
        */
             Paper paper = new Paper();
             //设置打印宽度（固定，和具体的打印机有关）和高度（跟实际打印内容的多少有关）
-            paper.setSize(140, 450);
+            paper.setSize(180, 510);
             //设置打印区域 打印起点坐标、打印的宽度和高度
-            paper.setImageableArea(0, 0, 135, 450);
+            paper.setImageableArea(0, 0, 180, 510);
             pageFormat.setPaper(paper);
             //创建打印文档
             Book book = new Book();
@@ -60,9 +60,9 @@ public class PrintTest {
                                 //drawString(graphics2D, "//////////////////////////////", 10, 17, 119, 8);
                                 font = new Font("宋体", Font.PLAIN, 7);
                                 graphics2D.setFont(font);
-                                int yIndex = 20;
+                                int yIndex = 0;
                                 int lineHeight = 10;
-                                int lineWidth = 120;
+                                int lineWidth = 170;
                                 Color defaultColor = graphics2D.getColor();
                                 Color grey = new Color(145, 145, 145);
 
@@ -70,73 +70,76 @@ public class PrintTest {
                                 graphics2D.setStroke(stroke);
                                 lineWidth = 129;
                                 lineHeight = 8;
-                                graphics2D.setFont(new Font("宋体", Font.BOLD, 8));
+                                graphics2D.setFont(new Font("宋体", Font.BOLD, 10));
                                 graphics2D.setColor(defaultColor);
-                                yIndex = drawString(graphics2D, "丹 比 奴 DAMBOLO", 20, yIndex + lineHeight + 2, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "形象代言人：胡可", 50, yIndex + lineHeight + 2, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "丹 比 奴 DAMBOLO", 30, yIndex + lineHeight + 2, lineWidth, lineHeight);
+                                graphics2D.setFont(new Font("宋体", Font.BOLD, 8));
+                                yIndex = drawString(graphics2D, "形象代言人：胡可", 60, yIndex + lineHeight + 2, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
                                 graphics2D.setColor(grey);
-                                yIndex = drawString(graphics2D, "操作员：和*", 5, yIndex + lineHeight + 2, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "操作员：和玉", 20, yIndex + lineHeight + 2, lineWidth, lineHeight);
                                 LocalDateTime now = LocalDateTime.now();
                                 DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm a");
                                 String nowStr = now.format(format);
-                                yIndex = drawString(graphics2D, "日期：" + nowStr, 5 + lineWidth / 2, yIndex, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "日期：" + nowStr, 15 + lineWidth / 2, yIndex, lineWidth, lineHeight);
 
-                                yIndex = drawString(graphics2D, "名称", 5, yIndex + lineHeight * 2 - 5, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "名称", 20, yIndex + lineHeight * 2 - 5, lineWidth, lineHeight);
                                 yIndex = drawString(graphics2D, "颜色", (lineWidth / 10) * 58 / 10, yIndex, lineWidth, lineHeight);
                                 yIndex = drawString(graphics2D, "规格", (lineWidth / 10) * 72 / 10, yIndex, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "数量", (lineWidth / 10) * 85 / 10, yIndex, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "数量 | ", (lineWidth / 10) * 85 / 10, yIndex, lineWidth, lineHeight);
                                 yIndex = drawString(graphics2D, "单价", (lineWidth / 10) * 95 / 10, yIndex, lineWidth, lineHeight);
                                 /*订单详细页*/
                                 List<ShoesItemAndProduct> shoesItemAndProductList = shoesTicketVO.getShoesItemAndProductList();
                                 for (ShoesItemAndProduct shoesItemAndProduct : shoesItemAndProductList) {
                                     System.out.println(shoesItemAndProduct.toString());
                                     graphics2D.setFont(new Font("宋体", Font.PLAIN, 7));
-                                    yIndex = drawString(graphics2D, shoesItemAndProduct.getName(), 5, yIndex + 15, (lineWidth / 10) * 6, lineHeight);
+                                    yIndex = drawString(graphics2D, shoesItemAndProduct.getName(), 20, yIndex + 15, (lineWidth / 10) * 6, lineHeight);
                                     yIndex = drawString(graphics2D, shoesItemAndProduct.getColor(), (lineWidth / 10) * 58 / 10, yIndex, lineWidth, lineHeight);
                                     yIndex = drawString(graphics2D, shoesItemAndProduct.getSize().toString(), (lineWidth / 10) * 72 / 10, yIndex, lineWidth, lineHeight);
                                     yIndex = drawString(graphics2D, shoesItemAndProduct.getNumber().toString(), (lineWidth / 10) * 85 / 10, yIndex, lineWidth, lineHeight);
                                     yIndex = drawString(graphics2D, shoesItemAndProduct.getPrice().toString(), (lineWidth / 10) * 95 / 10, yIndex, lineWidth, lineHeight);
                                     graphics2D.setFont(new Font("宋体", Font.PLAIN, 7));
                                     yIndex = yIndex + 6;
-                                    graphics2D.drawLine(5, yIndex, 5 + lineWidth, yIndex);
+                                    graphics2D.drawLine(20, yIndex, 5 + lineWidth, yIndex);
                                 }
 
                                 graphics2D.setColor(defaultColor);
 
                                 /*订单总信息*/
                                 ShoesOrder shoesOrder = shoesTicketVO.getShoesOrder();
-                                yIndex = drawString(graphics2D, "订单号：" + shoesOrder.getId(), 5, yIndex + lineHeight * 2, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "总  数：" + shoesItemAndProductList.size(), 5, yIndex + lineHeight, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "总  计：" + shoesOrder.getMoney(), 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "订单号：" + shoesOrder.getId(), 20, yIndex + lineHeight * 2, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "总  数：" + shoesItemAndProductList.size(), 20, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "总  计：" + shoesOrder.getMoney(), 20, yIndex + lineHeight, lineWidth, lineHeight);
                                 if (shoesOrder.getReduction() > 0) {
-                                    yIndex = drawString(graphics2D, "减  免：" + shoesOrder.getReduction(), 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                    yIndex = drawString(graphics2D, "减  免：" + shoesOrder.getReduction(), 20, yIndex + lineHeight, lineWidth, lineHeight);
                                 }
-                                yIndex = drawString(graphics2D, "实  收：" + (shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction())))), 5, yIndex + lineHeight, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "积  分：" + (shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction())))), 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "实  收：" + (shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction())))), 20, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "积  分：" + (shoesOrder.getMoney().subtract(new BigDecimal(String.valueOf(shoesOrder.getReduction())))), 20, yIndex + lineHeight, lineWidth, lineHeight);
 
                                 /*用户信息*/
                                 ShoesUser shoesUser = shoesTicketVO.getShoesUser();
-                                yIndex = drawString(graphics2D, "会员名称：" + shoesUser.getRealName(), 5, yIndex + lineHeight * 2, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "会员编号：" + shoesUser.getPhoneNum(), 5, yIndex + lineHeight, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "总积分：" + shoesUser.getEmpirical(), 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "会员名称：" + shoesUser.getRealName(), 20, yIndex + lineHeight * 2, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "会员编号：" + shoesUser.getPhoneNum(), 20, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "总积分：" + shoesUser.getEmpirical(), 20, yIndex + lineHeight, lineWidth, lineHeight);
 
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
                                 graphics2D.setColor(grey);
                                 graphics2D.setFont(new Font("宋体", Font.BOLD, 6));
-                                yIndex = drawString(graphics2D, "温馨提示：", 5, yIndex + lineHeight * 2, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "温馨提示：", 20, yIndex + lineHeight * 2, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
-                                yIndex = drawString(graphics2D, "    1、本店所售商品严格按照国家“三包”规定执行；", 5, yIndex + lineHeight, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "    2、积分规则和使用方法详见店内海报。", 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    1、本店所售商品严格按照国家“三包”规定执行；", 10, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    ", 20, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    2、积分规则和使用方法详见店内海报。", 10, yIndex + lineHeight, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.BOLD, 6));
-                                yIndex = drawString(graphics2D, "店面地址：", 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "店面地址：", 20, yIndex + lineHeight, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
-                                yIndex = drawString(graphics2D, "    息县谦楼街西段（华联超市西150米路北）", 5, yIndex + lineHeight, lineWidth, lineHeight);
-                                yIndex = drawString(graphics2D, "电话：", 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    河南省信阳息县谯楼街西段丹比奴专卖店", 10, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    ", 20, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "电话：137 8299 6182", 20, yIndex + lineHeight, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
-                                yIndex = drawString(graphics2D, "    137 8299 6182", 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    ", 20, yIndex + lineHeight, lineWidth, lineHeight);
                                 yIndex = yIndex + 20;
-                                graphics2D.drawLine(0, yIndex, 140, yIndex);
+                                graphics2D.drawLine(0, yIndex + 30, 140, yIndex + 30);
                                 return PAGE_EXISTS;
                             }
                         }

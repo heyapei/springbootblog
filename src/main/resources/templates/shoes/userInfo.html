@@ -240,7 +240,8 @@
                                th:onclick="|getUserInfoByUserId(${user.id})|"
                             ><span class='glyphicon glyphicon-pencil'></span></a>
 
-                            <a th:href="@{'/home/addShoesReductionPage?phoneNum='+${user.phoneNum}}" class='btn btn-xs green' title='添加积分消费信息'
+                            <a th:href="@{'/home/addShoesReductionPage?phoneNum='+${user.phoneNum}}"
+                               class='btn btn-xs green' title='添加积分消费信息'
                             ><span class='glyphicon glyphicon-tag'></span></a>
 
                         </td>
@@ -352,8 +353,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <form class="form-horizontal" role="form">
@@ -499,6 +498,10 @@
                 var buyDate = data.buyDate;
                 var buyNum = data.buyNum;
                 var shoesAve = data.shoesAve;
+
+                console.log("数据：" + buyDate);
+                console.log("数据2：" + buyNum);
+                console.log("数据3：" + shoesAve);
 
 
                 /* var option = {
@@ -668,7 +671,6 @@
         var phoneNum = $("#phoneNum").val();
         var realName = $("#realName").val();
         var birthday = $("#birthday").val();
-
 
 
         $.ajax({

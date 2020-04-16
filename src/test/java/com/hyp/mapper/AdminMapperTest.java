@@ -41,9 +41,9 @@ public class AdminMapperTest {
         System.out.println(allArticle);
     }
 
-    @Test
+    /*@Test
     public void getArticleById() {
         Article articleById = adminMapper.getArticleById(1);
         Assert.assertNotNull(articleById);
-    }
+    }*/
 }

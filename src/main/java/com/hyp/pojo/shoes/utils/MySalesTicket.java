@@ -67,7 +67,7 @@ public class MySalesTicket {
                                 yIndex = drawString(graphics2D, "形象代言人：胡可", 50, yIndex + lineHeight + 2, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
                                 graphics2D.setColor(grey);
-                                yIndex = drawString(graphics2D, "操作员：和*", 5, yIndex + lineHeight + 2, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "操作员：何亚培*", 5, yIndex + lineHeight + 2, lineWidth, lineHeight);
                                 LocalDateTime now = LocalDateTime.now();
                                 DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm a");
                                 String nowStr = now.format(format);
@@ -122,10 +122,10 @@ public class MySalesTicket {
                                 graphics2D.setFont(new Font("宋体", Font.BOLD, 6));
                                 yIndex = drawString(graphics2D, "店面地址：", 5, yIndex + lineHeight, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
-                                yIndex = drawString(graphics2D, "    息县谦楼街西段（华联超市西150米路北）", 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    上海市中心123", 5, yIndex + lineHeight, lineWidth, lineHeight);
                                 yIndex = drawString(graphics2D, "电话：", 5, yIndex + lineHeight, lineWidth, lineHeight);
                                 graphics2D.setFont(new Font("宋体", Font.PLAIN, 6));
-                                yIndex = drawString(graphics2D, "    137 8299 6182", 5, yIndex + lineHeight, lineWidth, lineHeight);
+                                yIndex = drawString(graphics2D, "    155 1890 1416", 5, yIndex + lineHeight, lineWidth, lineHeight);
                                 yIndex = yIndex + 20;
                                 graphics2D.drawLine(0, yIndex, 140, yIndex);
                                 return PAGE_EXISTS;

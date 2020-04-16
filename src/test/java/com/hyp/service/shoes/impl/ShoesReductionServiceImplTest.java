@@ -34,8 +34,8 @@ public class ShoesReductionServiceImplTest {
         shoesReduction.setReduction(10);
         shoesReduction.setCreateDate(new Date());
 
-        boolean b = shoesReductionService.addShoesReduction(shoesReduction);
-        System.out.println(b);
+        /*boolean b = shoesReductionService.addShoesReduction(shoesReduction);
+        System.out.println(b);*/
     }
 
     @Test

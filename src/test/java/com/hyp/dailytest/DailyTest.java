@@ -40,21 +40,21 @@ public class DailyTest {
 
     @Test
     public void testNew() {
-        HttpClientUtil httpClientUtil = new HttpClientUtil();
+        /*HttpClientUtil httpClientUtil = new HttpClientUtil();
         String s = httpClientUtil.getParameter("http://v.juhe.cn/toutiao/index?type=top&key=320fe5990868976ec7a68fa3627c7fe2", null, null, 2000, 2000, 2000);
         JSONObject parse = JSONObject.parseObject(s);
         JSONObject result = parse.getJSONObject("result");
         String data = result.getString("data");
         List<NewDTO> NewDTOs = JsonUtils.jsonToList(data, NewDTO.class);
-        System.out.println(NewDTOs);
+        System.out.println(NewDTOs);*/
 
     }
 
     @Test
     public void testDailyWord() {
         HttpClientUtil httpClientUtil = new HttpClientUtil();
-        String dailyWordReturn = httpClientUtil.getParameter("http://api.hanximeng.com/hitokoto/api.php", null, null, 2000, 2000, 2000);
-        System.out.println(dailyWordReturn);
+        /*String dailyWordReturn = httpClientUtil.getParameter("http://api.hanximeng.com/hitokoto/api.php", null, null, 2000, 2000, 2000);
+        System.out.println(dailyWordReturn);*/
     }
 
     @Test

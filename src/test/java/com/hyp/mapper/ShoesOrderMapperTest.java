@@ -51,11 +51,11 @@ public class ShoesOrderMapperTest {
         log.info("返回的主键{}", shoesOrder.getId());
     }
 
-    @Test
+   /* @Test
     public void getShoesOrderByOrderId() {
         ShoesOrder shoesOrderByOrderId = shoesOrderMapper.getShoesOrderByOrderId(2);
         log.info(shoesOrderByOrderId.toString());
-    }
+    }*/
 
     @Test
     public void getShoesOrderByUserId() {

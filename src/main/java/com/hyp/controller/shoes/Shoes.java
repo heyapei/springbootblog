@@ -84,8 +84,8 @@ public class Shoes {
     @RequestMapping("/addShoesReduction")
     @ResponseBody
     public String addShoesReduction(@RequestParam String phoneNum,
-                                     @RequestParam String event,
-                                     @RequestParam Integer reduction) {
+                                    @RequestParam String event,
+                                    @RequestParam Integer reduction) {
         ShoesReduction shoesReduction = new ShoesReduction();
         shoesReduction.setEvent(event);
         shoesReduction.setPhoneNum(phoneNum);
@@ -105,7 +105,7 @@ public class Shoes {
      * @return
      */
     @RequestMapping("/addShoesReductionPage")
-    public String addShoesReductionPage(HttpServletRequest httpServletRequest, ModelMap map,@RequestParam String phoneNum) {
+    public String addShoesReductionPage(HttpServletRequest httpServletRequest, ModelMap map, @RequestParam String phoneNum) {
 
         if (ShoesCookie.isLogin(httpServletRequest)) {
             int sysUserId = ShoesCookie.getUserId(httpServletRequest);
@@ -273,6 +273,34 @@ public class Shoes {
             shoesAve = new String[buyRoteSize];
             int i = 0;
             Map<String, String> shoesNum2 = new HashMap<>(16);
+
+            System.out.println("hashMap排序" + buyRoute);
+
+            List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(buyRoute.entrySet());
+
+            // 对HashMap中的key 进行排序
+
+            Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+                @Override
+                public int compare(Map.Entry<String, Integer> o1,
+                                   Map.Entry<String, Integer> o2) {
+//				System.out.println(o1.getKey()+"   ===  "+o2.getKey());
+                    return (o1.getKey()).toString().compareTo(o2.getKey().toString());
+                }
+            });
+
+
+            System.out.println("hashMap排序hou" + buyRoute);
+
+            Map<String, Integer> sortMap = new TreeMap<>();
+
+            for(Map.Entry<String, Integer> mapping:list){
+                sortMap.put(mapping.getKey(), mapping.getValue());
+            }
+
+
+
+
             for (String key : buyRoute.keySet()) {
                 String value = buyRoute.get(key).toString();
                 String startDate = key + " 00:00:00";
@@ -289,6 +317,7 @@ public class Shoes {
                     e.printStackTrace();
                 }
                 List<ShoesOrder> shoesOrderByPhoneAndTime1 = shoesOrderService.getShoesOrderByPhoneAndTime(shoesOrder);
+                System.out.println("结算1：" + shoesOrderByPhoneAndTime1);
                 BigDecimal realMoney1 = new BigDecimal(0);
                 double shoesAve1 = 0d;
                 int shoesNum1 = 0;
@@ -319,6 +348,7 @@ public class Shoes {
                     shoesAve1 = new BigDecimal(String.valueOf(shoesAve1)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                 }
                 buyDate[i] = key;
+                System.out.println("结算2：" + buyDate[i]);
                 buyNum[i] = value;
                 shoesAve[i] = String.valueOf(shoesAve1);
                 i++;
@@ -782,14 +812,18 @@ public class Shoes {
         PageHelper.startPage(page, size);
         List<OrderItemVO> orderItemVOS = new ArrayList<>();
         if (orderItemByShoesOrderItem != null && orderItemByShoesOrderItem.size() >= 0) {
-            ShoesOrderItem orderItem = orderItemByShoesOrderItem.get(0);
-            OrderItemVO orderItemVO = new OrderItemVO();
-            ShoesProduct productInfoByProductId = shoesProductService.getProductInfoByProductId(orderItem.getProductId());
-            BeanUtils.copyProperties(productInfoByProductId, orderItemVO);
-            BeanUtils.copyProperties(orderItem, orderItemVO);
-            orderItemVO.setOrderId(orderItem.getOrderId());
-            orderItemVO.setCreateDate(orderItem.getCreateDate());
-            orderItemVOS.add(orderItemVO);
+
+            for (ShoesOrderItem orderItem : orderItemByShoesOrderItem) {
+                OrderItemVO orderItemVO = new OrderItemVO();
+                ShoesProduct productInfoByProductId = shoesProductService.getProductInfoByProductId(orderItem.getProductId());
+                BeanUtils.copyProperties(productInfoByProductId, orderItemVO);
+                BeanUtils.copyProperties(orderItem, orderItemVO);
+                orderItemVO.setOrderId(orderItem.getOrderId());
+                orderItemVO.setCreateDate(orderItem.getCreateDate());
+                orderItemVOS.add(orderItemVO);
+            }
+            /*ShoesOrderItem orderItem = orderItemByShoesOrderItem.get(0);*/
+
         }
 
         PageInfo pageInfo = new PageInfo(orderItemVOS);

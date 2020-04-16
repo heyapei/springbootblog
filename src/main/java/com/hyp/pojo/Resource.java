@@ -3,6 +3,7 @@ package com.hyp.pojo;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 /**
  * @author 何亚培
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  * @Description: TODO
  */
 @Configuration
+@Component
 @ConfigurationProperties(prefix = "com.imooc.opensource")
 @PropertySource(value = "classpath:resource.properties")
 public class Resource {
